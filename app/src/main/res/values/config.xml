@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- FONTS -->
+  <string name="font_nastaleeq_meher" translatable="false">MehrNastaliq_1.0_beta.ttf</string>
+  <string name="font_jameel_noori_nastaleeq" translatable="false">JameelNooriNastaleeq.ttf</string>
+  <string name="font_jameel_noori_nastaleeq_kasheeda" translatable="false">
+    JameelNooriNastaleeqKasheeda.ttf</string>
+  <string name="font_pakistan_nastaleeq" translatable="false">PakNastaleeq_beta_release.ttf</string>
+  <string name="font_fajer_noori_nastaleeq" translatable="false">FajerNooriNastaleeq.ttf</string>
+  <string name="font_urdu_naskh_asiatype" translatable="false">UrduNaskhAsiaType.ttf</string>
+</resources>

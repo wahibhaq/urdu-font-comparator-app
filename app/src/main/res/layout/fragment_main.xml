@@ -11,8 +11,7 @@
       android:layout_height="wrap_content"
       android:spinnerMode="dialog"
       android:prompt="@string/select_font"
-      style="@android:style/Widget.Holo.Light.Spinner"
-      android:entries="@array/urdu_font_list"/>
+      style="@android:style/Widget.Holo.Light.Spinner"/>
 
   <android.support.v4.widget.NestedScrollView
       android:id="@+id/nested_scrollview"
