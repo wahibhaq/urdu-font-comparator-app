@@ -7,15 +7,23 @@
   <string name="hello_blank_fragment">Hello blank fragment</string>
 
   <string name="select_font">Select Font</string>
+
+  <!-- Urdu Font Names -->
   <string name="label_urdu_font_meher_nastaleeq">Meher Nastaleeq</string>
   <string name="label_urdu_font_jameel_noori_nastaleeq">Jameel Noori Nastaleeq</string>
   <string name="label_urdu_font_jameel_noori_nastaleeq_kasheeda">Jameel Noori Nastaleeq Kasheeda</string>
   <string name="label_urdu_font_pakistan_nastaleeq">Pakistan Nastaleeq</string>
   <string name="label_urdu_font_fajer_noori_nastaleeq">Fajer Noori Nastaleeq</string>
   <string name="label_urdu_font_urdu_naskh_asiatype">Urdu Naskh Asiatype</string>
+  <string name="label_urdu_font_noto_nastaliq_urdu">Noto Nastaliq Urdu</string>
+  <string name="label_urdu_font_noto_naskh_arabic">Noto Naskh Arabic</string>
 
   <string name="urdu_sample_text_poetry">
 سلیقے سے ہواؤں میں جو خوشبو گھول سکتے ہیں\n
 
 ابھی کچھ لوگـ باقی ہیں جو اُردو بول سکتے ہیں</string>
+
+  <string name="urdu_sample_text_bold">اردو رسم الخط زبان کی ساری مروج آوازوں کی نمائندگی کرتا ہے۔ اردو کے حروف بناوٹ کے لحاظ سے حددرجہ سادہ اور اشکال کے اعتبار سے بہت کم ہیں ۔ اردو زبان اپنے الفاظ کی بناوٹ کی بناء پر دنیا کی ہر زبان کے مقابلہ میں لکھنے ، پڑھنے اور سیکھنے کے حوالے سے آسان ترین زبان ہے۔</string>
+
+  <string name="urdu_sample_text_alphabets">ا آ ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ه ی ے ئ ء</string>
 </resources>

@@ -4,6 +4,10 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,12 @@ import projects.hobby.urdufontcomparator.managers.CustomFontManager;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
 
 public class MainFragment extends Fragment {
+
+    private static final String FONTS = "fonts/";
+
+    private static final int FONT_SIZE = 16;
+
+    private static final String LINE_SPACINGS = "\n\n";
 
     private Unbinder unBinder;
 
@@ -66,20 +76,35 @@ public class MainFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
                 final String selectedFontName = adapter.getItemAtPosition(position).toString();
                 final UrduFonts font = UrduFonts.from(selectedFontName);
-                String fontAsset = "fonts/".concat(getString(font.fontFileName));
+                String fontAsset = FONTS.concat(getString(font.fontFileName));
                 Typeface tf = CustomFontManager.getInstance().getFont(fontAsset);
                 if(tf != null) {
                     textBody.setTypeface(tf);
                 } else {
                     textBody.setTypeface(Typeface.DEFAULT);
                 }
-                textBody.setText(getString(R.string.urdu_sample_text_poetry));
+
+                textBody.setTextSize(FONT_SIZE);
+                textBody.setText(formattedText());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private SpannableString formattedText() {
+        String poetry = getString(R.string.urdu_sample_text_poetry);
+        String textToBold = getString(R.string.urdu_sample_text_bold);
+        String alphabets = getString(R.string.urdu_sample_text_alphabets);
+        String finalText = poetry.concat(LINE_SPACINGS).concat(textToBold).concat(LINE_SPACINGS).concat(alphabets);
+
+        final SpannableString spannableString = new SpannableString(finalText);
+        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+        spannableString.setSpan(boldSpan, poetry.length(),
+                finalText.length() - alphabets.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return spannableString;
     }
 
     @Override public void onDestroyView() {

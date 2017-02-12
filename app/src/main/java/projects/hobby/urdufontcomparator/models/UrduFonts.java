@@ -23,7 +23,11 @@ public enum UrduFonts {
     FAJER_NOORI_NASTALEEQ (R.string.label_urdu_font_fajer_noori_nastaleeq, "Fajer Noori Nastaleeq",
             R.string.font_fajer_noori_nastaleeq),
     URDU_NASKH_ASIATYPE (R.string.label_urdu_font_urdu_naskh_asiatype, "Urdu Naskh Asiatype",
-            R.string.font_urdu_naskh_asiatype);
+            R.string.font_urdu_naskh_asiatype),
+    NOTO_NASTALIQ_URDU_REGULAR (R.string.label_urdu_font_noto_nastaliq_urdu, "Noto Nastaliq Urdu",
+            R.string.font_noto_nastaliq_urdu),
+    NOTO_NASKH_ARABIC (R.string.label_urdu_font_noto_naskh_arabic, "Noto Nashk Arabic",
+            R.string.font_noto_naskh_arabic);
 
     @StringRes
     public int fontLabel;

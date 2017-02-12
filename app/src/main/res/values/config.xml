@@ -9,4 +9,6 @@
   <string name="font_pakistan_nastaleeq" translatable="false">PakNastaleeq_beta_release.ttf</string>
   <string name="font_fajer_noori_nastaleeq" translatable="false">FajerNooriNastaleeq.ttf</string>
   <string name="font_urdu_naskh_asiatype" translatable="false">UrduNaskhAsiaType.ttf</string>
+  <string name="font_noto_nastaliq_urdu" translatable="false">NotoNastaliqUrdu-Regular.ttf</string>
+  <string name="font_noto_naskh_arabic" translatable="false">NotoNaskhArabic-Regular.ttf</string>
 </resources>
