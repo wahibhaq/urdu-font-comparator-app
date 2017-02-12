@@ -1,14 +1,34 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment"
-    >
+    android:layout_margin="16dp"
+    tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment" >
 
-  <TextView
+  <android.support.v7.widget.AppCompatSpinner
+      android:id="@+id/spinner_font_names"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:spinnerMode="dialog"
+      android:prompt="@string/select_font"
+      style="@android:style/Widget.Holo.Light.Spinner"
+      android:entries="@array/urdu_font_list"/>
+
+  <android.support.v4.widget.NestedScrollView
+      android:id="@+id/nested_scrollview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="@string/hello_blank_fragment"
-      />
+      android:layout_marginTop="16dp"
+      android:layout_below="@id/spinner_font_names">
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/text_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:gravity="fill"
+        tools:text="@string/urdu_sample_text_poetry"/>
+
+  </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

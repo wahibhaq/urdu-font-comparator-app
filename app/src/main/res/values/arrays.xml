@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="urdu_font_list">
+    <item>@string/urdu_font_nastaleeq</item>
+    <item>@string/urdu_font_nastaleeq_meher</item>
+  </string-array>
+</resources>

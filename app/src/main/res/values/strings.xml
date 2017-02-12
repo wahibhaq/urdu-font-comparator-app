@@ -1,6 +1,16 @@
 <resources>
   <string name="app_name">UrduFontComparator</string>
+  <string name="app_name_expanded">Urdu Font Comparator</string>
+
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <string name="select_font">Select Font</string>
+  <string name="urdu_font_nastaleeq">Nastaleeq</string>
+  <string name="urdu_font_nastaleeq_meher">Meher Nastaleeq</string>
+  <string name="urdu_sample_text_poetry">
+سلیقے سے ہواؤں میں جو خوشبو گھول سکتے ہیں\n
+
+ابھی کچھ لوگـ باقی ہیں جو اُردو بول سکتے ہیں</string>
 </resources>
