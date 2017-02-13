@@ -35,5 +35,7 @@
   <!-- Font Info Dialog -->
   <string name="ok">Ok</string>
   <string name="provider">Provided By: %s</string>
+  <string name="home_website">Website: %s</string>
+  <string name="download_url">Download Link: %s</string>
 
 </resources>

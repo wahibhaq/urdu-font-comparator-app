@@ -9,13 +9,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.text.style.StyleSpan;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -30,7 +31,9 @@ public class MainFragment extends Fragment {
 
     private static final String FONTS = "fonts/";
 
-    private static final String LINE_SPACINGS = "\n-------------\n";
+    private static final String LINE_SPACINGS_DASH = "\n-------------\n";
+
+    private static final String LINE_SPACINGS = "\n\n";
 
     private Unbinder unBinder;
 
@@ -88,7 +91,7 @@ public class MainFragment extends Fragment {
                 } else {
                     textBody.setTypeface(Typeface.DEFAULT);
                 }
-                textBody.setText(formattedText());
+                textBody.setText(formattedUrduText());
             }
 
             @Override
@@ -100,16 +103,27 @@ public class MainFragment extends Fragment {
     @OnClick(R.id.button_font_details)
     void setInfoButtonContent() {
         if(currentSelectedFont != null) {
-            showDialog(currentSelectedFont.fontLabel, getString(R.string.provider,
-                    currentSelectedFont.provider));
+            showDialog(currentSelectedFont.fontLabel, formattedDialogContent(currentSelectedFont));
         }
     }
 
-    private SpannableString formattedText() {
+    private String formattedDialogContent(final UrduFonts font) {
+        return LINE_SPACINGS
+                .concat(getString(R.string.provider, font.provider))
+                .concat(LINE_SPACINGS)
+                .concat(getString(R.string.home_website, font.website))
+                .concat(LINE_SPACINGS)
+                .concat(getString(R.string.download_url, font.downloadLink));
+    }
+
+    private SpannableString formattedUrduText() {
         String poetry = getString(R.string.urdu_sample_text_poetry);
         String textToBold = getString(R.string.urdu_sample_text_bold);
         String alphabets = getString(R.string.urdu_sample_text_alphabets);
-        String finalText = poetry.concat(LINE_SPACINGS).concat(textToBold).concat(LINE_SPACINGS).concat(alphabets);
+        String finalText = poetry.concat(LINE_SPACINGS_DASH)
+                .concat(textToBold)
+                .concat(LINE_SPACINGS_DASH)
+                .concat(alphabets);
 
         final SpannableString spannableString = new SpannableString(finalText);
         StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
@@ -124,15 +138,23 @@ public class MainFragment extends Fragment {
     }
 
     private void showDialog(@StringRes int title, String content) {
+        final TextView message = new TextView(getActivity());
+        message.setPadding(50,10,10,10);
+
+        final SpannableString s = new SpannableString(content);
+        Linkify.addLinks(s, Linkify.WEB_URLS);
+        message.setText(s);
+        message.setMovementMethod(LinkMovementMethod.getInstance());
+
+
         //TODO find a better way to show custom view
-        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-        dialog.setTitle(title);
-        dialog.setMessage(content);
-        dialog.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity())
+            .setTitle(title)
+            .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
             @Override public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
-            }
-        });
+            }})
+            .setView(message);
         dialog.show();
     }
 }
