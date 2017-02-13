@@ -18,6 +18,7 @@
   <string name="label_urdu_font_noto_nastaliq_urdu">Noto Nastaliq Urdu</string>
   <string name="label_urdu_font_noto_naskh_arabic">Noto Naskh Arabic</string>
 
+  <!-- Urdu Sample Text -->
   <string name="urdu_sample_text_poetry">
 سلیقے سے ہواؤں میں جو خوشبو گھول سکتے ہیں\n
 
@@ -26,4 +27,13 @@
   <string name="urdu_sample_text_bold">اردو رسم الخط زبان کی ساری مروج آوازوں کی نمائندگی کرتا ہے۔ اردو کے حروف بناوٹ کے لحاظ سے حددرجہ سادہ اور اشکال کے اعتبار سے بہت کم ہیں ۔ اردو زبان اپنے الفاظ کی بناوٹ کی بناء پر دنیا کی ہر زبان کے مقابلہ میں لکھنے ، پڑھنے اور سیکھنے کے حوالے سے آسان ترین زبان ہے۔</string>
 
   <string name="urdu_sample_text_alphabets">ا آ ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ه ی ے ئ ء</string>
+
+  <!-- Actionbar Overflow Menu -->
+  <string name="about_me">About Developer</string>
+  <string name="licenses">Licenses</string>
+
+  <!-- Font Info Dialog -->
+  <string name="ok">Ok</string>
+  <string name="provider">Provided By: %s</string>
+
 </resources>

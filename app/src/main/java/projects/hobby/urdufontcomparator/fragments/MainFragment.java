@@ -1,10 +1,12 @@
 package projects.hobby.urdufontcomparator.fragments;
 
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
@@ -13,10 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.managers.CustomFontManager;
@@ -26,19 +30,19 @@ public class MainFragment extends Fragment {
 
     private static final String FONTS = "fonts/";
 
-    private static final int FONT_SIZE = 16;
-
-    private static final String LINE_SPACINGS = "\n\n";
+    private static final String LINE_SPACINGS = "\n-------------\n";
 
     private Unbinder unBinder;
 
     @BindView(R.id.spinner_font_names)
-    Spinner spinnerFontNames;
+    protected Spinner spinnerFontNames;
 
     @BindView(R.id.text_body)
-    TextView textBody;
+    protected TextView textBody;
 
     ArrayAdapter<String> fontArrayAdapter;
+
+    private UrduFonts currentSelectedFont;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -68,6 +72,7 @@ public class MainFragment extends Fragment {
                 android.R.layout.simple_spinner_item, UrduFonts.getFontNames());
         fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFontNames.setAdapter(fontArrayAdapter);
+        spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
     }
 
     private void setupUI() {
@@ -75,16 +80,14 @@ public class MainFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
                 final String selectedFontName = adapter.getItemAtPosition(position).toString();
-                final UrduFonts font = UrduFonts.from(selectedFontName);
-                String fontAsset = FONTS.concat(getString(font.fontFileName));
+                currentSelectedFont = UrduFonts.from(selectedFontName);
+                String fontAsset = FONTS.concat(getString(currentSelectedFont.fontFileName));
                 Typeface tf = CustomFontManager.getInstance().getFont(fontAsset);
                 if(tf != null) {
                     textBody.setTypeface(tf);
                 } else {
                     textBody.setTypeface(Typeface.DEFAULT);
                 }
-
-                textBody.setTextSize(FONT_SIZE);
                 textBody.setText(formattedText());
             }
 
@@ -92,6 +95,14 @@ public class MainFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    @OnClick(R.id.button_font_details)
+    void setInfoButtonContent() {
+        if(currentSelectedFont != null) {
+            showDialog(currentSelectedFont.fontLabel, getString(R.string.provider,
+                    currentSelectedFont.provider));
+        }
     }
 
     private SpannableString formattedText() {
@@ -110,5 +121,18 @@ public class MainFragment extends Fragment {
     @Override public void onDestroyView() {
         unBinder.unbind();
         super.onDestroyView();
+    }
+
+    private void showDialog(@StringRes int title, String content) {
+        //TODO find a better way to show custom view
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+        dialog.setTitle(title);
+        dialog.setMessage(content);
+        dialog.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
+            @Override public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

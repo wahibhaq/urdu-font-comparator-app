@@ -7,18 +7,31 @@
 
   <android.support.v7.widget.AppCompatSpinner
       android:id="@+id/spinner_font_names"
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:spinnerMode="dialog"
       android:prompt="@string/select_font"
+      android:layout_alignParentEnd="true"
       style="@android:style/Widget.Holo.Light.Spinner"/>
+
+  <Button
+      android:id="@+id/button_font_details"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toStartOf="@id/spinner_font_names"
+      android:layout_alignBottom="@id/spinner_font_names"
+      android:layout_alignParentStart="true"
+      android:padding="8dp"
+      android:background="@drawable/ic_info_outline_black"
+      />
 
   <android.support.v4.widget.NestedScrollView
       android:id="@+id/nested_scrollview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="24dp"
       android:scrollbars="vertical"
+      android:scrollbarAlwaysDrawVerticalTrack="true"
       android:layout_below="@id/spinner_font_names">
 
     <TextView
@@ -26,7 +39,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:gravity="fill"
+        android:textSize="18sp"
+        android:textDirection="rtl"
+        android:gravity="fill|center_horizontal"
         tools:text="@string/urdu_sample_text_poetry"/>
 
   </android.support.v4.widget.NestedScrollView>
