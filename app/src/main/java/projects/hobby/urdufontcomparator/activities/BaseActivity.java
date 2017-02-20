@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import projects.hobby.urdufontcomparator.R;
+import projects.hobby.urdufontcomparator.utils.UiUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -43,10 +44,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_licenses:
                 // User chose the "Licenses" item, show the font licenses info
+                UiUtils.showSimpleDialog(this, R.string.licenses,
+                        UiUtils.getLineSpacings().concat("License info will be shown here"));
                 return true;
 
             case R.id.action_about_dev:
                 // User chose the "About Dev" item, show about me info
+                UiUtils.showDialogWithUrlsInContent(this, R.string.about_me,
+                        UiUtils.getLineSpacings().concat("Wahib-Ul-Haq \n\n http://wahibhaq.com"));
                 return true;
 
             default:
