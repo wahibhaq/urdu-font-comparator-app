@@ -1,4 +1,4 @@
-package projects.hobby.urdufontcomparator.managers;
+package projects.hobby.urdufontcomparator.utils;
 
 import android.content.res.AssetManager;
 import android.graphics.Typeface;

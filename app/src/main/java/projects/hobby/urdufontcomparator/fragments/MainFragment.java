@@ -5,7 +5,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -20,22 +19,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import projects.hobby.urdufontcomparator.R;
-import projects.hobby.urdufontcomparator.managers.CustomFontManager;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
+import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends BaseFragment {
 
     private static final String FONTS = "fonts/";
 
     private static final String LINE_SPACINGS_DASH = "\n-------------\n";
 
     private static final String LINE_SPACINGS = "\n\n";
-
-    private Unbinder unBinder;
 
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
@@ -61,7 +56,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        unBinder = ButterKnife.bind(this, view);
         init();
         setupUI();
     }
@@ -130,11 +124,6 @@ public class MainFragment extends Fragment {
         spannableString.setSpan(boldSpan, poetry.length(),
                 finalText.length() - alphabets.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableString;
-    }
-
-    @Override public void onDestroyView() {
-        unBinder.unbind();
-        super.onDestroyView();
     }
 
     private void showDialog(@StringRes int title, String content) {
