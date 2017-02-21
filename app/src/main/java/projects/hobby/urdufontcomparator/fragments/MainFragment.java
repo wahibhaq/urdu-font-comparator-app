@@ -121,4 +121,11 @@ public class MainFragment extends BaseFragment {
                 finalText.length() - alphabets.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableString;
     }
+
+    //public interface MainListener {
+    //
+    //    void fontSelected(UrduFonts font);
+    //
+    //    void showFontInfoAction(UrduFonts font);
+    //}
 }
