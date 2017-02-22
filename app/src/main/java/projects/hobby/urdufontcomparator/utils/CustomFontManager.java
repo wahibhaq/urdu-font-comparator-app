@@ -14,23 +14,13 @@ import java.util.Map;
  */
 public class CustomFontManager {
 
-    private static CustomFontManager instance;
-
     private AssetManager assetManager;
 
     private Map<String, Typeface> fonts;
 
-    private CustomFontManager(AssetManager _mgr) {
+    public CustomFontManager(AssetManager _mgr) {
         assetManager = _mgr;
         fonts = new HashMap<>();
-    }
-
-    public static void init(AssetManager mgr) {
-        instance = new CustomFontManager(mgr);
-    }
-
-    public static CustomFontManager getInstance() {
-        return instance;
     }
 
     public Typeface getFont(String asset) {

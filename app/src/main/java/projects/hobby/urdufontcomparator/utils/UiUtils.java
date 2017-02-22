@@ -27,12 +27,12 @@ public class UiUtils {
     }
 
 
-    public static void showDialogWithUrlsInContent(Context context, @StringRes int title,
+    public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
             String content) {
         showDialogWithUrlsInContent(context, context.getString(title), content);
     }
 
-    public static void showDialogWithUrlsInContent(Context context, String title,
+    private static void showDialogWithUrlsInContent(Context context, String title,
             String content) {
         final TextView message = new TextView(context);
         final SpannableString s = new SpannableString(content);
@@ -44,7 +44,7 @@ public class UiUtils {
         createAndShowDialog(context, title, message);
     }
 
-    public static void showDialogWithUrlsInContent(Context context, String content) {
+    public static void showDialogWithUrlsWithoutTitle(Context context, String content) {
         showDialogWithUrlsInContent(context, null, content);
     }
 
@@ -77,11 +77,11 @@ public class UiUtils {
         createAndShowDialog(context, title, message);
     }
 
-    public static void showSimpleDialog(Context context, @StringRes int title, String content) {
+    public static void showSimpleDialogWithTitle(Context context, @StringRes int title, String content) {
         createAndShowDialog(context, context.getString(title), content);
     }
 
-    public static void showSimpleDialog(Context context, String content) {
+    public static void showSimpleDialogWithoutTitle(Context context, String content) {
         createAndShowDialog(context, null, content);
     }
 }

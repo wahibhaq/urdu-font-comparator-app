@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import javax.inject.Inject;
+import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
@@ -37,8 +39,16 @@ public class MainFragment extends BaseFragment {
 
     private UrduFonts currentSelectedFont;
 
+    @Inject
+    CustomFontManager fontManager;
+
     public static MainFragment newInstance() {
         return new MainFragment();
+    }
+
+    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        MainApplication.get(getActivity()).getComponent().inject(this);
     }
 
     @Override
@@ -56,9 +66,6 @@ public class MainFragment extends BaseFragment {
     }
 
     private void init() {
-        //init CustomFontManager
-        CustomFontManager.init(getResources().getAssets());
-
         //Initialize and set Adapter
         fontArrayAdapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_spinner_item, UrduFonts.getFontNames());
@@ -74,7 +81,7 @@ public class MainFragment extends BaseFragment {
                 final String selectedFontName = adapter.getItemAtPosition(position).toString();
                 currentSelectedFont = UrduFonts.from(selectedFontName);
                 String fontAsset = FONTS.concat(getString(currentSelectedFont.fontFileName));
-                Typeface tf = CustomFontManager.getInstance().getFont(fontAsset);
+                Typeface tf = fontManager.getFont(fontAsset);
                 if(tf != null) {
                     textBody.setTypeface(tf);
                 } else {
@@ -92,7 +99,7 @@ public class MainFragment extends BaseFragment {
     @OnClick(R.id.button_font_details)
     void setInfoButtonContent() {
         if(currentSelectedFont != null) {
-            UiUtils.showDialogWithUrlsInContent(getActivity(), currentSelectedFont.fontLabel,
+            UiUtils.showDialogWithUrlsWithTitle(getActivity(), currentSelectedFont.fontLabel,
                     formattedDialogContent(currentSelectedFont));
         }
     }
