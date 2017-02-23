@@ -18,16 +18,15 @@ import butterknife.OnClick;
 import javax.inject.Inject;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
+import projects.hobby.urdufontcomparator.dagger.MvpModule;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
-import projects.hobby.urdufontcomparator.utils.CustomFontManager;
+import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.utils.UiUtils;
 
 import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacings;
 import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacingsWithDash;
 
-public class MainFragment extends BaseFragment {
-
-    private static final String FONTS = "fonts/";
+public class MainFragment extends BaseFragment implements MainMvp.View {
 
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
@@ -37,10 +36,10 @@ public class MainFragment extends BaseFragment {
 
     ArrayAdapter<String> fontArrayAdapter;
 
-    private UrduFonts currentSelectedFont;
-
     @Inject
-    CustomFontManager fontManager;
+    protected MainMvp.Presenter presenter;
+
+    private UrduFonts currentSelectedFont;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -48,7 +47,9 @@ public class MainFragment extends BaseFragment {
 
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainApplication.get(getActivity()).getComponent().inject(this);
+        MainApplication.get(getActivity()).getComponent()
+                .mvpComponent(new MvpModule(this))
+                .inject(this);
     }
 
     @Override
@@ -80,14 +81,7 @@ public class MainFragment extends BaseFragment {
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
                 final String selectedFontName = adapter.getItemAtPosition(position).toString();
                 currentSelectedFont = UrduFonts.from(selectedFontName);
-                String fontAsset = FONTS.concat(getString(currentSelectedFont.fontFileName));
-                Typeface tf = fontManager.getFont(fontAsset);
-                if(tf != null) {
-                    textBody.setTypeface(tf);
-                } else {
-                    textBody.setTypeface(Typeface.DEFAULT);
-                }
-                textBody.setText(formattedUrduText());
+                presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
             }
 
             @Override
@@ -98,10 +92,7 @@ public class MainFragment extends BaseFragment {
 
     @OnClick(R.id.button_font_details)
     void setInfoButtonContent() {
-        if(currentSelectedFont != null) {
-            UiUtils.showDialogWithUrlsWithTitle(getActivity(), currentSelectedFont.fontLabel,
-                    formattedDialogContent(currentSelectedFont));
-        }
+        presenter.handleFontInfoAction(currentSelectedFont.serializedName);
     }
 
     private String formattedDialogContent(final UrduFonts font) {
@@ -129,10 +120,39 @@ public class MainFragment extends BaseFragment {
         return spannableString;
     }
 
-    //public interface MainListener {
-    //
-    //    void fontSelected(UrduFonts font);
-    //
-    //    void showFontInfoAction(UrduFonts font);
-    //}
+    @Override
+    public void showFontSelector() {
+
+    }
+
+    @Override
+    public void showSampleText() {
+
+    }
+
+    @Override
+    public void setConvertedText(Typeface tf) {
+        if(tf != null) {
+            textBody.setTypeface(tf);
+        } else {
+            textBody.setTypeface(Typeface.DEFAULT);
+        }
+        textBody.setText(formattedUrduText());
+    }
+
+    @Override
+    public void showFontInfoDialog(UrduFonts font) {
+        UiUtils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel,
+                formattedDialogContent(font));
+    }
+
+    @Override
+    public void showAboutMeInfo() {
+
+    }
+
+    @Override
+    public void showLicenseInfo() {
+
+    }
 }
