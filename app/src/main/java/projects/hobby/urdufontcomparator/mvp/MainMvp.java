@@ -1,7 +1,7 @@
 package projects.hobby.urdufontcomparator.mvp;
 
 import android.graphics.Typeface;
-import android.support.annotation.NonNull;
+import java.util.List;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
 
 /**
@@ -10,26 +10,18 @@ import projects.hobby.urdufontcomparator.models.UrduFonts;
 public interface MainMvp {
 
     interface View {
-
-        void showFontSelector();
-
-        void showSampleText();
+        void showFontSelector(List<String> fontNames);
 
         void setConvertedText(Typeface typeface);
 
         void showFontInfoDialog(UrduFonts font);
-
-        void showAboutMeInfo();
-
-        void showLicenseInfo();
-
     }
 
     interface Presenter {
+        void loadFontsAvailable();
 
         void handleFontSelection(String fontName);
 
         void handleFontInfoAction(String fontFile);
-
     }
 }

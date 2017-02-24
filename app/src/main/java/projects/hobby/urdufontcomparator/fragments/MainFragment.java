@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import java.util.List;
 import javax.inject.Inject;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
@@ -62,32 +63,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        init();
-        setupUI();
-    }
-
-    private void init() {
-        //Initialize and set Adapter
-        fontArrayAdapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_spinner_item, UrduFonts.getFontNames());
-        fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFontNames.setAdapter(fontArrayAdapter);
-        spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
-    }
-
-    private void setupUI() {
-        spinnerFontNames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
-                final String selectedFontName = adapter.getItemAtPosition(position).toString();
-                currentSelectedFont = UrduFonts.from(selectedFontName);
-                presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        presenter.loadFontsAvailable();
     }
 
     @OnClick(R.id.button_font_details)
@@ -121,13 +97,25 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     }
 
     @Override
-    public void showFontSelector() {
+    public void showFontSelector(List<String> fontNames) {
+        //Initialize and set Adapter
+        fontArrayAdapter = new ArrayAdapter<>(getActivity(),
+                android.R.layout.simple_spinner_item, fontNames);
+        fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFontNames.setAdapter(fontArrayAdapter);
+        spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
+        spinnerFontNames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
+                final String selectedFontName = adapter.getItemAtPosition(position).toString();
+                currentSelectedFont = UrduFonts.from(selectedFontName);
+                presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
+            }
 
-    }
-
-    @Override
-    public void showSampleText() {
-
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
     @Override
@@ -144,15 +132,5 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     public void showFontInfoDialog(UrduFonts font) {
         UiUtils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel,
                 formattedDialogContent(font));
-    }
-
-    @Override
-    public void showAboutMeInfo() {
-
-    }
-
-    @Override
-    public void showLicenseInfo() {
-
     }
 }

@@ -1,5 +1,8 @@
 package projects.hobby.urdufontcomparator.mvp;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
@@ -14,6 +17,11 @@ public class MainPresenter implements MainMvp.Presenter {
     public MainPresenter(MainMvp.View view, CustomFontManager fontManager) {
         this.view = view;
         this.fontManager = fontManager;
+    }
+
+    @Override public void loadFontsAvailable() {
+        final List<String> fontList = new ArrayList<>(Arrays.asList(UrduFonts.getFontNames()));
+        view.showFontSelector(fontList);
     }
 
     @Override
