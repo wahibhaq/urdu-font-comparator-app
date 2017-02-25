@@ -1,9 +1,9 @@
 package projects.hobby.urdufontcomparator.dagger;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
+import javax.inject.Singleton;
+import projects.hobby.urdufontcomparator.data.FontApi;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.mvp.MainPresenter;
@@ -21,7 +21,7 @@ public class MainMvpModule {
     @Singleton
     @Provides
     MainMvp.Presenter provideMainMvpPresenter(CustomFontManager fontManager,
-                                              UrduTextSource urduTextSource) {
-        return new MainPresenter(view, fontManager, urduTextSource);
+            UrduTextSource urduTextSource, FontApi fontSource) {
+        return new MainPresenter(view, fontManager, urduTextSource, fontSource);
     }
 }
