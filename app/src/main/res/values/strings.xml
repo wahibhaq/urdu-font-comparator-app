@@ -38,4 +38,8 @@
   <string name="home_website">Website: %s</string>
   <string name="download_url">Download Link: %s</string>
 
+  <!-- Alerts -->
+  <string name="loading_message">Loading ...</string>
+  <string name="error_message">Apologies, something doesn\'t look right!</string>
+
 </resources>

@@ -1,5 +1,7 @@
 package projects.hobby.urdufontcomparator.utils;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.StringRes;
@@ -83,5 +85,9 @@ public class UiUtils {
 
     public static void showSimpleDialogWithoutTitle(Context context, String content) {
         createAndShowDialog(context, null, content);
+    }
+
+    public static Dialog showProgressUpdateDialog(Context context, String message) {
+        return ProgressDialog.show(context, "", message, true, false);
     }
 }

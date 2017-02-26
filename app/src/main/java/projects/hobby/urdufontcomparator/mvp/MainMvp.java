@@ -15,6 +15,10 @@ public interface MainMvp {
         void setConvertedText(Typeface typeface);
 
         void showFontInfoDialog(UrduFonts font);
+
+        void showProgress(boolean show);
+
+        void showError(int errorMessageId);
     }
 
     interface Presenter {

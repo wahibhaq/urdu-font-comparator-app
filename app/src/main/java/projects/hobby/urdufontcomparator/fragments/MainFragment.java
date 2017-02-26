@@ -1,5 +1,6 @@
 package projects.hobby.urdufontcomparator.fragments;
 
+import android.app.Dialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -41,6 +42,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     protected MainMvp.Presenter presenter;
 
     private UrduFonts currentSelectedFont;
+
+    private Dialog progressDialog;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -132,5 +135,23 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     public void showFontInfoDialog(UrduFonts font) {
         UiUtils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel,
                 formattedDialogContent(font));
+    }
+
+    @Override
+    public void showProgress(boolean show) {
+        if(show) {
+            if(progressDialog == null) {
+                progressDialog = UiUtils.showProgressUpdateDialog(getActivity(),
+                        getString(R.string.loading_message));
+            }
+        } else if (progressDialog!= null) {
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
+    }
+
+    @Override
+    public void showError(int errorMessageIf) {
+        UiUtils.showSimpleDialogWithoutTitle(getActivity(), getString(errorMessageIf));
     }
 }
