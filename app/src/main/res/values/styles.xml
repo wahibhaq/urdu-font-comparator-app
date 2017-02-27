@@ -11,7 +11,6 @@
   <style name="ToolbarOverFlowMenu" parent="AppTheme">
     <item name="android:textColorSecondary">@android:color/white</item>
     <item name="android:popupBackground">@android:color/darker_gray</item>
-    <item name="android:titleTextColor">@android:color/white</item>
   </style>
 
 </resources>

@@ -1,5 +1,6 @@
 package projects.hobby.urdufontcomparator.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -20,10 +21,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
+        setupToolbar();
         if(savedInstanceState == null) {
             showDefaultFragment();
         }
+    }
+
+    private void setupToolbar() {
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
     }
 
     //defined by the child activities
