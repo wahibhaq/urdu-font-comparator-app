@@ -19,6 +19,10 @@ public interface MainMvp {
         void showProgress(boolean show);
 
         void showError(int errorMessageId);
+
+        void showSeekbar(boolean show);
+
+        void setFontSize(int size);
     }
 
     interface Presenter {
@@ -27,5 +31,7 @@ public interface MainMvp {
         void handleFontSelection(String fontName);
 
         void handleFontInfoAction(String fontFile);
+
+        void handleFontSize(int size);
     }
 }
