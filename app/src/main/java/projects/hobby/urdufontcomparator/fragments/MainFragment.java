@@ -7,11 +7,13 @@ import android.support.annotation.Nullable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -35,6 +37,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
 
     @BindView(R.id.text_body)
     protected TextView textBody;
+
+    @BindView(R.id.seekbar)
+    protected SeekBar seekBar;
 
     ArrayAdapter<String> fontArrayAdapter;
 
@@ -153,5 +158,36 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     @Override
     public void showError(int errorMessageIf) {
         UiUtils.showSimpleDialogWithoutTitle(getActivity(), getString(errorMessageIf));
+    }
+
+    @Override
+    public void showSeekbar(boolean show) {
+        if(show){
+            seekBar.setVisibility(View.VISIBLE);
+            seekBar.setProgress(18);
+            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    presenter.handleFontSize(progress);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+        }else{
+            seekBar.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void setFontSize(int size) {
+        textBody.setTextSize(TypedValue.COMPLEX_UNIT_SP,size);
     }
 }

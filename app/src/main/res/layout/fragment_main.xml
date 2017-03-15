@@ -3,53 +3,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment" >
+    tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment">
 
-  <LinearLayout
-      android:id="@+id/spinner_layout"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal">
-
-    <Button
-        android:id="@+id/button_font_details"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        android:layout_gravity="center_vertical"
-        android:background="@drawable/ic_info_popup"/>
-
-    <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/spinner_font_names"
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_weight="0.85"
-        android:layout_gravity="center_vertical"
-        android:spinnerMode="dialog"
-        android:prompt="@string/select_font"
-        style="@android:style/Widget.Holo.Light.Spinner"/>
-
-  </LinearLayout>
-
-  <android.support.v4.widget.NestedScrollView
-      android:id="@+id/nested_scrollview"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_marginTop="24dp"
-      android:scrollbars="vertical"
-      android:scrollbarAlwaysDrawVerticalTrack="true"
-      android:layout_below="@id/spinner_layout">
-
-    <TextView
-        android:id="@+id/text_body"
+    <LinearLayout
+        android:id="@+id/spinner_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:textDirection="rtl"
-        android:gravity="fill|center_horizontal"
-        tools:text="@string/urdu_sample_text_poetry"/>
+        android:orientation="horizontal">
 
-  </android.support.v4.widget.NestedScrollView>
+        <Button
+            android:id="@+id/button_font_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.15"
+            android:background="@drawable/ic_info_popup" />
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_font_names"
+            style="@android:style/Widget.Holo.Light.Spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.85"
+            android:prompt="@string/select_font"
+            android:spinnerMode="dialog" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_layout"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/seekbar"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/text_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill|center_horizontal"
+            android:padding="16dp"
+            android:textDirection="rtl"
+            android:textSize="18sp"
+            tools:text="@string/urdu_sample_text_poetry" />
+
+    </android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>
