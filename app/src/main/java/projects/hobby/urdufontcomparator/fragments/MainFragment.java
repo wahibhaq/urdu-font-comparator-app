@@ -32,6 +32,8 @@ import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacingsWit
 
 public class MainFragment extends BaseFragment implements MainMvp.View {
 
+    private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
+
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
 
@@ -164,21 +166,23 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     public void showAndSetSeekbar(boolean show) {
         if (show) {
             seekBar.setVisibility(View.VISIBLE);
-            seekBar.setProgress(18); //setting default value 18 so seekbar and textBody font size doesn't conflict with each other.
             seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                //setting default value so seekbar and textBody font size
+                //doesn't conflict with each other.
+                int progressChanged = MIN_SEEKBAR_LEVEL;
+
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    presenter.handleFontSize(progress);
+                    progressChanged = MIN_SEEKBAR_LEVEL + progress;
+                    presenter.handleFontSize(progressChanged);
                 }
 
                 @Override
                 public void onStartTrackingTouch(SeekBar seekBar) {
-
                 }
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-
                 }
             });
         }else{
