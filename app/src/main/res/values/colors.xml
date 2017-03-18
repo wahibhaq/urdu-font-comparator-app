@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!--solid colors-->
+  <color name="black">#000000</color>
+
+
+
+  <!--palette colors-->
   <color name="colorPrimary">@color/teal_700</color>
   <color name="colorPrimaryDark">@color/teal_900</color>
   <color name="colorAccent">#FF4081</color>
@@ -9,5 +15,4 @@
   <color name="teal_500">#009688</color> <!--toolbar-->
   <color name="teal_700">#00796B</color> <!--status bar-->
   <color name="teal_900">#004D40</color>
-  <color name="black">#000000</color>
 </resources>

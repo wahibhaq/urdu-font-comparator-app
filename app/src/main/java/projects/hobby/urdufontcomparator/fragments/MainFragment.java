@@ -161,10 +161,10 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     }
 
     @Override
-    public void showSeekbar(boolean show) {
-        if(show){
+    public void showAndSetSeekbar(boolean show) {
+        if (show) {
             seekBar.setVisibility(View.VISIBLE);
-            seekBar.setProgress(18);
+            seekBar.setProgress(18); //setting default value 18 so seekbar and textBody font size doesn't conflict with each other.
             seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -188,6 +188,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
 
     @Override
     public void setFontSize(int size) {
-        textBody.setTextSize(TypedValue.COMPLEX_UNIT_SP,size);
+        textBody.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
     }
 }

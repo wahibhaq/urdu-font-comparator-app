@@ -41,13 +41,13 @@ public class MainPresenter implements MainMvp.Presenter {
                 .subscribe(new Action1<String>() {
                     @Override public void call(String fontAsset) {
                         view.showProgress(false);
-                        view.showSeekbar(true);
+                        view.showAndSetSeekbar(true);
                         view.setConvertedText(fontManager.getFont(fontAsset));
                     }
                 }, new Action1<Throwable>() {
                     @Override public void call(Throwable throwable) {
                         view.showProgress(false);
-                        view.showSeekbar(false);
+                        view.showAndSetSeekbar(false);
                         handleError(throwable);
                     }
                 });

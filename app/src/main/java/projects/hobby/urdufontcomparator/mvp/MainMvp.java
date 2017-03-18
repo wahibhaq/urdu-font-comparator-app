@@ -20,7 +20,7 @@ public interface MainMvp {
 
         void showError(int errorMessageId);
 
-        void showSeekbar(boolean show);
+        void showAndSetSeekbar(boolean show);
 
         void setFontSize(int size);
     }
