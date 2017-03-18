@@ -41,11 +41,13 @@ public class MainPresenter implements MainMvp.Presenter {
                 .subscribe(new Action1<String>() {
                     @Override public void call(String fontAsset) {
                         view.showProgress(false);
+                        view.showAndSetSeekbar(true);
                         view.setConvertedText(fontManager.getFont(fontAsset));
                     }
                 }, new Action1<Throwable>() {
                     @Override public void call(Throwable throwable) {
                         view.showProgress(false);
+                        view.showAndSetSeekbar(false);
                         handleError(throwable);
                     }
                 });
@@ -54,6 +56,11 @@ public class MainPresenter implements MainMvp.Presenter {
     @Override
     public void handleFontInfoAction(String font) {
         view.showFontInfoDialog(UrduFonts.from(font));
+    }
+
+    @Override
+    public void handleFontSize(int size) {
+        view.setFontSize(size);
     }
 
     private String getFontAsset(String fileName) {

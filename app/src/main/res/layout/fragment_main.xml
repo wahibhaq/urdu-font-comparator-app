@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment" >
+    android:layout_margin="@dimen/margin_16"
+    tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment">
 
   <LinearLayout
       android:id="@+id/spinner_layout"
@@ -15,40 +15,60 @@
         android:id="@+id/button_font_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.15"
         android:layout_gravity="center_vertical"
-        android:background="@drawable/ic_info_popup"/>
+        android:layout_weight="0.15"
+        android:background="@drawable/ic_info_popup" />
 
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/spinner_font_names"
-        android:layout_height="wrap_content"
+        style="@android:style/Widget.Holo.Light.Spinner"
         android:layout_width="0dp"
-        android:layout_weight="0.85"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:spinnerMode="dialog"
+        android:layout_weight="0.85"
         android:prompt="@string/select_font"
-        style="@android:style/Widget.Holo.Light.Spinner"/>
+        android:spinnerMode="dialog" />
 
   </LinearLayout>
+
+  <TextView
+      android:id="@+id/textview_fontsize_label"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/spinner_layout"
+      android:text="@string/select_font_size"
+      android:textColor="@color/black"
+      android:textSize="@dimen/text_size_12"
+      android:layout_marginStart="@dimen/margin_8"
+      android:layout_marginTop="@dimen/margin_8"
+      android:layout_alignStart="@id/spinner_layout"/>
+
+  <android.support.v7.widget.AppCompatSeekBar
+      android:id="@+id/seekbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/textview_fontsize_label"
+      android:layout_marginTop="@dimen/margin_8"
+      android:layout_alignStart="@id/spinner_layout"/>
 
   <android.support.v4.widget.NestedScrollView
       android:id="@+id/nested_scrollview"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_marginTop="24dp"
-      android:scrollbars="vertical"
+      android:layout_below="@id/seekbar"
+      android:layout_marginTop="@dimen/margin_8"
       android:scrollbarAlwaysDrawVerticalTrack="true"
-      android:layout_below="@id/spinner_layout">
+      android:scrollbars="vertical">
 
-    <TextView
-        android:id="@+id/text_body"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:textDirection="rtl"
-        android:gravity="fill|center_horizontal"
-        tools:text="@string/urdu_sample_text_poetry"/>
+      <TextView
+          android:id="@+id/text_body"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="fill|center_horizontal"
+          android:padding="@dimen/margin_16"
+          android:textDirection="rtl"
+          android:textSize="@dimen/text_size_16"
+          tools:text="@string/urdu_sample_text_poetry" />
 
   </android.support.v4.widget.NestedScrollView>
 
