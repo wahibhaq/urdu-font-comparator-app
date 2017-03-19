@@ -35,7 +35,11 @@ public enum UrduFonts {
             "https://noto-website-2.storage.googleapis.com/pkgs/NotoNastaliqUrdu-unhinted.zip"),
     NOTO_NASKH_ARABIC (R.string.label_urdu_font_noto_naskh_arabic, "Noto Nashk Arabic",
             R.string.font_noto_naskh_arabic, "Google", "https://www.google.com/get/noto/#naskh-arab",
-            "https://noto-website-2.storage.googleapis.com/pkgs/NotoNaskhArabic-unhinted.zip");
+            "https://noto-website-2.storage.googleapis.com/pkgs/NotoNaskhArabic-unhinted.zip"),
+    NAFEES_NASTALEEQ (R.string.label_urdu_font_nafees_nastaleeq, "Nafees Nastaleeq",
+            R.string.font_nafees_nastaleeq, "Center for Language Engineering (CLE)",
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html",
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html");
 
     @StringRes
     public int fontLabel;

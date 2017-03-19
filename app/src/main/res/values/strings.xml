@@ -19,6 +19,7 @@
   <string name="label_urdu_font_urdu_naskh_asiatype">Urdu Naskh Asiatype</string>
   <string name="label_urdu_font_noto_nastaliq_urdu">Noto Nastaliq Urdu</string>
   <string name="label_urdu_font_noto_naskh_arabic">Noto Naskh Arabic</string>
+  <string name="label_urdu_font_nafees_nastaleeq">Nafees Nastaleeq</string>
 
   <!-- Urdu Sample Text -->
   <string name="urdu_sample_text_poetry">
