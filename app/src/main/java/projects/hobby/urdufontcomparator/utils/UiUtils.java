@@ -68,8 +68,9 @@ public class UiUtils {
 
         //Setting textColor of button
         Button posButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        if(posButton!= null) {
-            posButton.setTextColor(ContextCompat.getColor(context, R.color.teal_500));
+        if (posButton!= null) {
+            posButton.setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent));
+            posButton.setTextColor(ContextCompat.getColor(context, R.color.white));
         }
     }
 
