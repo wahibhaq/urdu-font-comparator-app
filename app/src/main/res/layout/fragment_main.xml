@@ -31,13 +31,24 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textview_fontsize_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_layout"
+        android:text="@string/select_font_size"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"/>
+
     <android.support.v7.widget.AppCompatSeekBar
         android:id="@+id/seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_layout"
+        android:layout_below="@+id/textview_fontsize_label"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="2dp" />
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nested_scrollview"

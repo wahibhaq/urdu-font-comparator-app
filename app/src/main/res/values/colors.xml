@@ -9,4 +9,5 @@
   <color name="teal_500">#009688</color> <!--toolbar-->
   <color name="teal_700">#00796B</color> <!--status bar-->
   <color name="teal_900">#004D40</color>
+  <color name="black">#000000</color>
 </resources>
