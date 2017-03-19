@@ -11,4 +11,5 @@
   <string name="font_urdu_naskh_asiatype" translatable="false">UrduNaskhAsiaType.ttf</string>
   <string name="font_noto_nastaliq_urdu" translatable="false">NotoNastaliqUrdu-Regular.ttf</string>
   <string name="font_noto_naskh_arabic" translatable="false">NotoNaskhArabic-Regular.ttf</string>
+  <string name="font_nafees_nastaleeq" translatable="false">Nafees_Nastaleeq_v1.02.ttf</string>
 </resources>
