@@ -39,7 +39,11 @@ public enum UrduFonts {
     NAFEES_NASTALEEQ (R.string.label_urdu_font_nafees_nastaleeq, "Nafees Nastaleeq",
             R.string.font_nafees_nastaleeq, "Center for Language Engineering (CLE)",
             "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html",
-            "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html");
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html"),
+    NAFEES_RIQA (R.string.label_urdu_font_nafees_riqa, "Nafees Riqa",
+            R.string.font_nafees_riqa, "Center for Language Engineering (CLE)",
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesRiqa.html",
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesRiqa.html");
 
     @StringRes
     public int fontLabel;
