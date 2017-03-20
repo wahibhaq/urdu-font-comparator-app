@@ -84,6 +84,7 @@
                 android:padding="@dimen/margin_8"
                 android:textDirection="rtl"
                 android:textSize="@dimen/text_size_16"
+                android:lineSpacingExtra="@dimen/text_size_16"
                 tools:text="@string/urdu_sample_text_poetry" />
 
         </RelativeLayout>
