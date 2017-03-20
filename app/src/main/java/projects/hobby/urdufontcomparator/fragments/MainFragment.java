@@ -13,11 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import java.util.AbstractList;
 import java.util.List;
 import javax.inject.Inject;
 import projects.hobby.urdufontcomparator.MainApplication;
@@ -26,16 +31,14 @@ import projects.hobby.urdufontcomparator.dagger.MvpModule;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.utils.UiUtils;
+import stfalcon.universalpickerdialog.UniversalPickerDialog;
 
 import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacings;
 import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacingsWithDash;
 
-public class MainFragment extends BaseFragment implements MainMvp.View {
+public class MainFragment extends BaseFragment implements MainMvp.View , UniversalPickerDialog.OnPickListener{
 
     private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
-
-    @BindView(R.id.spinner_font_names)
-    protected Spinner spinnerFontNames;
 
     @BindView(R.id.text_body)
     protected TextView textBody;
@@ -43,7 +46,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     @BindView(R.id.seekbar)
     protected SeekBar seekBar;
 
-    ArrayAdapter<String> fontArrayAdapter;
+    @BindView(R.id.tv_selected_font)
+    protected TextView selectedFont;
 
     @Inject
     protected MainMvp.Presenter presenter;
@@ -51,6 +55,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     private UrduFonts currentSelectedFont;
 
     private Dialog progressDialog;
+    private List<String> allFont;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -81,6 +86,11 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
         presenter.handleFontInfoAction(currentSelectedFont.serializedName);
     }
 
+    @OnClick(R.id.btn_choose_font)
+    void setSelectFontButton(){
+        presenter.loadFontsAvailable();
+    }
+
     private String formattedDialogContent(final UrduFonts font) {
         return getLineSpacings()
                 .concat(getString(R.string.provider, font.provider))
@@ -107,25 +117,18 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     }
 
     @Override
-    public void showFontSelector(List<String> fontNames) {
-        //Initialize and set Adapter
-        fontArrayAdapter = new ArrayAdapter<>(getActivity(),
-                android.R.layout.simple_spinner_item, fontNames);
-        fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFontNames.setAdapter(fontArrayAdapter);
-        spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
-        spinnerFontNames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
-                final String selectedFontName = adapter.getItemAtPosition(position).toString();
-                currentSelectedFont = UrduFonts.from(selectedFontName);
-                presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
-            }
+    public void showFontSelector(final List<String> fontNames) {
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        //I know this is bad way
+        this.allFont = fontNames;
+
+        new UniversalPickerDialog.Builder(getActivity())
+                .setTitle(R.string.select_font)
+                .setListener(this)
+                .setInputs(
+                        new UniversalPickerDialog.Input(0, (AbstractList<?>) fontNames)
+                )
+                .show();
     }
 
     @Override
@@ -193,5 +196,15 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
     @Override
     public void setFontSize(int size) {
         textBody.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+    }
+
+    @Override
+    public void onPick(int[] selectedValues, int key) {
+        if (allFont != null) {
+            String selectedFontName = allFont.get(selectedValues[0]);
+            currentSelectedFont = UrduFonts.from(selectedFontName);
+            presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
+            selectedFont.setText(selectedFontName);
+        }
     }
 }
