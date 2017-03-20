@@ -11,8 +11,8 @@ public enum UrduFonts {
     //TODO later add download link, source, license, provider info etc
 
     NASTALEEQ_MEHER (R.string.label_urdu_font_meher_nastaleeq, "Meher Nastaleeq",
-            R.string.font_nastaleeq_meher, "Center for Speech and Language Technologies (CSaLT)",
-            "http://csalt.itu.edu.pk/urdufont/", "Not Available"),
+            R.string.font_nastaleeq_meher, "Center for Speech and Language Technologies, ITU (CSaLT)",
+            "http://csalt.itu.edu.pk/urdufont/", "http://csalt.itu.edu.pk/urdufont/"),
     JAMEEL_NOORI_NASTALEEQ (R.string.label_urdu_font_jameel_noori_nastaleeq,
             "Jameel Noori Nastaleeq",
             R.string.font_jameel_noori_nastaleeq, "Jameel Nastaliq Team",
@@ -39,7 +39,11 @@ public enum UrduFonts {
     NAFEES_NASTALEEQ (R.string.label_urdu_font_nafees_nastaleeq, "Nafees Nastaleeq",
             R.string.font_nafees_nastaleeq, "Center for Language Engineering (CLE)",
             "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html",
-            "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html");
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html"),
+    NAFEES_RIQA (R.string.label_urdu_font_nafees_riqa, "Nafees Riqa",
+            R.string.font_nafees_riqa, "Center for Language Engineering (CLE)",
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesRiqa.html",
+            "http://www.cle.org.pk/software/localization/Fonts/nafeesRiqa.html");
 
     @StringRes
     public int fontLabel;
