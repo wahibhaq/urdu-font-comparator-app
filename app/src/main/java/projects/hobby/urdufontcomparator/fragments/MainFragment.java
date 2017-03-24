@@ -12,14 +12,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
-
+import butterknife.OnTouch;
 import java.util.AbstractList;
 import java.util.List;
 import javax.inject.Inject;
@@ -34,7 +33,8 @@ import stfalcon.universalpickerdialog.UniversalPickerDialog;
 import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacings;
 import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacingsWithDash;
 
-public class MainFragment extends BaseFragment implements MainMvp.View, UniversalPickerDialog.OnPickListener {
+public class MainFragment extends BaseFragment implements MainMvp.View,
+        UniversalPickerDialog.OnPickListener {
 
     private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
 
@@ -47,25 +47,40 @@ public class MainFragment extends BaseFragment implements MainMvp.View, Universa
     @BindView(R.id.seekbar)
     protected SeekBar seekBar;
 
-    ArrayAdapter<String> fontArrayAdapter;
-
     @Inject
     protected MainMvp.Presenter presenter;
 
     private UrduFonts currentSelectedFont;
 
     private Dialog progressDialog;
+
     private List<String> fonts;
+
+    private UniversalPickerDialog.Builder builderPickerDialog;
 
     public static MainFragment newInstance() {
         return new MainFragment();
     }
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainApplication.get(getActivity()).getComponent()
                 .mvpComponent(new MvpModule(this))
                 .inject(this);
+    }
+
+    private void setPickerDialog() {
+        builderPickerDialog = new UniversalPickerDialog.Builder(getActivity())
+                .setTitle(R.string.select_font)
+                .setTitleColorRes(R.color.blue)
+                .setListener(this)
+                .setInputs(new UniversalPickerDialog.Input(0, (AbstractList<String>) fonts));
+    }
+
+    private void setDefaultContent() {
+        spinnerFontNames.setSelection(UrduFonts.getDefaultFont().ordinal());
+        presenter.handleFontSelection(getString(UrduFonts.getDefaultFont().fontFileName));
     }
 
     @Override
@@ -79,6 +94,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View, Universa
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         presenter.loadFontsAvailable();
+        setDefaultContent();
     }
 
     @OnClick(R.id.button_font_details)
@@ -112,45 +128,25 @@ public class MainFragment extends BaseFragment implements MainMvp.View, Universa
     }
 
     @Override
-    public void showFontSelector(final List<String> fontNames) {
-        this.fonts = fontNames; // Is this bad?
+    public void setFontSelectorContent(final List<String> fontNames) {
+        this.fonts = fontNames;
 
         //Initialize and set Adapter
-        fontArrayAdapter = new ArrayAdapter(getActivity(),
-                android.R.layout.simple_spinner_item, fontNames);
+        ArrayAdapter<String> fontArrayAdapter =
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, fontNames);
         fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFontNames.setAdapter(fontArrayAdapter);
         spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
 
-        // If i remove this listener then on lunch there won't be any text
-        spinnerFontNames.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
-                final String selectedFontName = adapter.getItemAtPosition(position).toString();
-                currentSelectedFont = UrduFonts.from(selectedFontName);
-                presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+        setPickerDialog();
+    }
 
-        // Adding this listener so whenever user touch spinner a dialogue will show up
-        spinnerFontNames.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    new UniversalPickerDialog.Builder(getActivity())
-                            .setTitle(R.string.select_font)
-                            .setListener(MainFragment.this)
-                            .setInputs(
-                                    new UniversalPickerDialog.Input(0, (AbstractList<?>) fontNames)
-                            )
-                            .show();
-                }
-                return true;
-            }
-        });
+    @OnTouch(R.id.spinner_font_names)
+    protected boolean onSpinnerTouchListener(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            builderPickerDialog.show();
+        }
+        return true;
     }
 
     @Override

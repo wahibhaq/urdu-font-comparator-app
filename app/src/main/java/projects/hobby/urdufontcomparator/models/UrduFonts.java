@@ -81,4 +81,8 @@ public enum UrduFonts {
         }
         return list.toArray(new String[list.size()]);
     }
+
+    public static UrduFonts getDefaultFont() {
+        return NASTALEEQ_MEHER;
+    }
 }

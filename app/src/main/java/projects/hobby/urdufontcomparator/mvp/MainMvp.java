@@ -10,7 +10,7 @@ import projects.hobby.urdufontcomparator.models.UrduFonts;
 public interface MainMvp {
 
     interface View {
-        void showFontSelector(List<String> fontNames);
+        void setFontSelectorContent(List<String> fontNames);
 
         void setConvertedText(Typeface typeface);
 
