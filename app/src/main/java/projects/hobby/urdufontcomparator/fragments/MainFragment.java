@@ -87,7 +87,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
                 .concat(getLineSpacings())
                 .concat(getString(R.string.home_website, font.website))
                 .concat(getLineSpacings())
-                .concat(getString(R.string.download_url, font.downloadLink));
+                .concat(getString(R.string.download_url, font.downloadLink))
+                .concat(getLineSpacings())
+                .concat(getString(R.string.font_size, font.fileSize));
     }
 
     private SpannableString formattedUrduText() {
@@ -119,7 +121,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View {
             public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
                 final String selectedFontName = adapter.getItemAtPosition(position).toString();
                 currentSelectedFont = UrduFonts.from(selectedFontName);
-                presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
+                presenter.handleFontSelection(getString(currentSelectedFont.fileName));
             }
 
             @Override

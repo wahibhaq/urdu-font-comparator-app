@@ -51,7 +51,7 @@ public enum UrduFonts {
     public final String serializedName;
 
     @StringRes
-    public int fontFileName;
+    public int fileName;
 
     public final String provider;
 
@@ -66,7 +66,7 @@ public enum UrduFonts {
             String provider,  String website, String downloadLink, String fileSize) {
         this.fontLabel = fontLabel;
         this.serializedName = serializedName;
-        this.fontFileName = fontFileName;
+        this.fileName = fontFileName;
         this.provider = provider;
         this.website = website;
         this.downloadLink = downloadLink;

@@ -41,6 +41,7 @@
   <string name="provider">Provided By: %s</string>
   <string name="home_website">Website: %s</string>
   <string name="download_url">Download Link: %s</string>
+  <string name="font_size">Font Size: %s</string>
 
   <!-- Alerts -->
   <string name="loading_message">Loading ........</string>
