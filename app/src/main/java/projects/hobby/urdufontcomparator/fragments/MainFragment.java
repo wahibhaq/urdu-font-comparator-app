@@ -16,12 +16,16 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+
 import java.util.AbstractList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.dagger.MvpModule;
@@ -81,11 +85,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     private void setDefaultContent() {
         spinnerFontNames.setSelection(UrduFonts.getDefaultFont().ordinal());
         presenter.handleFontSelection(getString(UrduFonts.getDefaultFont().fontFileName));
+        currentSelectedFont = UrduFonts.getDefaultFont();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
@@ -151,7 +156,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void setConvertedText(Typeface tf) {
-        if(tf != null) {
+        if (tf != null) {
             textBody.setTypeface(tf);
         } else {
             textBody.setTypeface(Typeface.DEFAULT);
@@ -167,12 +172,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void showProgress(boolean show) {
-        if(show) {
-            if(progressDialog == null) {
+        if (show) {
+            if (progressDialog == null) {
                 progressDialog = UiUtils.showProgressUpdateDialog(getActivity(),
                         getString(R.string.loading_message));
             }
-        } else if (progressDialog!= null) {
+        } else if (progressDialog != null) {
             progressDialog.dismiss();
             progressDialog = null;
         }
@@ -206,7 +211,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                 public void onStopTrackingTouch(SeekBar seekBar) {
                 }
             });
-        }else{
+        } else {
             seekBar.setVisibility(View.INVISIBLE);
         }
     }
