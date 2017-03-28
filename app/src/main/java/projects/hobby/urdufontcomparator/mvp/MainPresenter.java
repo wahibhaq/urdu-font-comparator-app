@@ -27,9 +27,10 @@ public class MainPresenter implements MainMvp.Presenter {
         this.fontManager = fontManager;
     }
 
-    @Override public void loadFontsAvailable() {
+    @Override
+    public void loadFontsAvailable() {
         final List<String> fontList = new ArrayList<>(Arrays.asList(UrduFonts.getFontNames()));
-        view.showFontSelector(fontList);
+        view.setFontSelectorContent(fontList);
     }
 
     @Override

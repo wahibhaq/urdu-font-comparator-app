@@ -52,7 +52,6 @@
               android:layout_marginTop="@dimen/margin_8"
               android:layout_alignStart="@id/spinner_font_names"/>
 
-
           <Button
               android:id="@+id/button_font_details"
               android:layout_width="match_parent"
@@ -62,7 +61,6 @@
               android:layout_marginTop="@dimen/margin_8"
               android:text="@string/font_details"
               style="@style/Widget.AppCompat.Button.Colored"/>
-
         </RelativeLayout>
 
         <RelativeLayout

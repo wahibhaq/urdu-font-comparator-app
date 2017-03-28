@@ -63,4 +63,8 @@ dependencies {
   compile "io.reactivex:rxjava:1.2.1"
   compile "io.reactivex:rxandroid:1.2.1"
 
+
+  //Dialogue
+  compile 'com.github.stfalcon:universalpickerdialog:0.1.0'
+
 }
