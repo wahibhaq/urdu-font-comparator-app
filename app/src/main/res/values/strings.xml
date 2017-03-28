@@ -20,6 +20,7 @@
   <string name="label_urdu_font_noto_nastaliq_urdu">Noto Nastaliq Urdu</string>
   <string name="label_urdu_font_noto_naskh_arabic">Noto Naskh Arabic</string>
   <string name="label_urdu_font_nafees_nastaleeq">Nafees Nastaleeq</string>
+  <string name="label_urdu_font_nafees_riqa">Nafees Riqa</string>
 
   <!-- Urdu Sample Text -->
   <string name="urdu_sample_text_poetry">
@@ -40,6 +41,7 @@
   <string name="provider">Provided By: %s</string>
   <string name="home_website">Website: %s</string>
   <string name="download_url">Download Link: %s</string>
+  <string name="font_size">Font Size: %s</string>
 
   <!-- Alerts -->
   <string name="loading_message">Loading ........</string>

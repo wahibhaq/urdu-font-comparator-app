@@ -113,7 +113,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                 .concat(getLineSpacings())
                 .concat(getString(R.string.home_website, font.website))
                 .concat(getLineSpacings())
-                .concat(getString(R.string.download_url, font.downloadLink));
+                .concat(getString(R.string.download_url, font.downloadLink))
+                .concat(getLineSpacings())
+                .concat(getString(R.string.font_size, font.fileSize));
     }
 
     private SpannableString formattedUrduText() {
@@ -142,7 +144,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFontNames.setAdapter(fontArrayAdapter);
         spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
-
         setPickerDialog();
     }
 
