@@ -21,7 +21,7 @@ public enum UrduFonts {
             "Jameel Noori Nastaleeq Kasheeda",
             R.string.font_jameel_noori_nastaleeq_kasheeda, "Jameel Nastaliq Team", "Not Available",
             "http://www.urdujahan.com/urdu-fonts/Jameel%20Noori%20Nastaleeq.zip", "10.1 MB"),
-    PAKISTAN_NASTALEEQ (R.string.label_urdu_font_pakistan_nastaleeq, "Center of Excellence for Urdu Informatics",
+    PAKISTAN_NASTALEEQ (R.string.label_urdu_font_pakistan_nastaleeq, "Mohsin Shafeeque Hijazee",
             R.string.font_pakistan_nastaleeq, "Not Available", "Not Available",
             "http://www.urdujahan.com/urdu-fonts/Pak%20Nastaleeq%20(Beta%20Release).ttf", "170 KB"),
     FAJER_NOORI_NASTALEEQ (R.string.label_urdu_font_fajer_noori_nastaleeq, "Fajer Noori Nastaleeq",

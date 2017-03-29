@@ -119,18 +119,23 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     private SpannableString formattedUrduText() {
-        String poetry = getString(R.string.urdu_sample_text_poetry);
+        String poetry = getString(R.string.urdu_sample_text_poetry_1)
+                .concat(getLineSpacingsWithDash())
+                .concat(getString(R.string.urdu_sample_text_poetry_2))
+                .concat(getLineSpacingsWithDash())
+                .concat(getString(R.string.urdu_sample_text_poetry_3))
+                .concat(getLineSpacingsWithDash())
+                .concat(getString(R.string.urdu_sample_text_poetry_4));
         String textToBold = getString(R.string.urdu_sample_text_bold);
         String alphabets = getString(R.string.urdu_sample_text_alphabets);
-        String finalText = poetry.concat(getLineSpacingsWithDash())
-                .concat(textToBold)
+        String finalText = textToBold.concat(getLineSpacingsWithDash())
+                .concat(poetry)
                 .concat(getLineSpacingsWithDash())
                 .concat(alphabets);
 
         final SpannableString spannableString = new SpannableString(finalText);
         StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
-        spannableString.setSpan(boldSpan, poetry.length(),
-                finalText.length() - alphabets.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(boldSpan, 0, textToBold.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spannableString;
     }
 
