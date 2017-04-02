@@ -18,16 +18,6 @@ import projects.hobby.urdufontcomparator.R;
  * General Utils Class for common general-purpose UI functions
  */
 public class UiUtils {
-    //TODO provide context via Dagger Module
-
-    public static String getLineSpacingsWithDash() {
-        return "\n-------------\n";
-    }
-
-    public static String getLineSpacings() {
-        return "\n\n";
-    }
-
 
     public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
             String content) {

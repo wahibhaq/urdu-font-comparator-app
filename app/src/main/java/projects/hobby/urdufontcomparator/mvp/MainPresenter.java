@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.models.UrduFonts;
+import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -16,15 +17,19 @@ public class MainPresenter implements MainMvp.Presenter {
 
     private static final String FONTS = "fonts/";
 
-    private static final int PROGRESS_DIALOG_FAKE_DELAY = 3;
+    private static final int PROGRESS_DIALOG_FAKE_DELAY = 1; //1 second
 
     private final MainMvp.View view;
 
     private final CustomFontManager fontManager;
 
-    public MainPresenter(MainMvp.View view, CustomFontManager fontManager) {
+    private final UrduTextSource urduTextSource;
+
+    public MainPresenter(MainMvp.View view, CustomFontManager fontManager,
+            UrduTextSource urduTextSource) {
         this.view = view;
         this.fontManager = fontManager;
+        this.urduTextSource = urduTextSource;
     }
 
     @Override
@@ -56,12 +61,19 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void handleFontInfoAction(String font) {
-        view.showFontInfoDialog(UrduFonts.from(font));
+        final UrduFonts selectedFont = UrduFonts.from(font);
+        view.showFontInfoDialog(selectedFont,
+                urduTextSource.prepareFontInfoDialogText(selectedFont));
     }
 
     @Override
     public void handleFontSize(int size) {
         view.setFontSize(size);
+    }
+
+    @Override
+    public void handleSampleTextShowing() {
+        view.setSampleText(urduTextSource.prepareSampleText());
     }
 
     private String getFontAsset(String fileName) {

@@ -51,13 +51,13 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.action_licenses:
                 // User chose the "Licenses" item, show the font licenses info
                 UiUtils.showSimpleDialogWithTitle(this, R.string.licenses,
-                        UiUtils.getLineSpacings().concat("License info will be shown here"));
+                        "\n\nLicense info will be shown here");
                 return true;
 
             case R.id.action_about_dev:
                 // User chose the "About Dev" item, show about me info
                 UiUtils.showDialogWithUrlsWithTitle(this, R.string.about_me,
-                        UiUtils.getLineSpacings().concat("Wahib-Ul-Haq \n\n http://wahibhaq.com"));
+                        "\n\nWahib-Ul-Haq \n\n http://wahibhaq.com");
                 return true;
 
             default:

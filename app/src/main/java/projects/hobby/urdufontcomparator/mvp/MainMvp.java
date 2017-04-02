@@ -14,7 +14,7 @@ public interface MainMvp {
 
         void setConvertedText(Typeface typeface);
 
-        void showFontInfoDialog(UrduFonts font);
+        void showFontInfoDialog(UrduFonts font, String content);
 
         void showProgress(boolean show);
 
@@ -23,6 +23,8 @@ public interface MainMvp {
         void showAndSetSeekbar(boolean show);
 
         void setFontSize(int size);
+
+        void setSampleText(String sampleText);
     }
 
     interface Presenter {
@@ -33,5 +35,7 @@ public interface MainMvp {
         void handleFontInfoAction(String fontFile);
 
         void handleFontSize(int size);
+
+        void handleSampleTextShowing();
     }
 }
