@@ -4,9 +4,6 @@ import android.app.Dialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.StyleSpan;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,26 +13,19 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
-
 import java.util.AbstractList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.dagger.MvpModule;
-import projects.hobby.urdufontcomparator.models.UrduFonts;
+import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.utils.UiUtils;
 import stfalcon.universalpickerdialog.UniversalPickerDialog;
-
-import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacings;
-import static projects.hobby.urdufontcomparator.utils.UiUtils.getLineSpacingsWithDash;
 
 public class MainFragment extends BaseFragment implements MainMvp.View,
         UniversalPickerDialog.OnPickListener {
@@ -54,7 +44,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Inject
     protected MainMvp.Presenter presenter;
 
-    private UrduFonts currentSelectedFont;
+    private UrduFontsSource currentSelectedFont;
 
     private Dialog progressDialog;
 
@@ -83,9 +73,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     private void setDefaultContent() {
-        spinnerFontNames.setSelection(UrduFonts.getDefaultFont().ordinal());
-        presenter.handleFontSelection(getString(UrduFonts.getDefaultFont().fontFileName));
-        currentSelectedFont = UrduFonts.getDefaultFont();
+        spinnerFontNames.setSelection(UrduFontsSource.getDefaultFont().ordinal());
+        presenter.handleFontSelection(getString(UrduFontsSource.getDefaultFont().fontFileName));
+        currentSelectedFont = UrduFontsSource.getDefaultFont();
     }
 
     @Override
@@ -105,38 +95,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @OnClick(R.id.button_font_details)
     void setInfoButtonContent() {
         presenter.handleFontInfoAction(currentSelectedFont.serializedName);
-    }
-
-    private String formattedDialogContent(final UrduFonts font) {
-        return getLineSpacings()
-                .concat(getString(R.string.provider, font.provider))
-                .concat(getLineSpacings())
-                .concat(getString(R.string.home_website, font.website))
-                .concat(getLineSpacings())
-                .concat(getString(R.string.download_url, font.downloadLink))
-                .concat(getLineSpacings())
-                .concat(getString(R.string.font_size, font.fileSize));
-    }
-
-    private SpannableString formattedUrduText() {
-        String poetry = getString(R.string.urdu_sample_text_poetry_1)
-                .concat(getLineSpacingsWithDash())
-                .concat(getString(R.string.urdu_sample_text_poetry_2))
-                .concat(getLineSpacingsWithDash())
-                .concat(getString(R.string.urdu_sample_text_poetry_3))
-                .concat(getLineSpacingsWithDash())
-                .concat(getString(R.string.urdu_sample_text_poetry_4));
-        String textToBold = getString(R.string.urdu_sample_text_bold);
-        String alphabets = getString(R.string.urdu_sample_text_alphabets);
-        String finalText = textToBold.concat(getLineSpacingsWithDash())
-                .concat(poetry)
-                .concat(getLineSpacingsWithDash())
-                .concat(alphabets);
-
-        final SpannableString spannableString = new SpannableString(finalText);
-        StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
-        spannableString.setSpan(boldSpan, 0, textToBold.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return spannableString;
     }
 
     @Override
@@ -167,13 +125,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         } else {
             textBody.setTypeface(Typeface.DEFAULT);
         }
-        textBody.setText(formattedUrduText());
+        presenter.handleSampleTextShowing();
     }
 
     @Override
-    public void showFontInfoDialog(UrduFonts font) {
-        UiUtils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel,
-                formattedDialogContent(font));
+    public void showFontInfoDialog(UrduFontsSource font, String content) {
+        UiUtils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel, content);
     }
 
     @Override
@@ -228,11 +185,16 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
+    public void setSampleText(String sampleText) {
+        textBody.setText(sampleText);
+    }
+
+    @Override
     public void onPick(int[] selectedValues, int key) {
         int position = selectedValues[0];
         spinnerFontNames.setSelection(position); // setting selected font to spinner
         final String selectedFontName = fonts.get(position);
-        currentSelectedFont = UrduFonts.from(selectedFontName);
+        currentSelectedFont = UrduFontsSource.from(selectedFontName);
         presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
     }
 }

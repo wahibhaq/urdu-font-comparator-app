@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.TextView;
 import projects.hobby.urdufontcomparator.R;
@@ -18,16 +19,6 @@ import projects.hobby.urdufontcomparator.R;
  * General Utils Class for common general-purpose UI functions
  */
 public class UiUtils {
-    //TODO provide context via Dagger Module
-
-    public static String getLineSpacingsWithDash() {
-        return "\n-------------\n";
-    }
-
-    public static String getLineSpacings() {
-        return "\n\n";
-    }
-
 
     public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
             String content) {
@@ -38,7 +29,16 @@ public class UiUtils {
             String content) {
         final TextView message = new TextView(context);
         final SpannableString s = new SpannableString(content);
-        Linkify.addLinks(s, Linkify.WEB_URLS);
+
+        //To make sure Font FileName doesn't end up as a clickable url
+        Linkify.addLinks(s, Patterns.WEB_URL, null, new Linkify.MatchFilter() {
+            @Override
+            public boolean acceptMatch(CharSequence seq, int start, int end) {
+                String url = seq.subSequence(start, end).toString();
+                //Apply the default matcher too. This will remove filenames that matched.
+                return !url.contains(".ttf") && Linkify.sUrlMatchFilter.acceptMatch(seq, start, end);
+            }
+        }, null);
         message.setText(s);
         message.setMovementMethod(LinkMovementMethod.getInstance());
         message.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
