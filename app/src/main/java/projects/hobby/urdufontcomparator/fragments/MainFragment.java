@@ -22,7 +22,7 @@ import javax.inject.Inject;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.dagger.MvpModule;
-import projects.hobby.urdufontcomparator.models.UrduFonts;
+import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.utils.UiUtils;
 import stfalcon.universalpickerdialog.UniversalPickerDialog;
@@ -44,7 +44,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Inject
     protected MainMvp.Presenter presenter;
 
-    private UrduFonts currentSelectedFont;
+    private UrduFontsSource currentSelectedFont;
 
     private Dialog progressDialog;
 
@@ -73,9 +73,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     private void setDefaultContent() {
-        spinnerFontNames.setSelection(UrduFonts.getDefaultFont().ordinal());
-        presenter.handleFontSelection(getString(UrduFonts.getDefaultFont().fontFileName));
-        currentSelectedFont = UrduFonts.getDefaultFont();
+        spinnerFontNames.setSelection(UrduFontsSource.getDefaultFont().ordinal());
+        presenter.handleFontSelection(getString(UrduFontsSource.getDefaultFont().fontFileName));
+        currentSelectedFont = UrduFontsSource.getDefaultFont();
     }
 
     @Override
@@ -129,7 +129,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void showFontInfoDialog(UrduFonts font, String content) {
+    public void showFontInfoDialog(UrduFontsSource font, String content) {
         UiUtils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel, content);
     }
 
@@ -194,7 +194,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         int position = selectedValues[0];
         spinnerFontNames.setSelection(position); // setting selected font to spinner
         final String selectedFontName = fonts.get(position);
-        currentSelectedFont = UrduFonts.from(selectedFontName);
+        currentSelectedFont = UrduFontsSource.from(selectedFontName);
         presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
     }
 }

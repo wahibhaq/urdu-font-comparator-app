@@ -3,12 +3,10 @@
   <string name="app_name_expanded">Urdu Font Comparator</string>
 
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
-
-  <!-- Home Page -->
+  <!-- General -->
   <string name="select_font">Select Font</string>
   <string name="font_details">Font Details</string>
+  <string name="not_available">"Not Available"</string>
 
   <!-- Urdu Font Names -->
   <string name="label_urdu_font_meher_nastaleeq">Meher Nastaleeq</string>
@@ -56,10 +54,10 @@
 
   <!-- Font Info Dialog -->
   <string name="ok">Ok</string>
-  <string name="provider">Provided By: %s</string>
-  <string name="home_website">Website: %s</string>
-  <string name="download_url">Download Link: %s</string>
-  <string name="font_size">Font Size: %s</string>
+  <string name="dialog_font_provider_label">Provided By: %s</string>
+  <string name="dialog_font_website_label">Website: %s</string>
+  <string name="dialog_font_filename_label">Filename: %s</string>
+  <string name="dialog_font_size_label">File Size: %s</string>
 
   <!-- Alerts -->
   <string name="loading_message">Loading ........</string>

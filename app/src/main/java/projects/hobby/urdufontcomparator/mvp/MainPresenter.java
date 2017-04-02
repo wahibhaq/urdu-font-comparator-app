@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import projects.hobby.urdufontcomparator.R;
-import projects.hobby.urdufontcomparator.models.UrduFonts;
+import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 import rx.Observable;
@@ -34,7 +34,7 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void loadFontsAvailable() {
-        final List<String> fontList = new ArrayList<>(Arrays.asList(UrduFonts.getFontNames()));
+        final List<String> fontList = new ArrayList<>(Arrays.asList(UrduFontsSource.getFontNames()));
         view.setFontSelectorContent(fontList);
     }
 
@@ -61,7 +61,7 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void handleFontInfoAction(String font) {
-        final UrduFonts selectedFont = UrduFonts.from(font);
+        final UrduFontsSource selectedFont = UrduFontsSource.from(font);
         view.showFontInfoDialog(selectedFont,
                 urduTextSource.prepareFontInfoDialogText(selectedFont));
     }

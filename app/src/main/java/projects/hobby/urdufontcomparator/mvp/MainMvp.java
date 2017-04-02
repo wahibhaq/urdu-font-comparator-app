@@ -2,7 +2,7 @@ package projects.hobby.urdufontcomparator.mvp;
 
 import android.graphics.Typeface;
 import java.util.List;
-import projects.hobby.urdufontcomparator.models.UrduFonts;
+import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 
 /**
  * Specifies the contract between the view and the presenter
@@ -14,7 +14,7 @@ public interface MainMvp {
 
         void setConvertedText(Typeface typeface);
 
-        void showFontInfoDialog(UrduFonts font, String content);
+        void showFontInfoDialog(UrduFontsSource font, String content);
 
         void showProgress(boolean show);
 

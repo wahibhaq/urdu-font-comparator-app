@@ -34,15 +34,17 @@ public class UrduTextSource {
         return context.getString(R.string.line_spacing_with_dash);
     }
 
-    public String prepareFontInfoDialogText(UrduFonts font) {
+    public String prepareFontInfoDialogText(UrduFontsSource font) {
         return getLineSpacings()
-                .concat(context.getString(R.string.provider, font.provider))
+                .concat(context.getString(R.string.dialog_font_provider_label, font.provider))
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.home_website, font.website))
+                .concat(context.getString(R.string.dialog_font_website_label,
+                        context.getString(font.website)))
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.download_url, font.downloadLink))
+                .concat(context.getString(R.string.dialog_font_filename_label,
+                        context.getString(font.fontFileName)))
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.font_size, font.fileSize));
+                .concat(context.getString(R.string.dialog_font_size_label, font.fileSize));
     }
 
     private String getLineSpacings() {
