@@ -3,16 +3,16 @@ package projects.hobby.urdufontcomparator.utils;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.util.Patterns;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+
 import projects.hobby.urdufontcomparator.R;
 
 /**
@@ -27,7 +27,6 @@ public class UiUtils {
 
     private static void showDialogWithUrlsInContent(Context context, String title,
             String content) {
-        final TextView message = new TextView(context);
         final SpannableString s = new SpannableString(content);
 
         //To make sure Font FileName doesn't end up as a clickable url
@@ -39,11 +38,7 @@ public class UiUtils {
                 return !url.contains(".ttf") && Linkify.sUrlMatchFilter.acceptMatch(seq, start, end);
             }
         }, null);
-        message.setText(s);
-        message.setMovementMethod(LinkMovementMethod.getInstance());
-        message.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
-
-        createAndShowDialog(context, title, message);
+        createAndShowDialog(context, title, s);
     }
 
     public static void showDialogWithUrlsWithoutTitle(Context context, String content) {
@@ -52,32 +47,22 @@ public class UiUtils {
 
     //TODO find a better way to show custom view
     private static void createAndShowDialog(Context context, String title,
-            TextView message) {
-        message.setPadding(100,10,10,10);
-
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context)
+            SpannableString message) {
+        Dialog show = new LovelyInfoDialog(context)
+                .setTopColorRes(R.color.colorPrimary)
+                .setIcon(R.drawable.ic_info_popup)
                 .setTitle(title)
-                .setPositiveButton(context.getString(R.string.ok),
-                        new DialogInterface.OnClickListener() {
-                    @Override public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }})
-                .setView(message);
-        AlertDialog dialog = dialogBuilder.create();
-        dialog.show();
-
-        //Setting textColor of button
-        Button posButton = dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-        if (posButton!= null) {
-            posButton.setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent));
-            posButton.setTextColor(ContextCompat.getColor(context, R.color.white));
+                .setMessage(message)
+                .show();
+        TextView tvMessage = (TextView) show.findViewById(R.id.ld_message);
+        if (tvMessage != null) {
+            tvMessage.setMovementMethod(LinkMovementMethod.getInstance());
+            tvMessage.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
         }
     }
 
     private static void createAndShowDialog(Context context, String title, String content) {
-        final TextView message = new TextView(context);
-        message.setText(content);
-        createAndShowDialog(context, title, message);
+        createAndShowDialog(context, title, content);
     }
 
     public static void showSimpleDialogWithTitle(Context context, @StringRes int title, String content) {
