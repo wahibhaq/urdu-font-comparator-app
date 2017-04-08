@@ -67,4 +67,6 @@ dependencies {
   //Dialogue
   compile 'com.github.stfalcon:universalpickerdialog:0.1.0'
 
+  //Lovely dialogue
+  compile 'com.yarolegovich:lovely-dialog:1.0.7'
 }
