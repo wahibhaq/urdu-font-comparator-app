@@ -1,6 +1,7 @@
 package projects.hobby.urdufontcomparator.models;
 
 import android.content.Context;
+
 import projects.hobby.urdufontcomparator.R;
 
 /**
@@ -45,6 +46,12 @@ public class UrduTextSource {
                         context.getString(font.fontFileName)))
                 .concat(getLineSpacings())
                 .concat(context.getString(R.string.dialog_font_size_label, font.fileSize));
+    }
+
+    public String prepareDevsInfoDialogText() {
+        return getLineSpacings().concat(context.getString(R.string.dev_name))
+                .concat(getLineSpacings())
+                .concat(context.getString(R.string.dev_url));
     }
 
     private String getLineSpacings() {
