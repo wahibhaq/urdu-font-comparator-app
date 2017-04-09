@@ -2,6 +2,8 @@ package projects.hobby.urdufontcomparator.models;
 
 import android.content.Context;
 
+import javax.inject.Inject;
+
 import projects.hobby.urdufontcomparator.R;
 
 /**
@@ -11,6 +13,7 @@ public class UrduTextSource {
 
     private Context context;
 
+    @Inject
     public UrduTextSource(Context context) {
         this.context = context;
     }

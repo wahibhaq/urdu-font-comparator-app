@@ -50,8 +50,8 @@ public class UiUtils {
             SpannableString message) {
         Dialog show = new LovelyInfoDialog(context)
                 .setTopColorRes(R.color.colorPrimary)
-                .setIcon(R.drawable.ic_info_popup)
                 .setTitle(title)
+                .setIcon(R.drawable.ic_info_outline)
                 .setMessage(message)
                 .show();
         TextView tvMessage = (TextView) show.findViewById(R.id.ld_message);
@@ -62,7 +62,8 @@ public class UiUtils {
     }
 
     private static void createAndShowDialog(Context context, String title, String content) {
-        createAndShowDialog(context, title, content);
+        SpannableString s = new SpannableString(content);
+        createAndShowDialog(context, title, s);
     }
 
     public static void showSimpleDialogWithTitle(Context context, @StringRes int title, String content) {
