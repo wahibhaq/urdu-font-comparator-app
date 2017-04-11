@@ -9,6 +9,7 @@ import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.util.Patterns;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
@@ -21,12 +22,12 @@ import projects.hobby.urdufontcomparator.R;
 public class UiUtils {
 
     public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
-            String content) {
+                                                   String content) {
         showDialogWithUrlsInContent(context, context.getString(title), content);
     }
 
     private static void showDialogWithUrlsInContent(Context context, String title,
-            String content) {
+                                                    String content) {
         final SpannableString s = new SpannableString(content);
 
         //To make sure Font FileName doesn't end up as a clickable url
@@ -47,17 +48,21 @@ public class UiUtils {
 
     //TODO find a better way to show custom view
     private static void createAndShowDialog(Context context, String title,
-            SpannableString message) {
-        Dialog show = new LovelyInfoDialog(context)
-                .setTopColorRes(R.color.colorPrimary)
+                                            SpannableString message) {
+        Dialog dialog = new LovelyInfoDialog(context)
+                .setTopColorRes(R.color.colorPrimaryLight)
                 .setTitle(title)
                 .setIcon(R.drawable.ic_info_outline)
                 .setMessage(message)
                 .show();
-        TextView tvMessage = (TextView) show.findViewById(R.id.ld_message);
+        TextView tvMessage = (TextView) dialog.findViewById(R.id.ld_message);
         if (tvMessage != null) {
             tvMessage.setMovementMethod(LinkMovementMethod.getInstance());
             tvMessage.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
+        }
+        Button btnOk = (Button) dialog.findViewById(R.id.ld_btn_confirm);
+        if (btnOk != null) {
+            btnOk.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
         }
     }
 

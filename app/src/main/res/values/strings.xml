@@ -24,21 +24,21 @@
     <string name="label_urdu_font_nafees_riqa">Nafees Riqa</string>
 
     <!-- Urdu Sample Text -->
-  <string name="urdu_sample_text_poetry_1">
+    <string name="urdu_sample_text_poetry_1">
 سلیقے سے ہواؤں میں جو خوشبو گھول سکتے ہیں\n
 ابھی کچھ لوگـ باقی ہیں جو اُردو بول سکتے ہیں</string>
 
-  <string name="urdu_sample_text_poetry_2">
+    <string name="urdu_sample_text_poetry_2">
     تو رہ نوردِ شوق ہے منزل نہ کر قبول\n
 لیلیٰ بھی ہم نشیں ہو تو محمل نہ کر قبول
   </string>
 
-  <string name="urdu_sample_text_poetry_3">
+    <string name="urdu_sample_text_poetry_3">
     گیسوئےِ اردو  ابھی  مِنّت  پذیرِ  شانہ  ہے\n
 شمع  یہ  سودائیِ  دل  سوزئِ  پروانہ  ہے
   </string>
 
-  <string name="urdu_sample_text_poetry_4">
+    <string name="urdu_sample_text_poetry_4">
     بعدِ نفرت  پھر موحبّت  کو  زُبان  درکار  ہے\n
 پھر عزیزِ جان  وہی  اردو  ُزبان  ہونے  لگی
   </string>
