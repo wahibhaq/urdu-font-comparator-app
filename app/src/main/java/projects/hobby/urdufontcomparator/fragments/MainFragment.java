@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -13,12 +14,16 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.OnTouch;
+
 import java.util.AbstractList;
 import java.util.List;
+
 import javax.inject.Inject;
+
+import butterknife.OnTouch;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.dagger.MvpModule;
@@ -26,6 +31,7 @@ import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.utils.UiUtils;
 import stfalcon.universalpickerdialog.UniversalPickerDialog;
+
 
 public class MainFragment extends BaseFragment implements MainMvp.View,
         UniversalPickerDialog.OnPickListener {

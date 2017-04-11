@@ -39,8 +39,7 @@ public class UrduTextSource {
     }
 
     public String prepareFontInfoDialogText(UrduFontsSource font) {
-        return getLineSpacings()
-                .concat(context.getString(R.string.dialog_font_provider_label, font.provider))
+        return context.getString(R.string.dialog_font_provider_label, font.provider)
                 .concat(getLineSpacings())
                 .concat(context.getString(R.string.dialog_font_website_label,
                         context.getString(font.website)))
@@ -52,7 +51,7 @@ public class UrduTextSource {
     }
 
     public String prepareDevsInfoDialogText() {
-        return getLineSpacings().concat(context.getString(R.string.dev_name))
+        return context.getString(R.string.dev_name)
                 .concat(getLineSpacings())
                 .concat(context.getString(R.string.dev_url));
     }

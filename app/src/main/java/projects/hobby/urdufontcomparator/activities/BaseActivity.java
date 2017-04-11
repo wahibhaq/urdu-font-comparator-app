@@ -52,7 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.action_licenses:
                 // User chose the "Licenses" item, show the font licenses info
                 UiUtils.showSimpleDialogWithTitle(this, R.string.licenses,
-                        "\n\nLicense info will be shown here");
+                        "License info will be shown here");
                 return true;
 
             case R.id.action_about_dev:
