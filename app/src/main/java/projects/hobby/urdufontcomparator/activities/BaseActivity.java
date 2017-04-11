@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import projects.hobby.urdufontcomparator.R;
+import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.UiUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -51,13 +52,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.action_licenses:
                 // User chose the "Licenses" item, show the font licenses info
                 UiUtils.showSimpleDialogWithTitle(this, R.string.licenses,
-                        "\n\nLicense info will be shown here");
+                        "License info will be shown here");
                 return true;
 
             case R.id.action_about_dev:
                 // User chose the "About Dev" item, show about me info
+                UrduTextSource urduTextSource = new UrduTextSource(this);
                 UiUtils.showDialogWithUrlsWithTitle(this, R.string.about_me,
-                        "\n\nWahib-Ul-Haq \n\n http://wahibhaq.com");
+                        urduTextSource.prepareDevsInfoDialogText());
                 return true;
 
             default:
