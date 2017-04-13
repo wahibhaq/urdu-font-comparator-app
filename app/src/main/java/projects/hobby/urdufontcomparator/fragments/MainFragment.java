@@ -1,11 +1,13 @@
 package projects.hobby.urdufontcomparator.fragments;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import android.util.TypedValue;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -26,6 +27,7 @@ import javax.inject.Inject;
 import butterknife.OnTouch;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
+import projects.hobby.urdufontcomparator.adapter.ContentAdapter;
 import projects.hobby.urdufontcomparator.dagger.MvpModule;
 import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
@@ -38,14 +40,16 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
 
+    private OnFontSizeChangeListener onFontSizeChangeListener;
+
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
 
-    @BindView(R.id.text_body)
-    protected TextView textBody;
-
     @BindView(R.id.seekbar)
     protected SeekBar seekBar;
+
+    @BindView(R.id.content_viewpager)
+    protected ViewPager viewPager;
 
     @Inject
     protected MainMvp.Presenter presenter;
@@ -106,7 +110,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void setFontSelectorContent(final List<String> fontNames) {
         this.fonts = fontNames;
-
+        ContentAdapter contentAdapter = new ContentAdapter(getChildFragmentManager(), fonts);
+        viewPager.setAdapter(contentAdapter);
         //Initialize and set Adapter
         ArrayAdapter<String> fontArrayAdapter =
                 new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, fontNames);
@@ -126,11 +131,11 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void setConvertedText(Typeface tf) {
-        if (tf != null) {
+        /*if (tf != null) {
             textBody.setTypeface(tf);
         } else {
             textBody.setTypeface(Typeface.DEFAULT);
-        }
+        }*/
         presenter.handleSampleTextShowing();
     }
 
@@ -169,6 +174,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     progressChanged = MIN_SEEKBAR_LEVEL + progress;
+                    onFontSizeChangeListener.size(progressChanged);
                     presenter.handleFontSize(progressChanged);
                 }
 
@@ -187,12 +193,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void setFontSize(int size) {
-        textBody.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+        //textBody.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
     }
 
     @Override
     public void setSampleText(String sampleText) {
-        textBody.setText(sampleText);
+        //textBody.setText(sampleText);
     }
 
     @Override
@@ -202,5 +208,22 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         final String selectedFontName = fonts.get(position);
         currentSelectedFont = UrduFontsSource.from(selectedFontName);
         presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
+        viewPager.setCurrentItem(position,false); //
     }
+
+    protected interface OnFontSizeChangeListener {
+        void size(int fontSize);
+    }
+
+    @Override
+    public void onAttachFragment(Fragment childFragment) {
+        super.onAttachFragment(childFragment);
+        try {
+            onFontSizeChangeListener = (OnFontSizeChangeListener) childFragment;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(childFragment.toString()
+                    + " must implement OnFontSizeChangeListener");
+        }
+    }
+
 }
