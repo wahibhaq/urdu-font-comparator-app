@@ -3,10 +3,8 @@ package projects.hobby.urdufontcomparator.dagger;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
 import com.google.gson.Gson;
-import javax.inject.Singleton;
-
+import com.google.gson.GsonBuilder;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -48,13 +46,7 @@ public class AppModule {
     }
 
     @Singleton
-    @Provides
-    SharedPreferences provideSharedPreferences(Context context) {
+    @Provides SharedPreferences provideSharedPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
-    }
-
-    @Singleton
-    @Provides Gson provideGson() {
-        return new GsonBuilder().create();
     }
 }
