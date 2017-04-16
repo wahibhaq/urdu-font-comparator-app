@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -113,5 +115,17 @@ public class Utils {
             }
         }
         return resolved;
+    }
+
+    /**
+     *
+     * @return true if the internet connection currently in use is functional,
+     * otherwise false
+     */
+    public static boolean isOnline(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnected();
     }
 }

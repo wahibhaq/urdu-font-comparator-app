@@ -3,10 +3,12 @@ package projects.hobby.urdufontcomparator.models;
 import com.google.gson.annotations.SerializedName;
 
 public class UrduFont {
-    //TODO later add download link, source, license, provider info etc
 
     @SerializedName("name")
     private String fontName;
+
+    @SerializedName("filename")
+    private String filename;
 
     @SerializedName("provider")
     private final String provider;
@@ -14,18 +16,24 @@ public class UrduFont {
     @SerializedName("website")
     private final String website;
 
-    @SerializedName("download_url")
-    private final String downloadLink;
+    @SerializedName("filesize")
+    private final String filesize;
 
-    public UrduFont(String provider, String website, String downloadLink, String fontName) {
+    public UrduFont(String fontName, String filename, String provider, String website,
+            String filesize) {
+        this.fontName = fontName;
+        this.filename = filename;
         this.provider = provider;
         this.website = website;
-        this.downloadLink = downloadLink;
-        this.fontName = fontName;
+        this.filesize = filesize;
     }
 
     public String getFontName() {
         return fontName;
+    }
+
+    public String getFilename() {
+        return filename;
     }
 
     public String getProvider() {
@@ -36,7 +44,7 @@ public class UrduFont {
         return website;
     }
 
-    public String getDownloadLink() {
-        return downloadLink;
+    public String getFilesize() {
+        return filesize;
     }
 }

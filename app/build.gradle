@@ -62,9 +62,6 @@ dependencies {
   compile "io.reactivex:rxjava:1.2.1"
   compile "io.reactivex:rxandroid:1.2.1"
 
-  //Networking
-  compile "com.google.code.gson:gson:2.8.0"
-
   //Dialogue
   compile 'com.github.stfalcon:universalpickerdialog:0.1.0'
 
@@ -73,5 +70,12 @@ dependencies {
 
   //Circle Indicator
   compile 'me.relex:circleindicator:1.2.2@aar'
+
+  //Networking
+  compile 'com.squareup.retrofit2:retrofit:2.0.2'
+  compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+  compile 'com.squareup.okhttp3:okhttp:3.4.1'
+  compile "com.google.code.gson:gson:2.8.0"
 
 }
