@@ -22,9 +22,19 @@ By and large Arabic today is written in Naskh and subsequently the Urdu text you
 Whatever I write on this topic, it won't be as good as what [eteraz](https://twitter.com/eteraz) wrote in his article on [The Death of the Urdu Script
 ](https://medium.com/@eteraz/the-death-of-the-urdu-script-9ce935435d90). You should give it a read!
 
-A brief overview of both scripts:
+##### This is how both scripts look like.
 
 ![Naskh vs Nataliq](https://cdn-images-1.medium.com/max/1600/0*9Cxd8PX0UX1WiU8b.jpeg)
+
+Nastaliq on [Daily Pakistan](http://dailypakistan.com.pk/latest) website <br><br>
+<img src="https://i.imgur.com/ned1c7q.png" width="200" height="400" align="center">
+
+Naskh on [BBC Urdu](http://www.bbc.com/urdu/world) website <br><br>
+<img src="https://i.imgur.com/lFUGYu0.png" width="200" height="400" align="center">
+
+<br><br>
+
+A brief overview of both scripts:
 
 #### Naskh 
 Naskh though cursive is linear in nature. Each letter joins to the next moving from right to left. The glyphs change shape according to the place they occupy within the word. Strictly defined by norms laid down by tradition, the visual beauty of Naskh lies in the seamless manner in which each letter joins to the next letter to create a text which is as attractive as a visual drawing.
