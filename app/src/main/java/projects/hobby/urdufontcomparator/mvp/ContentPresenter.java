@@ -5,15 +5,11 @@ import android.graphics.Typeface;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
-/**
- * Created by Zeeshan on 4/12/17.
- */
-
 public class ContentPresenter implements ContentMvp.Presenter {
     private static final String FONTS = "fonts/";
-    ContentMvp.View view;
-    CustomFontManager customFontManager;
-    UrduTextSource urduTextSource;
+    private ContentMvp.View view;
+    private CustomFontManager customFontManager;
+    private UrduTextSource urduTextSource;
 
 
     public ContentPresenter(ContentMvp.View view, CustomFontManager customFontManager, UrduTextSource
@@ -28,11 +24,6 @@ public class ContentPresenter implements ContentMvp.Presenter {
         String fontAsset = getFontAsset(fontName);
         Typeface typeface = customFontManager.getFont(fontAsset);
         view.setConvertedText(typeface);
-    }
-
-    @Override
-    public void handleFontSize(int size) {
-        view.setFontSize(size);
     }
 
     @Override

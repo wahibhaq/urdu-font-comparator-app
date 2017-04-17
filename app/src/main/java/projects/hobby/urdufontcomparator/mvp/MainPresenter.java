@@ -48,7 +48,6 @@ public class MainPresenter implements MainMvp.Presenter {
                     @Override public void call(String fontAsset) {
                         view.showProgress(false);
                         view.showAndSetSeekbar(true);
-                        view.setConvertedText(fontManager.getFont(fontAsset));
                     }
                 }, new Action1<Throwable>() {
                     @Override public void call(Throwable throwable) {
@@ -64,16 +63,6 @@ public class MainPresenter implements MainMvp.Presenter {
         final UrduFontsSource selectedFont = UrduFontsSource.from(font);
         view.showFontInfoDialog(selectedFont,
                 urduTextSource.prepareFontInfoDialogText(selectedFont));
-    }
-
-    @Override
-    public void handleFontSize(int size) {
-        view.setFontSize(size);
-    }
-
-    @Override
-    public void handleSampleTextShowing() {
-        view.setSampleText(urduTextSource.prepareSampleText());
     }
 
     private String getFontAsset(String fileName) {

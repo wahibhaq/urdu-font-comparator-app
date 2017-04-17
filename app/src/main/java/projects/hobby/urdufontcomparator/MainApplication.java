@@ -13,7 +13,6 @@ public class MainApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         appComponent = DaggerApplicationComponent.builder()
                 .appModule(new AppModule(this))
                 .build();

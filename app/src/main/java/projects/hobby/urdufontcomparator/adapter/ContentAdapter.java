@@ -2,7 +2,7 @@ package projects.hobby.urdufontcomparator.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import projects.hobby.urdufontcomparator.fragments.ContentFragment;
  * Created by Zeeshan on 4/12/17.
  */
 
-public class ContentAdapter extends FragmentStatePagerAdapter {
+public class ContentAdapter extends FragmentPagerAdapter {
 
     private List<String> fonts;
 

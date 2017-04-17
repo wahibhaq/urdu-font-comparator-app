@@ -22,5 +22,4 @@ public class MainActivity extends BaseActivity {
                 .replace(R.id.content, fragment)
                 .commit();
     }
-
 }

@@ -2,11 +2,14 @@ package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -40,8 +43,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
 
-    private OnFontSizeChangeListener onFontSizeChangeListener;
-
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
 
@@ -53,6 +54,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Inject
     protected MainMvp.Presenter presenter;
+
+    @Inject
+    protected SharedPreferences sharedPreferences;
 
     private UrduFontsSource currentSelectedFont;
 
@@ -119,6 +123,27 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         spinnerFontNames.setAdapter(fontArrayAdapter);
         spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
         setPickerDialog();
+        setViewPagerPageChangeListener();
+    }
+
+    private void setViewPagerPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset,
+                                       int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                setCurrentSelectedFont(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @OnTouch(R.id.spinner_font_names)
@@ -127,16 +152,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
             builderPickerDialog.show();
         }
         return true;
-    }
-
-    @Override
-    public void setConvertedText(Typeface tf) {
-        /*if (tf != null) {
-            textBody.setTypeface(tf);
-        } else {
-            textBody.setTypeface(Typeface.DEFAULT);
-        }*/
-        presenter.handleSampleTextShowing();
     }
 
     @Override
@@ -167,15 +182,16 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         if (show) {
             seekBar.setVisibility(View.VISIBLE);
             seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                //setting default value so seekbar and textBody font size
+                //setting default value so seekbar and contentBody font size
                 //doesn't conflict with each other.
-                int progressChanged = MIN_SEEKBAR_LEVEL;
+                int updatedFontSize = MIN_SEEKBAR_LEVEL;
 
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    progressChanged = MIN_SEEKBAR_LEVEL + progress;
-                    onFontSizeChangeListener.size(progressChanged);
-                    presenter.handleFontSize(progressChanged);
+                    updatedFontSize = MIN_SEEKBAR_LEVEL + progress;
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putInt(getString(R.string.font_size), updatedFontSize);
+                    editor.apply();
                 }
 
                 @Override
@@ -192,38 +208,23 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void setFontSize(int size) {
-        //textBody.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
-    }
-
-    @Override
-    public void setSampleText(String sampleText) {
-        //textBody.setText(sampleText);
-    }
-
-    @Override
     public void onPick(int[] selectedValues, int key) {
         int position = selectedValues[0];
-        spinnerFontNames.setSelection(position); // setting selected font to spinner
-        final String selectedFontName = fonts.get(position);
-        currentSelectedFont = UrduFontsSource.from(selectedFontName);
+        setCurrentSelectedFont(position);
         presenter.handleFontSelection(getString(currentSelectedFont.fontFileName));
-        viewPager.setCurrentItem(position,false); //
+        viewPager.setCurrentItem(position, false); // updating viewpager item
     }
 
-    protected interface OnFontSizeChangeListener {
-        void size(int fontSize);
+
+    public void setCurrentSelectedFont(int position) {
+        spinnerFontNames.setSelection(position);
+        String selectedFontName = fonts.get(position);
+        currentSelectedFont = UrduFontsSource.from(selectedFontName);
     }
 
     @Override
-    public void onAttachFragment(Fragment childFragment) {
-        super.onAttachFragment(childFragment);
-        try {
-            onFontSizeChangeListener = (OnFontSizeChangeListener) childFragment;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(childFragment.toString()
-                    + " must implement OnFontSizeChangeListener");
-        }
+    public void onDestroy() {
+        super.onDestroy();
+        sharedPreferences.edit().remove(getString(R.string.font_size)).apply();
     }
-
 }

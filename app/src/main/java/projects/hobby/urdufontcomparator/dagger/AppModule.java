@@ -1,6 +1,9 @@
 package projects.hobby.urdufontcomparator.dagger;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
@@ -39,5 +42,11 @@ public class AppModule {
     @Provides
     UrduTextSource provideUrduTextSource(Context context) {
         return new UrduTextSource(context);
+    }
+
+    @Singleton
+    @Provides
+    SharedPreferences provideSharedPreferences() {
+        return PreferenceManager.getDefaultSharedPreferences(mainApplication.getApplicationContext());
     }
 }
