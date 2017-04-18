@@ -3,75 +3,76 @@
     android:id="@+id/nested_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
     android:orientation="vertical"
+    android:scrollbars="vertical"
     tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/margin_16"
-        android:layout_marginEnd="@dimen/margin_12"
-        android:layout_marginStart="@dimen/margin_12"
-        android:layout_marginTop="@dimen/margin_8">
 
-        <RelativeLayout
-            android:id="@+id/layout_controls"
+    <RelativeLayout
+        android:id="@+id/layout_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginStart="@dimen/margin_12"
+        android:layout_marginEnd="@dimen/margin_12"
+        android:background="@drawable/background_border"
+        android:padding="@dimen/margin_8">
+
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_font_names"
+            style="@android:style/Widget.Holo.Light.Spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
-            android:background="@drawable/background_border"
-            android:padding="@dimen/margin_8">
+            android:layout_gravity="center_vertical"
+            android:prompt="@string/select_font"
+            android:spinnerMode="dialog" />
 
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/spinner_font_names"
-                style="@android:style/Widget.Holo.Light.Spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:prompt="@string/select_font"
-                android:spinnerMode="dialog" />
-
-            <TextView
-                android:id="@+id/textview_fontsize_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@id/spinner_font_names"
-                android:layout_below="@+id/spinner_font_names"
-                android:layout_marginStart="@dimen/margin_8"
-                android:layout_marginTop="@dimen/margin_8"
-                android:text="@string/select_font_size"
-                android:textColor="@color/gray_light"
-                android:textSize="@dimen/text_size_12" />
-
-            <android.support.v7.widget.AppCompatSeekBar
-                android:id="@+id/seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@id/spinner_font_names"
-                android:layout_below="@+id/textview_fontsize_label"
-                android:layout_marginTop="@dimen/margin_8" />
-
-            <Button
-                android:id="@+id/button_font_details"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/seekbar"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="@dimen/margin_8"
-                android:text="@string/font_details" />
-        </RelativeLayout>
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/content_viewpager"
+        <TextView
+            android:id="@+id/textview_fontsize_label"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="@dimen/margin_12"
-            android:layout_below="@+id/layout_controls"/>
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/spinner_font_names"
+            android:layout_below="@+id/spinner_font_names"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/select_font_size"
+            android:textColor="@color/gray_light"
+            android:textSize="@dimen/text_size_12" />
 
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@id/spinner_font_names"
+            android:layout_below="@+id/textview_fontsize_label"
+            android:layout_marginTop="@dimen/margin_8" />
+
+        <Button
+            android:id="@+id/button_font_details"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seekbar"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/font_details" />
     </RelativeLayout>
 
+    <android.support.v4.view.ViewPager
+        android:layout_weight="1"
+        android:id="@+id/content_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/layout_controls"
+        android:layout_marginStart="@dimen/margin_12"
+        android:layout_marginEnd="@dimen/margin_12"
+        android:layout_marginTop="@dimen/margin_12" />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:background="@color/colorPrimary"
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="15dp" />
 </LinearLayout>
 

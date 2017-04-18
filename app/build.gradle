@@ -69,4 +69,7 @@ dependencies {
   //Lovely dialogue
   compile 'com.yarolegovich:lovely-dialog:1.0.7'
 
+  //Circle Indicator
+  compile 'me.relex:circleindicator:1.2.2@aar'
+
 }

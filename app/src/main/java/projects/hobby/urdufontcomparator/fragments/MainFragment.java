@@ -21,6 +21,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+import me.relex.circleindicator.CircleIndicator;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.adapter.ContentAdapter;
@@ -44,6 +45,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @BindView(R.id.content_viewpager)
     protected ViewPager viewPager;
+
+    @BindView(R.id.indicator)
+    protected CircleIndicator circleIndicator;
 
     @Inject
     protected MainMvp.Presenter presenter;
@@ -116,6 +120,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         spinnerFontNames.setAdapter(fontArrayAdapter);
         spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
         setPickerDialog();
+        circleIndicator.setViewPager(viewPager);
         setViewPagerPageChangeListener();
     }
 
