@@ -108,8 +108,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         if(Utils.isOnline(getActivity())) {
             presenter.loadFontsAvailable();
         } else {
-            Utils.showDialogWithUrlsWithoutTitle(getActivity(),
-                    getString(R.string.connection_error));
+            Utils.showConnectionErrorDialog(getActivity());
         }
     }
 

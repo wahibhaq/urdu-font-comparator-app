@@ -68,7 +68,7 @@ public class Utils {
         }
         Button btnOk = (Button) dialog.findViewById(R.id.ld_btn_confirm);
         if (btnOk != null) {
-            btnOk.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            btnOk.setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
         }
     }
 
@@ -87,6 +87,11 @@ public class Utils {
 
     public static Dialog showProgressUpdateDialog(Context context, String message) {
         return ProgressDialog.show(context, "", message, true, false);
+    }
+
+    public static void showConnectionErrorDialog(Context context) {
+        showDialogWithUrlsWithoutTitle(context,
+                context.getResources().getString(R.string.connection_error));
     }
 
     /**
