@@ -12,9 +12,9 @@
         android:id="@+id/layout_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_8"
-        android:layout_marginStart="@dimen/margin_12"
         android:layout_marginEnd="@dimen/margin_12"
+        android:layout_marginStart="@dimen/margin_12"
+        android:layout_marginTop="@dimen/margin_8"
         android:background="@drawable/background_border"
         android:padding="@dimen/margin_8">
 
@@ -59,20 +59,18 @@
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager
-        android:layout_weight="1"
         android:id="@+id/content_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/layout_controls"
-        android:layout_marginStart="@dimen/margin_12"
+        android:layout_height="0dp"
         android:layout_marginEnd="@dimen/margin_12"
-        android:layout_marginTop="@dimen/margin_12" />
+        android:layout_marginStart="@dimen/margin_12"
+        android:layout_marginTop="@dimen/margin_12"
+        android:layout_weight="1" />
 
     <me.relex.circleindicator.CircleIndicator
-        android:background="@color/colorPrimary"
         android:id="@+id/indicator"
         android:layout_width="match_parent"
-        android:layout_height="15dp" />
+        android:layout_height="15dp"
+        android:background="@color/colorPrimary" />
 </LinearLayout>
 
