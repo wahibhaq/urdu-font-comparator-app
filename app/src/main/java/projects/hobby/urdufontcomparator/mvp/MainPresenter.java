@@ -1,10 +1,12 @@
 package projects.hobby.urdufontcomparator.mvp;
 
 import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;

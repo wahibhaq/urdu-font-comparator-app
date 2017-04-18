@@ -7,6 +7,7 @@ import android.graphics.Typeface;
  * Creates contract between view and presenter
  */
 public interface ContentMvp {
+
     interface View {
         void setConvertedText(Typeface typeface);
 

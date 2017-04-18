@@ -6,11 +6,14 @@ import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
 public class ContentPresenter implements ContentMvp.Presenter {
-    private static final String FONTS = "fonts/";
-    private ContentMvp.View view;
-    private CustomFontManager customFontManager;
-    private UrduTextSource urduTextSource;
 
+    private static final String FONTS = "fonts/";
+
+    private ContentMvp.View view;
+
+    private CustomFontManager customFontManager;
+
+    private UrduTextSource urduTextSource;
 
     public ContentPresenter(ContentMvp.View view, CustomFontManager customFontManager, UrduTextSource
             urduTextSource) {

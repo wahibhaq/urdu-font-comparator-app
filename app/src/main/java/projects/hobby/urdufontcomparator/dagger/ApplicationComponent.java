@@ -1,15 +1,15 @@
 package projects.hobby.urdufontcomparator.dagger;
 
-import dagger.Component;
-
 import javax.inject.Singleton;
+
+import dagger.Component;
 
 @Singleton
 @Component(modules = {AppModule.class})
 public interface ApplicationComponent {
 
     //Subcomponent
-    MvpComponent mvpComponent(MvpModule mvpModule);
+    MainMvpComponent mvpComponent(MainMvpModule mainMvpModule);
 
     ContentMvpComponent contentmvpComponent(ContentMvpModule contentMvpModule);
 

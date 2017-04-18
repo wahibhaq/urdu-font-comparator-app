@@ -22,7 +22,9 @@ import projects.hobby.urdufontcomparator.mvp.ContentMvp;
 
 public class ContentFragment extends BaseFragment implements ContentMvp.View,
         SharedPreferences.OnSharedPreferenceChangeListener {
+
     private final static int DEFAULT_FONT_SIZE = 16;
+
     @BindView(R.id.text_body)
     protected TextView contentBody;
 
@@ -91,10 +93,9 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        if (key.equals(getString(R.string.font_size))) {
-            if (contentBody != null) // sometimes app crashes when changing size
-                contentBody.setTextSize(TypedValue.COMPLEX_UNIT_SP,
-                        sharedPreferences.getInt(key, DEFAULT_FONT_SIZE));
+        if (key.equals(getString(R.string.font_size)) && contentBody != null) {
+            contentBody.setTextSize(TypedValue.COMPLEX_UNIT_SP,
+                    sharedPreferences.getInt(key, DEFAULT_FONT_SIZE));
         }
     }
 
@@ -105,8 +106,8 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onStop() {
+        super.onStop();
         sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 }

@@ -1,15 +1,9 @@
 package projects.hobby.urdufontcomparator.fragments;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,19 +13,18 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
-import butterknife.BindView;
-import butterknife.OnClick;
-
 import java.util.AbstractList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import butterknife.OnTouch;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.adapter.ContentAdapter;
-import projects.hobby.urdufontcomparator.dagger.MvpModule;
+import projects.hobby.urdufontcomparator.dagger.MainMvpModule;
 import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.utils.UiUtils;
@@ -74,7 +67,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainApplication.get(getActivity()).getComponent()
-                .mvpComponent(new MvpModule(this))
+                .mvpComponent(new MainMvpModule(this))
                 .inject(this);
     }
 
@@ -189,9 +182,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                     updatedFontSize = MIN_SEEKBAR_LEVEL + progress;
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putInt(getString(R.string.font_size), updatedFontSize);
-                    editor.apply();
+                    saveUpdatedFontSize(updatedFontSize);
                 }
 
                 @Override
@@ -207,6 +198,10 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         }
     }
 
+    private void saveUpdatedFontSize(int updatedFontSize) {
+        super.sharedPrefApply(R.string.font_size, updatedFontSize);
+    }
+
     @Override
     public void onPick(int[] selectedValues, int key) {
         int position = selectedValues[0];
@@ -216,7 +211,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
 
-    public void setCurrentSelectedFont(int position) {
+    private void setCurrentSelectedFont(int position) {
         spinnerFontNames.setSelection(position);
         String selectedFontName = fonts.get(position);
         currentSelectedFont = UrduFontsSource.from(selectedFontName);
@@ -225,6 +220,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onDestroy() {
         super.onDestroy();
-        sharedPreferences.edit().remove(getString(R.string.font_size)).apply();
+        super.removeSharedPref(R.string.font_size);
     }
 }

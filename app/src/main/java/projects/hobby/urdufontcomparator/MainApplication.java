@@ -2,6 +2,7 @@ package projects.hobby.urdufontcomparator;
 
 import android.app.Application;
 import android.content.Context;
+
 import projects.hobby.urdufontcomparator.dagger.AppModule;
 import projects.hobby.urdufontcomparator.dagger.ApplicationComponent;
 import projects.hobby.urdufontcomparator.dagger.DaggerApplicationComponent;

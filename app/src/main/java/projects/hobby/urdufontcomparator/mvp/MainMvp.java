@@ -1,7 +1,7 @@
 package projects.hobby.urdufontcomparator.mvp;
 
-import android.graphics.Typeface;
 import java.util.List;
+
 import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 
 /**
