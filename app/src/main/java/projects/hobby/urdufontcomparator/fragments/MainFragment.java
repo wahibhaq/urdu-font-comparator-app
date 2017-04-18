@@ -199,7 +199,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     private void saveUpdatedFontSize(int updatedFontSize) {
-        super.sharedPrefApply(R.string.font_size, updatedFontSize);
+        applySharedPref(R.string.font_size, updatedFontSize);
     }
 
     @Override
@@ -220,6 +220,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onDestroy() {
         super.onDestroy();
-        super.removeSharedPref(R.string.font_size);
+        removeSharedPref(R.string.font_size);
     }
 }

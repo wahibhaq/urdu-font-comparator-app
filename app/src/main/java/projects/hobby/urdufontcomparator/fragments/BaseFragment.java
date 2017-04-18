@@ -31,7 +31,7 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroyView();
     }
 
-    protected void sharedPrefApply(@StringRes int key, int value) {
+    protected void applySharedPref(@StringRes int key, int value) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(getString(key), value);
         editor.apply();
