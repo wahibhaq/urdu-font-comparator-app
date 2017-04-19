@@ -54,6 +54,9 @@
     <!-- Actionbar Overflow Menu -->
     <string name="about_me">About Developer</string>
     <string name="licenses">Licenses</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="email_us">Email Us</string>
+    <string name="tweet_us">Tweet Us</string>
 
     <!-- Font Info Dialog -->
     <string name="ok">Ok</string>
@@ -66,5 +69,6 @@
     <string name="loading_message">Loading ........</string>
     <string name="error_message">Apologies, something doesn\'t look right!</string>
     <string name="select_font_size">Select Font Size</string>
+
 
 </resources>
