@@ -7,14 +7,13 @@
     android:scrollbars="vertical"
     tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment">
 
-
     <RelativeLayout
         android:id="@+id/layout_controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_12"
         android:layout_marginStart="@dimen/margin_12"
-        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_12"
         android:background="@drawable/background_border"
         android:padding="@dimen/margin_8">
 
@@ -70,7 +69,9 @@
     <me.relex.circleindicator.CircleIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
-        android:layout_height="15dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="@dimen/margin_12"
         android:background="@color/colorPrimary" />
+
 </LinearLayout>
 
