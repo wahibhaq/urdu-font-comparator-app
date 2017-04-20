@@ -1,11 +1,12 @@
 package projects.hobby.urdufontcomparator.dagger;
 
-import dagger.Subcomponent;
 import javax.inject.Singleton;
+
+import dagger.Subcomponent;
 import projects.hobby.urdufontcomparator.fragments.MainFragment;
 
 @Singleton
-@Subcomponent(modules = {MvpModule.class})
-public interface MvpComponent {
+@Subcomponent(modules = {MainMvpModule.class})
+public interface MainMvpComponent {
     void inject(MainFragment baseFragment);
 }

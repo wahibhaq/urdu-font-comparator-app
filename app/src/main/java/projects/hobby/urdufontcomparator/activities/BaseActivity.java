@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import projects.hobby.urdufontcomparator.R;

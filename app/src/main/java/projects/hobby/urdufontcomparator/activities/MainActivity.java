@@ -3,6 +3,7 @@ package projects.hobby.urdufontcomparator.activities;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.fragments.MainFragment;
 

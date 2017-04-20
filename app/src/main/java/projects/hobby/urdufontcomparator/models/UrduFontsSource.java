@@ -1,7 +1,9 @@
 package projects.hobby.urdufontcomparator.models;
 
 import android.support.annotation.StringRes;
+
 import java.util.LinkedList;
+
 import projects.hobby.urdufontcomparator.R;
 
 /**

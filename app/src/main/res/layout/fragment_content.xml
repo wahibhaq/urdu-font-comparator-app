@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/layout_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/margin_16"
+    android:background="@drawable/background_border"
+    android:fitsSystemWindows="true"
+    android:padding="@dimen/margin_8"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v4.widget.NestedScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+
+        <TextView
+            android:id="@+id/text_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="fill|center_horizontal"
+            android:lineSpacingExtra="@dimen/text_size_16"
+            android:padding="@dimen/margin_8"
+            android:textDirection="rtl"
+            android:textSize="@dimen/text_size_16"
+            tools:text="@string/urdu_sample_text_poetry" />
+
+        </android.support.v4.widget.NestedScrollView>
+    
+    </RelativeLayout>

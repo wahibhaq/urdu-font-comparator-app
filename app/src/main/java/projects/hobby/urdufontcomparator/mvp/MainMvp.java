@@ -1,7 +1,7 @@
 package projects.hobby.urdufontcomparator.mvp;
 
-import android.graphics.Typeface;
 import java.util.List;
+
 import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 
 /**
@@ -12,8 +12,6 @@ public interface MainMvp {
     interface View {
         void setFontSelectorContent(List<String> fontNames);
 
-        void setConvertedText(Typeface typeface);
-
         void showFontInfoDialog(UrduFontsSource font, String content);
 
         void showProgress(boolean show);
@@ -21,10 +19,6 @@ public interface MainMvp {
         void showError(int errorMessageId);
 
         void showAndSetSeekbar(boolean show);
-
-        void setFontSize(int size);
-
-        void setSampleText(String sampleText);
     }
 
     interface Presenter {
@@ -34,8 +28,5 @@ public interface MainMvp {
 
         void handleFontInfoAction(String fontFile);
 
-        void handleFontSize(int size);
-
-        void handleSampleTextShowing();
     }
 }
