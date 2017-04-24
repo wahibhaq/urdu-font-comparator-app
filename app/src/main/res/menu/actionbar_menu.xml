@@ -17,11 +17,11 @@
         app:showAsAction="never">
         <menu>
             <item
-                android:id="@+id/action_email_us"
+                android:id="@+id/action_email"
                 android:title="@string/email_us"
                 app:showAsAction="never" />
             <item
-                android:id="@+id/action_tweet_us"
+                android:id="@+id/action_tweet"
                 android:title="@string/tweet_us"
                 app:showAsAction="never" />
         </menu>

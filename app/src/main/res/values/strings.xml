@@ -5,6 +5,9 @@
     <!-- About Developer -->
     <string name="dev_name">Wahib-Ul-Haq</string>
     <string name="dev_url">http://wahibhaq.com</string>
+    <string name="dev_email">wahib.tech@gmail.com</string>
+    <string name="dev_twitter_handle">\@wahibhaq </string>
+
 
     <!-- General -->
     <string name="select_font">Select Font</string>
@@ -55,8 +58,8 @@
     <string name="about_me">About Developer</string>
     <string name="licenses">Licenses</string>
     <string name="contact_us">Contact Us</string>
-    <string name="email_us">Email Us</string>
-    <string name="tweet_us">Tweet Us</string>
+    <string name="email_us">Email</string>
+    <string name="tweet_us">Tweet</string>
 
     <!-- Font Info Dialog -->
     <string name="ok">Ok</string>
@@ -69,6 +72,8 @@
     <string name="loading_message">Loading ........</string>
     <string name="error_message">Apologies, something doesn\'t look right!</string>
     <string name="select_font_size">Select Font Size</string>
+    <string name="email_app_isnt_installed_message">You don\'t have email app installed</string>
+    <string name="twitter_app_isnt_installed_message">You don\'t have twitter app installed</string>
 
 
 </resources>
