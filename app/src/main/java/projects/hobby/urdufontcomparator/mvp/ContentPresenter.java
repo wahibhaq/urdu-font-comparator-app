@@ -23,8 +23,8 @@ public class ContentPresenter implements ContentMvp.Presenter {
     }
 
     @Override
-    public void handleFontSelection(String fontName) {
-        String fontAsset = getFontAsset(fontName);
+    public void handleFontSelection(String fontFileName) {
+        String fontAsset = getFontAsset(fontFileName);
         Typeface typeface = customFontManager.getFont(fontAsset);
         view.setConvertedText(typeface);
     }

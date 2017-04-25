@@ -1,8 +1,6 @@
 package projects.hobby.urdufontcomparator.mvp;
 
 import java.util.List;
-
-import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.models.UrduFont;
 
 /**

@@ -45,7 +45,7 @@ public class RetrofitFontApi implements FontApi {
 
     private interface RetrofitService {
 
-        @GET("bins/10u2zn")
+        @GET("bins/118maj")
         Observable<List<UrduFont>> getFonts();
     }
 }
