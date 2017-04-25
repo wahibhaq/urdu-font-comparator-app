@@ -235,7 +235,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     public void onPick(int[] selectedValues, int key) {
         int position = selectedValues[0];
         setCurrentSelectedFont(position);
-        presenter.handleFontSelection(currentSelectedFont);
+        presenter.handleFontSelection(currentSelectedFont.getFontName());
         viewPager.setCurrentItem(position, false); // updating viewpager item
     }
 

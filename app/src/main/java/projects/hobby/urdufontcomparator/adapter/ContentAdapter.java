@@ -7,23 +7,20 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.List;
 
 import projects.hobby.urdufontcomparator.fragments.ContentFragment;
-
-/**
- * Created by Zeeshan on 4/12/17.
- */
+import projects.hobby.urdufontcomparator.models.UrduFont;
 
 public class ContentAdapter extends FragmentPagerAdapter {
 
-    private List<String> fonts;
+    private List<UrduFont> fonts;
 
-    public ContentAdapter(FragmentManager fm, List<String> fonts) {
+    public ContentAdapter(FragmentManager fm, List<UrduFont> fonts) {
         super(fm);
         this.fonts = fonts;
     }
 
     @Override
     public Fragment getItem(int position) {
-        String font = fonts.get(position);
+        final UrduFont font = fonts.get(position);
         return ContentFragment.newInstance(font);
     }
 

@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
+import javax.inject.Inject;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.dagger.ContentMvpModule;
-import projects.hobby.urdufontcomparator.models.UrduFontsSource;
+import projects.hobby.urdufontcomparator.models.UrduFont;
 import projects.hobby.urdufontcomparator.mvp.ContentMvp;
 
 
@@ -40,10 +38,10 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
 
     }
 
-    public static ContentFragment newInstance(String font) {
+    public static ContentFragment newInstance(UrduFont font) {
         ContentFragment fragment = new ContentFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_FONT, font);
+        args.putString(ARG_FONT, font.getFontName());
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,11 +65,8 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String font = getArguments().getString(ARG_FONT);
-        if (font != null) {
-            presenter.handleFontSelection(getActivity().
-                    getString(UrduFontsSource.from(font).fontFileName));
-        }
+        String fontName = getArguments().getString(ARG_FONT);
+        presenter.handleFontSelection(fontName);
         contentBody.setTextSize(TypedValue.COMPLEX_UNIT_SP,
                 sharedPreferences.getInt(getString(R.string.font_size), DEFAULT_FONT_SIZE));
     }

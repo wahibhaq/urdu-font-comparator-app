@@ -63,7 +63,6 @@ public class MainPresenter implements MainMvp.Presenter {
                         @Override public void call(String fontAsset) {
                             view.showProgress(false);
                             view.showAndSetSeekbar(true);
-                            view.setConvertedText(fontManager.getFont(fontAsset));
                         }
                     }, new Action1<Throwable>() {
                         @Override public void call(Throwable throwable) {
