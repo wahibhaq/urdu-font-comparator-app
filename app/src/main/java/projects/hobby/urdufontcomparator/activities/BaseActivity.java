@@ -1,26 +1,20 @@
 package projects.hobby.urdufontcomparator.activities;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
-import projects.hobby.urdufontcomparator.utils.UiUtils;
+import projects.hobby.urdufontcomparator.utils.Utils;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -63,36 +57,40 @@ public abstract class BaseActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_licenses:
                 // User chose the "Licenses" item, show the font licenses info
-                UiUtils.showSimpleDialogWithTitle(this, R.string.licenses,
+                Utils.showSimpleDialogWithTitle(this, R.string.licenses,
                         "License info will be shown here");
                 return true;
 
             case R.id.action_about_dev:
                 // User chose the "About Dev" item, show about me info
                 UrduTextSource urduTextSource = new UrduTextSource(this);
-                UiUtils.showDialogWithUrlsWithTitle(this, R.string.about_me,
+                Utils.showDialogWithUrlsWithTitle(this, R.string.about_me,
                         urduTextSource.prepareDevsInfoDialogText());
                 return true;
 
             case R.id.action_email:
-                Intent email = new Intent(Intent.ACTION_SEND, Uri.parse(getString(R.string.mail_to)));
-                email.setType(getString(R.string.intent_type));
-                email.putExtra(Intent.EXTRA_EMAIL, getReceptionName(R.string.dev_email));
-                try {
-                    startActivity(Intent.createChooser(email, getString(R.string.send_email)));
-                } catch (Exception ex) {
-                    Toast.makeText(this, R.string.email_app_isnt_installed_message, Toast.LENGTH_SHORT).show();
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO,
+                        Uri.fromParts("mailto", getString(R.string.dev_email), null));
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+                        getString(R.string.email_subject));
+
+                if(Utils.isIntentSafe(this, emailIntent)) {
+                    startActivity(emailIntent);
+                } else {
+                    Toast.makeText(this, R.string.email_client_app_not_found,
+                            Toast.LENGTH_SHORT).show();
                 }
                 return true;
 
             case R.id.action_tweet:
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.dev_twitter_handle));
-                intent.setType(getString(R.string.intent_type));
-                if (isTwitterInstalled(intent)) {
-                    startActivity(intent);
+                Intent twitterIntent = new Intent(Intent.ACTION_SEND);
+                twitterIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.dev_twitter_handle));
+                twitterIntent.setType(getString(R.string.intent_type));
+                if (Utils.isTwitterInstalled(this, twitterIntent)) {
+                    startActivity(twitterIntent);
                 } else {
-                    Toast.makeText(this, R.string.twitter_app_isnt_installed_message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.twitter_client_app_not_found,
+                            Toast.LENGTH_SHORT).show();
                 }
                 return true;
 
@@ -103,26 +101,4 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         }
     }
-
-    private boolean isTwitterInstalled(Intent intent) {
-        PackageManager packManager = getPackageManager();
-        List<ResolveInfo> resolvedInfoList = packManager.queryIntentActivities(intent,
-                PackageManager.MATCH_DEFAULT_ONLY);
-        boolean resolved = false;
-        for (ResolveInfo resolveInfo : resolvedInfoList) {
-            if (resolveInfo.activityInfo.packageName.startsWith(getString(R.string.twitter_identifier))) {
-                intent.setClassName(
-                        resolveInfo.activityInfo.packageName,
-                        resolveInfo.activityInfo.name);
-                resolved = true;
-                break;
-            }
-        }
-        return resolved;
-    }
-
-    private String[] getReceptionName(@StringRes int res) {
-        return new String[]{getString(res)};
-    }
-
 }

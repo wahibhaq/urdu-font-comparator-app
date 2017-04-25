@@ -3,6 +3,9 @@ package projects.hobby.urdufontcomparator.utils;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -14,12 +17,13 @@ import android.widget.TextView;
 
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 
+import java.util.List;
 import projects.hobby.urdufontcomparator.R;
 
 /**
- * General Utils Class for common general-purpose UI functions
+ * Utils Class for common general-purpose functions
  */
-public class UiUtils {
+public class Utils {
 
     public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
                                                    String content) {
@@ -81,5 +85,33 @@ public class UiUtils {
 
     public static Dialog showProgressUpdateDialog(Context context, String message) {
         return ProgressDialog.show(context, "", message, true, false);
+    }
+
+    /**
+     * If there is an activity available that can respond to the intent
+     * http://developer.android.com/training/basics/intents/sending.html#StartActivity
+     */
+    public static boolean isIntentSafe(Context context, Intent intent) {
+        PackageManager packageManager = context.getPackageManager();
+        List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+        return activities.size() > 0;
+    }
+
+    public static boolean isTwitterInstalled(Context context, Intent intent) {
+        PackageManager packManager = context.getPackageManager();
+        List<ResolveInfo> resolvedInfoList = packManager.queryIntentActivities(intent,
+                PackageManager.MATCH_DEFAULT_ONLY);
+        boolean resolved = false;
+        for (ResolveInfo resolveInfo : resolvedInfoList) {
+            if (resolveInfo.activityInfo.packageName
+                    .startsWith(context.getString(R.string.twitter_identifier))) {
+                intent.setClassName(
+                        resolveInfo.activityInfo.packageName,
+                        resolveInfo.activityInfo.name);
+                resolved = true;
+                break;
+            }
+        }
+        return resolved;
     }
 }
