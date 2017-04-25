@@ -72,8 +72,8 @@
     <string name="loading_message">Loading ........</string>
     <string name="error_message">Apologies, something doesn\'t look right!</string>
     <string name="select_font_size">Select Font Size</string>
-    <string name="email_app_isnt_installed_message">You don\'t have email app installed</string>
-    <string name="twitter_app_isnt_installed_message">You don\'t have twitter app installed</string>
+    <string name="email_app_isnt_installed_message">You don\'t have any Email client app installed</string>
+    <string name="twitter_app_isnt_installed_message">You don\'t have any Twitter client app installed</string>
 
 
 </resources>

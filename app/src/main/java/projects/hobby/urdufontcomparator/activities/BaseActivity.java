@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -74,10 +75,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_email:
-                String[] reception = {getString(R.string.dev_email)};
                 Intent email = new Intent(Intent.ACTION_SEND, Uri.parse(getString(R.string.mail_to)));
                 email.setType(getString(R.string.intent_type));
-                email.putExtra(Intent.EXTRA_EMAIL, reception);
+                email.putExtra(Intent.EXTRA_EMAIL, getReceptionName(R.string.dev_email));
                 try {
                     startActivity(Intent.createChooser(email, getString(R.string.send_email)));
                 } catch (Exception ex) {
@@ -104,7 +104,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isTwitterInstalled(Intent intent) {
+    private boolean isTwitterInstalled(Intent intent) {
         PackageManager packManager = getPackageManager();
         List<ResolveInfo> resolvedInfoList = packManager.queryIntentActivities(intent,
                 PackageManager.MATCH_DEFAULT_ONLY);
@@ -120,4 +120,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         return resolved;
     }
+
+    private String[] getReceptionName(@StringRes int res) {
+        return new String[]{getString(res)};
+    }
+
 }
