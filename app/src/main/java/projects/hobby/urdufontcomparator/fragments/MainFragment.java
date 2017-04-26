@@ -28,7 +28,7 @@ import projects.hobby.urdufontcomparator.adapter.ContentAdapter;
 import projects.hobby.urdufontcomparator.dagger.MainMvpModule;
 import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
-import projects.hobby.urdufontcomparator.utils.UiUtils;
+import projects.hobby.urdufontcomparator.utils.Utils;
 import stfalcon.universalpickerdialog.UniversalPickerDialog;
 
 
@@ -154,14 +154,14 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void showFontInfoDialog(UrduFontsSource font, String content) {
-        UiUtils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel, content);
+        Utils.showDialogWithUrlsWithTitle(getActivity(), font.fontLabel, content);
     }
 
     @Override
     public void showProgress(boolean show) {
         if (show) {
             if (progressDialog == null) {
-                progressDialog = UiUtils.showProgressUpdateDialog(getActivity(),
+                progressDialog = Utils.showProgressUpdateDialog(getActivity(),
                         getString(R.string.loading_message));
             }
         } else if (progressDialog != null) {
@@ -172,7 +172,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void showError(int errorMessageIf) {
-        UiUtils.showSimpleDialogWithoutTitle(getActivity(), getString(errorMessageIf));
+        Utils.showSimpleDialogWithoutTitle(getActivity(), getString(errorMessageIf));
     }
 
     @Override

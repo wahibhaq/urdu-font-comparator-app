@@ -18,9 +18,18 @@
     <string name="urdujahan_url">"http://www.urdujahan.com/urdu-fonts/"</string>
     <string name="csalt_itu_url">"http://csalt.itu.edu.pk/urdufont/"</string>
     <string name="google_noto_urdu_url">"https://www.google.com/get/noto/#nastaliq-aran"</string>
-    <string name="google_noto_arabic_url">"https://www.google.com/get/noto/#naskh-arab"</string>
-    <string name="cle_nafees_nastaleeq_url">"http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html"</string>
-    <string name="cle_nafees_riqa_url">"http://www.cle.org.pk/software/localization/Fonts/nafeesRiqa.html"</string>
+    <string name="google_noto_arabic_url">
+        "https://www.google.com/get/noto/#naskh-arab"</string>
+    <string name="cle_nafees_nastaleeq_url">
+        "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html"</string>
+    <string name="cle_nafees_riqa_url">
+        "http://www.cle.org.pk/software/localization/Fonts/nafeesRiqa.html"</string>
+
+    <!-- Intent Config -->
+    <string name="intent_type">text/plain</string>
+    <string name="mail_to">mailto:</string>
+    <string name="send_email">Send Email</string>
+    <string name="twitter_identifier">com.twitter.android</string>
 
     <!-- Keys for preferences -->
     <string name="font_size">fontsize</string>
