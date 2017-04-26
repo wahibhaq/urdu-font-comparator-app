@@ -30,4 +30,7 @@
     <string name="mail_to">mailto:</string>
     <string name="send_email">Send Email</string>
     <string name="twitter_identifier">com.twitter.android</string>
+
+    <!-- Keys for preferences -->
+    <string name="font_size">fontsize</string>
 </resources>

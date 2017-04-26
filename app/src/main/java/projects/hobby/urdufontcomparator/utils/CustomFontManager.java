@@ -3,6 +3,7 @@ package projects.hobby.urdufontcomparator.utils;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 

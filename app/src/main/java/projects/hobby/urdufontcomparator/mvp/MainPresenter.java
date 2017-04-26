@@ -1,10 +1,12 @@
 package projects.hobby.urdufontcomparator.mvp;
 
 import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
@@ -48,7 +50,6 @@ public class MainPresenter implements MainMvp.Presenter {
                     @Override public void call(String fontAsset) {
                         view.showProgress(false);
                         view.showAndSetSeekbar(true);
-                        view.setConvertedText(fontManager.getFont(fontAsset));
                     }
                 }, new Action1<Throwable>() {
                     @Override public void call(Throwable throwable) {
@@ -64,16 +65,6 @@ public class MainPresenter implements MainMvp.Presenter {
         final UrduFontsSource selectedFont = UrduFontsSource.from(font);
         view.showFontInfoDialog(selectedFont,
                 urduTextSource.prepareFontInfoDialogText(selectedFont));
-    }
-
-    @Override
-    public void handleFontSize(int size) {
-        view.setFontSize(size);
-    }
-
-    @Override
-    public void handleSampleTextShowing() {
-        view.setSampleText(urduTextSource.prepareSampleText());
     }
 
     private String getFontAsset(String fileName) {
