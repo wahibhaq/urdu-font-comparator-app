@@ -1,0 +1,61 @@
+[{
+  "name": "Meher Nastaleeq",
+  "filename": "MehrNastaliq_1.0_beta.ttf",
+  "provider": "Center for Speech and Language Technologies (CSaLT)",
+  "website": "http://csalt.itu.edu.pk/urdufont/",
+  "filesize": "110KB"
+}, {
+  "name": "Jameel Noori Nastaleeq",
+  "filename": "JameelNooriNastaleeq.ttf",
+  "provider": "Jameel Nastaliq Team",
+  "website": "http://www.urdujahan.com/urdu-fonts/",
+  "filesize": "10.8 MB"
+}, {
+  "name": "Jameel Noori Nastaleeq Kasheeda",
+  "filename": "JameelNooriNastaleeqKasheeda.ttf",
+  "provider": "Jameel Nastaliq Team",
+  "website": "http://www.urdujahan.com/urdu-fonts/",
+  "filesize": "10.1 MB"
+}, {
+  "name": "Pakistan Nastaleeq",
+  "filename": "PakNastaleeq_beta_release.ttf",
+  "provider": "Mohsin Shafeeque Hijazee",
+  "website": "http://www.urdujahan.com/urdu-fonts/",
+  "filesize": "170 KB"
+}, {
+  "name": "Fajer Noori Nastaleeq",
+  "filename": "FajerNooriNastaleeq.ttf",
+  "provider": "M. G. Abbas Malik",
+  "website": "http://www.urdujahan.com/urdu-fonts/",
+  "filesize": "261 KB"
+}, {
+  "name": "Urdu Naskh Asiatype",
+  "filename": "UrduNaskhAsiaType.ttf",
+  "provider": "Asiasoft",
+  "website": "http://www.urdujahan.com/urdu-fonts/",
+  "filesize": "93 KB"
+}, {
+  "name": "Noto Nastaliq Urdu",
+  "filename": "NotoNastaliqUrdu-Regular.ttf",
+  "provider": "Google",
+  "website": "https://www.google.com/get/noto/#nastaliq-aran",
+  "filesize": "497 KB"
+}, {
+  "name": "Noto Nashk Arabic",
+  "filename": "NotoNaskhArabic-Regular.ttf",
+  "provider": "Google",
+  "website": "https://www.google.com/get/noto/#naskh-arab",
+  "filesize": "146 KB"
+}, {
+  "name": "Nafees Nastaleeq",
+  "filename": "NafeesNastaleeq_v1.02.ttf",
+  "provider": "Center for Language Engineering (CLE)",
+  "website": "http://www.cle.org.pk/software/localization/Fonts/nafeesNastaleeq.html",
+  "filesize": "397 KB"
+}, {
+  "name": "Nafees Riqa",
+  "filename": "NafeesRiqa_v1.0.ttf",
+  "provider": "Center for Language Engineering (CLE)",
+  "website": "http://www.cle.org.pk/software/localization/Fonts/nafeesRiqa.html",
+  "filesize": "322 KB"
+}]

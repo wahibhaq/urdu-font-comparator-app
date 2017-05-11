@@ -28,8 +28,12 @@ import projects.hobby.urdufontcomparator.R;
 public class Utils {
 
     public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
-                                                   String content) {
+            String content) {
         showDialogWithUrlsInContent(context, context.getString(title), content);
+    }
+
+    public static void showDialogWithUrlsWithTitle(Context context, String title, String content) {
+        showDialogWithUrlsInContent(context, title, content);
     }
 
     private static void showDialogWithUrlsInContent(Context context, String title,
