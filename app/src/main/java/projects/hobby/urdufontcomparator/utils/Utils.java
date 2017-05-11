@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -26,8 +28,12 @@ import projects.hobby.urdufontcomparator.R;
 public class Utils {
 
     public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
-                                                   String content) {
+            String content) {
         showDialogWithUrlsInContent(context, context.getString(title), content);
+    }
+
+    public static void showDialogWithUrlsWithTitle(Context context, String title, String content) {
+        showDialogWithUrlsInContent(context, title, content);
     }
 
     private static void showDialogWithUrlsInContent(Context context, String title,
@@ -66,7 +72,7 @@ public class Utils {
         }
         Button btnOk = (Button) dialog.findViewById(R.id.ld_btn_confirm);
         if (btnOk != null) {
-            btnOk.setTextColor(context.getResources().getColor(R.color.colorPrimaryDark));
+            btnOk.setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
         }
     }
 
@@ -85,6 +91,11 @@ public class Utils {
 
     public static Dialog showProgressUpdateDialog(Context context, String message) {
         return ProgressDialog.show(context, "", message, true, false);
+    }
+
+    public static void showConnectionErrorDialog(Context context) {
+        showDialogWithUrlsWithoutTitle(context,
+                context.getResources().getString(R.string.connection_error));
     }
 
     /**
@@ -113,5 +124,17 @@ public class Utils {
             }
         }
         return resolved;
+    }
+
+    /**
+     *
+     * @return true if the internet connection currently in use is functional,
+     * otherwise false
+     */
+    public static boolean isOnline(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(
+                Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnected();
     }
 }

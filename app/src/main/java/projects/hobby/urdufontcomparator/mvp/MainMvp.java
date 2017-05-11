@@ -1,8 +1,7 @@
 package projects.hobby.urdufontcomparator.mvp;
 
 import java.util.List;
-
-import projects.hobby.urdufontcomparator.models.UrduFontsSource;
+import projects.hobby.urdufontcomparator.models.UrduFont;
 
 /**
  * Specifies the contract between the view and the presenter
@@ -10,9 +9,9 @@ import projects.hobby.urdufontcomparator.models.UrduFontsSource;
 public interface MainMvp {
 
     interface View {
-        void setFontSelectorContent(List<String> fontNames);
+        void setFontSelectorContent(List<UrduFont> fonts);
 
-        void showFontInfoDialog(UrduFontsSource font, String content);
+        void showFontInfoDialog(UrduFont font, String content);
 
         void showProgress(boolean show);
 
@@ -26,7 +25,7 @@ public interface MainMvp {
 
         void handleFontSelection(String fontName);
 
-        void handleFontInfoAction(String fontFile);
+        void handleFontInfoAction(UrduFont font);
 
     }
 }

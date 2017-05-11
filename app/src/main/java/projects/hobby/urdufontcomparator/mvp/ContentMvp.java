@@ -15,7 +15,7 @@ public interface ContentMvp {
     }
 
     interface Presenter {
-        void handleFontSelection(String fontName);
+        void handleFontSelection(String fontFileName);
 
         void handleSampleTextShowing();
     }

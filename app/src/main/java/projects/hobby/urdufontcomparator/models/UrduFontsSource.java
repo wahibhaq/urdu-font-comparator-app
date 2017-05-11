@@ -9,6 +9,8 @@ import projects.hobby.urdufontcomparator.R;
 /**
  * Enum to hold details of all the urdu fonts offered in the application
  */
+@Deprecated
+//For now data fetched from https://api.myjson.com/bins/xjgml and also published at https://justpaste.it/urdu-fonts-list
 public enum UrduFontsSource {
 
     NASTALEEQ_MEHER (R.string.label_urdu_font_meher_nastaleeq, "Meher Nastaleeq",
@@ -73,7 +75,8 @@ public enum UrduFontsSource {
                 return font;
             }
         }
-        throw new IllegalArgumentException("No UrduFontsSource enum constant for " + value);
+        //throw new IllegalArgumentException("No UrduFontsSource enum constant for " + value);
+        return null;
     }
 
     public static String[] getFontNames() {

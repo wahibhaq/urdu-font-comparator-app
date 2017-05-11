@@ -3,11 +3,11 @@ package projects.hobby.urdufontcomparator.dagger;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import javax.inject.Singleton;
-
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dagger.Module;
 import dagger.Provides;
+import javax.inject.Singleton;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
@@ -46,8 +46,7 @@ public class AppModule {
     }
 
     @Singleton
-    @Provides
-    SharedPreferences provideSharedPreferences(Context context) {
+    @Provides SharedPreferences provideSharedPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 }

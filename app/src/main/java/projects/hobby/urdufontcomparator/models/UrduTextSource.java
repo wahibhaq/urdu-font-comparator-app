@@ -38,16 +38,14 @@ public class UrduTextSource {
         return context.getString(R.string.line_spacing_with_dash);
     }
 
-    public String prepareFontInfoDialogText(UrduFontsSource font) {
-        return context.getString(R.string.dialog_font_provider_label, font.provider)
+    public String prepareFontInfoDialogText(UrduFont font) {
+        return context.getString(R.string.dialog_font_provider_label, font.getProvider())
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.dialog_font_website_label,
-                        context.getString(font.website)))
+                .concat(context.getString(R.string.dialog_font_website_label, font.getWebsite()))
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.dialog_font_filename_label,
-                        context.getString(font.fontFileName)))
+                .concat(context.getString(R.string.dialog_font_filename_label, font.getFilename()))
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.dialog_font_size_label, font.fileSize));
+                .concat(context.getString(R.string.dialog_font_size_label, font.getFilesize()));
     }
 
     public String prepareDevsInfoDialogText() {
