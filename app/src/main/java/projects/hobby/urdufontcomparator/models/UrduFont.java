@@ -1,5 +1,6 @@
 package projects.hobby.urdufontcomparator.models;
 
+import android.support.annotation.Nullable;
 import com.google.gson.annotations.SerializedName;
 
 public class UrduFont {
@@ -10,9 +11,11 @@ public class UrduFont {
     @SerializedName("filename")
     private String filename;
 
+    @Nullable
     @SerializedName("provider")
     private final String provider;
 
+    @Nullable
     @SerializedName("website")
     private final String website;
 
