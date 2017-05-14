@@ -2,6 +2,9 @@
     <string name="app_name">UrduFontComparator</string>
     <string name="app_name_expanded">Urdu Font Comparator</string>
 
+    <!-- Licenses -->
+    <string name="license_screen_title">Open-Source Licenses</string>
+
     <!-- About Developer -->
     <string name="dev_name">Wahib-Ul-Haq</string>
     <string name="dev_url">http://wahibhaq.com</string>

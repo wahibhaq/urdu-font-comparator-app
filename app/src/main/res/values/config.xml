@@ -33,4 +33,7 @@
 
     <!-- Keys for preferences -->
     <string name="font_size">fontsize</string>
+
+    <!-- License file -->
+    <string name="asset_file_path_license">file:///android_asset/licenses.html</string>
 </resources>
