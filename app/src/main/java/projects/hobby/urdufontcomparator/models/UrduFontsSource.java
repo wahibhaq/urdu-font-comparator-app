@@ -10,7 +10,7 @@ import projects.hobby.urdufontcomparator.R;
  * Enum to hold details of all the urdu fonts offered in the application
  */
 @Deprecated
-//For now data fetched from http://api.myjson.com/bins/xjgml and also published at https://justpaste.it/urdu-fonts-list
+//For now data fetched from https://quarkbackend.com/getfile/wahib-tech/urdufontslist 
 public enum UrduFontsSource {
 
     NASTALEEQ_MEHER (R.string.label_urdu_font_meher_nastaleeq, "Meher Nastaleeq",
