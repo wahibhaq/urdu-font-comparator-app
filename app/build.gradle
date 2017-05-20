@@ -35,12 +35,13 @@ dependencies {
   compile fileTree(dir: 'libs', include: ['*.jar'])
 
   // App's support dependencies
-  compile 'com.android.support:appcompat-v7:25.1.1'
-  compile 'com.android.support:support-v4:25.1.1'
+  compile 'com.android.support:appcompat-v7:25.3.1'
+  compile 'com.android.support:support-v4:25.3.1'
 
   // Dependencies for Android UI Tests
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
+    exclude module: 'jsr305'
   })
   androidTestCompile "com.google.dagger:dagger:2.7"
 
@@ -62,7 +63,7 @@ dependencies {
   compile "io.reactivex:rxjava:1.2.1"
   compile "io.reactivex:rxandroid:1.2.1"
 
-  //Dialogue
+  //Dialogs
   compile 'com.github.stfalcon:universalpickerdialog:0.1.0'
 
   //Lovely dialogue

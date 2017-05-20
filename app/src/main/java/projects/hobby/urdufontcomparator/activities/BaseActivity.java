@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import projects.hobby.urdufontcomparator.R;
+import projects.hobby.urdufontcomparator.fragments.LicenseFragment;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.Utils;
 
@@ -57,8 +59,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_licenses:
                 // User chose the "Licenses" item, show the font licenses info
-                Utils.showSimpleDialogWithTitle(this, R.string.licenses,
-                        "License info will be shown here");
+                Fragment fragment = LicenseFragment.newInstance();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, fragment)
+                        .addToBackStack(null)
+                        .commit();
                 return true;
 
             case R.id.action_about_dev:

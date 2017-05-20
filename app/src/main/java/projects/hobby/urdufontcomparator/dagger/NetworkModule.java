@@ -30,7 +30,7 @@ public class NetworkModule {
             OkHttpClient okHttpClient) {
 
         return new Retrofit.Builder()
-                .baseUrl("https://api.myjson.com/")
+                .baseUrl("https://quarkbackend.com/getfile/wahib-tech/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

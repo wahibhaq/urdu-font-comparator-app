@@ -43,9 +43,9 @@ public class RetrofitFontApi implements FontApi {
                 });
     }
 
+    //Original source is https://quarkbackend.com/getfile/wahib-tech/urdufontslist
     private interface RetrofitService {
-
-        @GET("bins/xjgml")
+        @GET("urdufontslist")
         Observable<List<UrduFont>> getFonts();
     }
 }
