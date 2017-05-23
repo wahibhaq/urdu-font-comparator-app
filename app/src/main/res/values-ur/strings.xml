@@ -1,0 +1,47 @@
+<resources>
+
+  <!-- About Developer -->
+  <string name="dev_name"> واحب الحق </string> 
+
+  <!-- General -->
+  <string name="select_font">فونٹ منتخب کریں</string> 
+  <string name="font_details">فونٹ تفصیلات </string> 
+  <string name="not_available">دستیاب نہیں</string>
+
+  <!-- Urdu Font Names -->
+  <string name="label_urdu_font_meher_nastaleeq"> مہر نستعلیق </string>
+  <string name="label_urdu_font_jameel_noori_nastaleeq"> جمیل نوری نستعلیق </string> 
+  <string name="label_urdu_font_jameel_noori_nastaleeq_kasheeda"> جمیل نوری نستعلیق کشیدہ </string>
+   <string name="label_urdu_font_pakistan_nastaleeq"> پاکستان نستعلیق </string> 
+  <string name="label_urdu_font_fajer_noori_nastaleeq"> فجر نوری نستعلیق </string> 
+  <string name="label_urdu_font_urdu_naskh_asiatype"> اردو نسخ ایشیا </string> 
+  <string name="label_urdu_font_noto_nastaliq_urdu"> نوٹو نستعلیق اردو </string>
+   <string name="label_urdu_font_noto_naskh_arabic"> نوٹو نسخ عربی </string>
+   <string name="label_urdu_font_nafees_nastaleeq"> نفیس نستعلیق </string> 
+  <string name="label_urdu_font_nafees_riqa"> نفیس رقا </string>
+
+  <!-- Actionbar Overflow Menu -->
+   <string name="about_me"> ڈویلپر کے متعلق  </string> 
+  <string name="licenses"> لائسنسز </string> 
+  <string name="contact_us"> ہم سے رابطہ کریں </string> 
+  <string name="email_us"> ای میل </string>
+   <string name="tweet_us"> ٹویٹ </string>
+   <string name="email_subject"> میری راۓ/ تاثرات  </string>   
+
+  <!-- Font Info Dialog --> 
+  <string name="ok">Ok</string>
+   <string name="dialog_font_provider_label">  فراہم کردہ منجانب: %s</string>
+   <string name="dialog_font_website_label"> ویب سائٹ: %s</string> 
+  <string name="dialog_font_filename_label"> فائل کا نام: %s</string>
+   <string name="dialog_font_size_label"> فائل کا سائز  : %s</string>  
+
+  <!-- Alerts -->
+   <string name="loading_message"> ........ لوڈنگ </string>
+   <string name="error_message_generic">  معذرت، کچھ چیز درست نہیں لگ رہی </string>
+   <string name="error_message_unknown_font">معذرت، منتخب فونٹ نامعلوم ہے</string>
+   <string name="select_font_size"> فونٹ کا سائز منتخب کریں </string> 
+  <string name="email_client_app_not_found"> آپ کے آلے  پر ای میل کلائنٹ ایپلیکیشن نہیں ملی تھی </string> 
+  <string name="twitter_client_app_not_found"> آپ کے آلے  پرٹویٹر کلائنٹ ایپلیکیشن نہیں ملی تھی </string> 
+  <string name="connection_error">  !لگتا ہے آپ کے پاس  انٹرنیٹ کنکشن موجود نہیں</string>
+
+</resources>
