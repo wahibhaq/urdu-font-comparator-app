@@ -1,17 +1,10 @@
 package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,12 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
-import com.hsalf.smilerating.SmileRating;
-import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +55,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private UrduFont currentSelectedFont;
 
+    private String currentSelectedFontName;
+
     private Dialog progressDialog;
 
     private List<UrduFont> fonts;
@@ -72,8 +64,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     private List<String> fontNames;
 
     private UniversalPickerDialog.Builder builderPickerDialog;
-
-    private static int fontRatingValue = 0;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -179,6 +169,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
@@ -348,6 +339,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private void setCurrentSelectedFont(int position) {
         spinnerFontNames.setSelection(position);
+        currentSelectedFontName = fontNames.get(position);
         currentSelectedFont = fonts.get(position);
     }
 
