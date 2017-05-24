@@ -1,7 +1,6 @@
 package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,11 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -73,6 +67,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     protected DatabaseReference firebaseDbReference;
 
     private UrduFont currentSelectedFont;
+
+    private String currentSelectedFontName;
 
     private Dialog progressDialog;
 
@@ -195,6 +191,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
             @Override
             public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
