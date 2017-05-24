@@ -11,15 +11,20 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import me.relex.circleindicator.CircleIndicator;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
@@ -96,7 +101,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(Utils.isOnline(getActivity())) {
+        if (Utils.isOnline(getActivity())) {
             presenter.loadFontsAvailable();
         } else {
             Utils.showConnectionErrorDialog(getActivity());
@@ -123,13 +128,18 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         presenter.handleFontInfoAction(currentSelectedFont);
     }
 
+    @OnClick(R.id.button_rate_this_font)
+    void showFontRatingDialog() {
+        Utils.showRatingDialog(getActivity(), currentSelectedFont.getFontName());
+    }
+
     @Override
     public void setFontSelectorContent(final List<UrduFont> fonts) {
         //Gets called after successful fetching from backend
         this.fonts = fonts;
 
         fontNames = new ArrayList<>();
-        for(UrduFont font: fonts) {
+        for (UrduFont font : fonts) {
             fontNames.add(font.getFontName());
         }
 
@@ -154,7 +164,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset,
-                    int positionOffsetPixels) {
+                                       int positionOffsetPixels) {
 
             }
 
@@ -173,8 +183,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @OnTouch(R.id.spinner_font_names)
     protected boolean onSpinnerTouchListener(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            if(currentSelectedFont != null && builderPickerDialog != null) {
-                    builderPickerDialog.show();
+            if (currentSelectedFont != null && builderPickerDialog != null) {
+                builderPickerDialog.show();
             } else {
                 presenter.loadFontsAvailable();
             }

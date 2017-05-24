@@ -55,6 +55,16 @@
             android:layout_gravity="center_vertical"
             android:layout_marginTop="@dimen/margin_8"
             android:text="@string/font_details" />
+
+        <Button
+            android:id="@+id/button_rate_this_font"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_font_details"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/rate_this_font" />
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager

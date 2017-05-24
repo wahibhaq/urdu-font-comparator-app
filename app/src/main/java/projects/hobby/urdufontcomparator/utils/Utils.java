@@ -13,10 +13,15 @@ import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.util.Patterns;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hsalf.smilerating.SmileRating;
+import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 
 import java.util.List;
@@ -96,6 +101,24 @@ public class Utils {
     public static void showConnectionErrorDialog(Context context) {
         showDialogWithUrlsWithoutTitle(context,
                 context.getResources().getString(R.string.connection_error));
+    }
+
+    public static void showRatingDialog(Context context , String fontName){
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View ratingBar = inflater.inflate(R.layout.font_rating_bar, null);
+        new LovelyCustomDialog(context)
+                .setView(ratingBar)
+                .setTopColorRes(R.color.colorPrimary)
+                .setTitle("Rate "+ fontName)
+                .setIcon(R.drawable.ic_star_border)
+                .show();
+        SmileRating smileRating = (SmileRating) ratingBar.findViewById(R.id.rating_bar);
+        smileRating.setOnRatingSelectedListener(new SmileRating.OnRatingSelectedListener() {
+            @Override
+            public void onRatingSelected(int level, boolean reselected) {
+                Log.d("TAG", "clicked");
+            }
+        });
     }
 
     /**
