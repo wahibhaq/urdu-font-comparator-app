@@ -11,13 +11,15 @@ public interface MainMvp {
     interface View {
         void setFontSelectorContent(List<UrduFont> fonts);
 
-        void showFontInfoDialog(UrduFont font, String content);
+        void showFontDetailsDialog(UrduFont font, String content);
 
         void showProgress(boolean show);
 
         void showError(int errorMessageId);
 
         void showAndSetSeekbar(boolean show);
+
+        void showFontRatingDialog(UrduFont font);
     }
 
     interface Presenter {
@@ -26,6 +28,8 @@ public interface MainMvp {
         void handleFontSelection(String fontName);
 
         void handleFontInfoAction(UrduFont font);
+
+        void handleFontRateAction(UrduFont font);
 
     }
 }

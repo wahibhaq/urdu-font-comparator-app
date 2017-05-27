@@ -46,12 +46,19 @@
             android:layout_below="@+id/textview_fontsize_label"
             android:layout_marginTop="@dimen/margin_8" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_below="@id/seekbar">
+
         <Button
             android:id="@+id/button_font_details"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/seekbar"
+            android:layout_weight="0.5"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="@dimen/margin_8"
             android:text="@string/font_details" />
@@ -59,12 +66,14 @@
         <Button
             android:id="@+id/button_rate_this_font"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button_font_details"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="@dimen/margin_8"
             android:text="@string/rate_this_font" />
+
+        </LinearLayout>
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager

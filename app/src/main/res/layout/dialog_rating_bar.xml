@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginEnd="@dimen/margin_20"
+        android:layout_marginBottom="@dimen/margin_20">
+
+      <TextView
+          android:id="@+id/text_rating_bar_title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="@string/rate_font_dialog_message"
+          android:textSize="@dimen/text_size_16"
+          android:textAlignment="textStart"
+          android:layout_marginTop="@dimen/margin_12"
+          android:padding="@dimen/margin_4"/>
+
+      <com.hsalf.smilerating.SmileRating
+          android:id="@+id/rating_bar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/margin_20"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_below="@id/layout_content">
+
+      <TextView
+          android:id="@+id/button_rating_submit"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/button_submit"
+          style="@style/DialogButton"
+          android:textColor="@color/colorPrimaryDark"
+          android:textSize="@dimen/text_size_16"
+          android:layout_alignParentEnd="true"/>
+
+      <TextView
+          android:id="@+id/button_rating_cancel"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/button_cancel"
+          style="@style/DialogButton"
+          android:textSize="@dimen/text_size_16"
+          android:textColor="@color/colorPrimaryDark"
+          android:layout_toStartOf="@id/button_rating_submit"/>
+
+    </RelativeLayout>
+</RelativeLayout>

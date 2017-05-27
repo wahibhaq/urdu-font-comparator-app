@@ -4,7 +4,8 @@
   <dimen name="margin_8">8dp</dimen>
   <dimen name="margin_12">12dp</dimen>
   <dimen name="margin_16">16dp</dimen>
-  
+  <dimen name="margin_20">20dp</dimen>
+
   <!-- general font sizes -->
   <dimen name="text_size_8">8sp</dimen>
   <dimen name="text_size_12">12sp</dimen>

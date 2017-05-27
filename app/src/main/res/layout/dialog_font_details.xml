@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <TextView
+      android:id="@+id/text_font_details_message"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="@dimen/text_size_16"
+      android:textAlignment="textStart"
+      tools:text="Description comes here"
+      android:layout_marginTop="@dimen/margin_12"
+      android:layout_marginStart="@dimen/margin_20"
+      android:layout_marginEnd="@dimen/margin_20"
+      android:layout_marginBottom="@dimen/margin_20"
+      android:padding="@dimen/margin_4"/>
+
+  <RelativeLayout
+      android:id="@+id/layout_bottom_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_vertical"
+      android:layout_below="@id/text_font_details_message">
+
+    <TextView
+        android:id="@+id/button_font_details_got_it"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_got_it"
+        style="@style/DialogButton"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/text_size_16"
+        android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
