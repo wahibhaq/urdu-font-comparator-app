@@ -92,7 +92,7 @@
     <string name="button_submit">SUBMIT</string>
     <string name="button_cancel">NO, THANKS</string>
     <string name="rate_font_dialog_title">Rate %s Font</string>
-    <string name="rate_font_dialog_message">Hi, kindly rate this font as your feedback will help other users in deciding a better font for their apps</string>
+    <string name="rate_font_dialog_message">Hi, kindly rate this font on the basis of its attractiveness, aesthetics and readability. Your feedback will assist other users in making a more informed decision.</string>
 
     <!-- Alerts -->
     <string name="loading_message">Loading ........</string>
