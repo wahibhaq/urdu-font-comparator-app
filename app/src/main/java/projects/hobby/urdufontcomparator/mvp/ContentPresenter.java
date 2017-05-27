@@ -1,7 +1,6 @@
 package projects.hobby.urdufontcomparator.mvp;
 
 import android.graphics.Typeface;
-
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
@@ -15,8 +14,8 @@ public class ContentPresenter implements ContentMvp.Presenter {
 
     private UrduTextSource urduTextSource;
 
-    public ContentPresenter(ContentMvp.View view, CustomFontManager customFontManager, UrduTextSource
-            urduTextSource) {
+    public ContentPresenter(ContentMvp.View view, CustomFontManager customFontManager,
+            UrduTextSource urduTextSource) {
         this.view = view;
         this.customFontManager = customFontManager;
         this.urduTextSource = urduTextSource;

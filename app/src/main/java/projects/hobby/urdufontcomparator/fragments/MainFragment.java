@@ -102,6 +102,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
             Utils.showConnectionErrorDialog(getActivity());
         }
         setActionbarTitle();
+        setDefaultFontSize();
+    }
+
+    private void setDefaultFontSize() {
+        seekBar.setProgress(0);
+        saveUpdatedFontSize(MIN_SEEKBAR_LEVEL);
     }
 
     private void setActionbarTitle() {

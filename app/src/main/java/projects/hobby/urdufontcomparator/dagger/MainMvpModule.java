@@ -7,7 +7,6 @@ import projects.hobby.urdufontcomparator.data.FontApi;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.mvp.MainPresenter;
-import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
 @Module
 public class MainMvpModule {
@@ -20,8 +19,7 @@ public class MainMvpModule {
 
     @Singleton
     @Provides
-    MainMvp.Presenter provideMainMvpPresenter(CustomFontManager fontManager,
-            UrduTextSource urduTextSource, FontApi fontSource) {
-        return new MainPresenter(view, fontManager, urduTextSource, fontSource);
+    MainMvp.Presenter provideMainMvpPresenter(UrduTextSource urduTextSource, FontApi fontSource) {
+        return new MainPresenter(view, urduTextSource, fontSource);
     }
 }

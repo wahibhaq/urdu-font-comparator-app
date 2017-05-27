@@ -6,7 +6,6 @@ import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.data.FontApi;
 import projects.hobby.urdufontcomparator.models.UrduFont;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
-import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -18,16 +17,13 @@ public class MainPresenter implements MainMvp.Presenter {
 
     private final MainMvp.View view;
 
-    private final CustomFontManager fontManager;
-
     private final UrduTextSource urduTextSource;
 
     private final FontApi fontSource;
 
-    public MainPresenter(MainMvp.View view, CustomFontManager fontManager,
+    public MainPresenter(MainMvp.View view,
             UrduTextSource urduTextSource, FontApi fontSource) {
         this.view = view;
-        this.fontManager = fontManager;
         this.urduTextSource = urduTextSource;
         this.fontSource = fontSource;
 
