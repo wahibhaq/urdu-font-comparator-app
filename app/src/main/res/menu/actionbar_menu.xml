@@ -8,25 +8,25 @@
 
         <item
             android:id="@+id/action_licenses"
-            android:title="@string/licenses"
+            android:title="@string/menu_licenses"
             app:showAsAction="never" />
 
         <item
             android:id="@+id/action_about_dev"
-            android:title="@string/about_me"
+            android:title="@string/menu_about_devs"
             app:showAsAction="never" />
         <item
             android:id="@+id/action_contact_us"
-            android:title="@string/contact_us"
+            android:title="@string/menu_contact"
             app:showAsAction="never">
             <menu>
                 <item
                     android:id="@+id/action_email"
-                    android:title="@string/email_us"
+                    android:title="@string/menu_contact_via_email"
                     app:showAsAction="never" />
                 <item
                     android:id="@+id/action_tweet"
-                    android:title="@string/tweet_us"
+                    android:title="@string/menu_contact_via_tweet"
                     app:showAsAction="never" />
             </menu>
 
