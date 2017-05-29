@@ -2,20 +2,37 @@
 
 ## Motivation
 
-<img src="https://i.imgur.com/9nw5ttS.png" width="500" height="200" align="center">
+<img src="https://i.imgur.com/LlKatq4.jpg" width="600" height="300" align="middle" alt="Source: Dawn Images">
+
+Credits: [Dawn](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakistans-official-language)
+
+<br>
 
 This project is about an Android application which allows users to choose different Urdu Fonts and visually see how it impacts sample Urdu text.
 
 I wanted to play with Urdu fonts for a while but was still not getting a starting point or a solid motivation to do it. This idea originated since I read the news about a new and much improved font, [Meher Nastaliq](http://csalt.itu.edu.pk/urdufont/) launched by [Center for Speech and Language Technologies (CSaLT)](http://csalt.itu.edu.pk/) lab at [International Technical University (ITU)](http://itu.edu.pk/), Lahore (Pakistan). The website claims it to be a step towards advanced Urdu Typography and a font which serves the need of modern mobile applications. Even Dawn covered a [story](https://www.dawn.com/news/1313737) about it being a Calligraphy-based Urdu font for the Internet. It was enough to get my attention and wanted to try it out and also see how it is different from others specially Jameel Noori Nastaleeq Font which is considered the best so far. Then once I started thinking about it, I realized that there is no app or a resource where I can see how Urdu text looks like and rendered in different fonts (there are a lot actually!).
 
-
 ## Background
 
 As mentioned, I started this project for a problem I was facing but I am quite hopeful that it will add some value for others as well. Long story short, It can assist you in making a better decision on chosing the right Urdu font for your Android app or mobile app in general. The font is the first contact, which the user makes with an application on his screen, and largely it is the choice and attractiveness of the font, which makes the application visually appealing. The beauty, aesthetics and size of a font are one of the key factors. The choice of font matters a lot because it makes the text more natural to read and fairly easy to understand.
 
+<img src="https://i.imgur.com/9nw5ttS.png" width="500" height="200" align="middle">
+
+Credits: [Rekhta](https://rekhta.org/couplets/saliiqe-se-havaaon-men-jo-khushbuu-ghol-sakte-hain-unknown-couplets?lang=ur)
+
+<br><br>
+
 Urdu is my mother tongue, National language of Pakistan and widely spoken in 6 countries by [60+ million people](http://mentalfloss.com/article/64594/proportional-map-worlds-largest-languages) but still Urdu as a language has not been sufficiently integrated with what we call "Digital Age". A significant number of Urdu speakers aren't technologically active, especially those residing in India and Pakistan due to poor economic conditions of the demographic. Among those active, majority of whom are Millenials don't write Urdu at all and are comfortable with using Roman Urdu as a medium of communication. I, myself, started using Urdu on Whatsapp and Messenger roughly 2 years ago after installing Urdu keyboard on my Android device. For strangers, they find it odd and fascinating at the same time but I am quite comfortable and also fluent with the writing speed.
 
 I feel like there are several problems which need to be addressed. Firstly, we only have handful of websites (e.g [BBC-Urdu](http://www.bbc.co.uk/urdu/)) entirely in Urdu and even fewer mobile apps. Secondly, there's only a small chunk (e.g [Jang News](https://jang.com.pk/)) in Nastaliq script. Thirdly, Google Translator performs extremely poor with English to Urdu translation reducing reach. Last but not the least, there's a need to encourage our friends, family members and specially youth to proudly use Urdu as a communication medium and own it.  
+
+
+
+<img src="https://i.imgur.com/UpAfjQO.jpg" width="600" height="300" align="middle" alt="Source: Dawn Images">
+
+Credits: [Dawn](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakistans-official-language)
+
+<br>
 
 ### Naskh vs Nastaliq
 
@@ -34,7 +51,7 @@ Nastaliq on [Daily Pakistan](http://dailypakistan.com.pk/latest) website <br><br
 Naskh on [BBC Urdu](http://www.bbc.com/urdu/world) website <br><br>
 <img src="https://i.imgur.com/lFUGYu0.png" width="200" height="400" align="center">
 
-<br><br>
+<br>
 
 A brief overview of both scripts:
 
