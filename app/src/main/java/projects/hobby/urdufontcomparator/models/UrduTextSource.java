@@ -23,7 +23,10 @@ public class UrduTextSource {
                 .concat(getLineSpacingsWithDash())
                 .concat(context.getString(R.string.urdu_sample_text_poetry_3))
                 .concat(getLineSpacingsWithDash())
-                .concat(context.getString(R.string.urdu_sample_text_poetry_4));
+                .concat(context.getString(R.string.urdu_sample_text_poetry_4))
+                .concat(getLineSpacingsWithDash())
+                .concat(context.getString(R.string.urdu_sample_text_poetry_5));
+
         String textToBold = context.getString(R.string.urdu_sample_text_bold);
         String alphabets = context.getString(R.string.urdu_sample_text_alphabets);
         return textToBold.concat(getLineSpacingsWithDash())
@@ -56,7 +59,11 @@ public class UrduTextSource {
                 .concat(context.getString(R.string.dev_zeeshan_name))
                 .concat(getLineSpacings())
                 .concat(context.getString(R.string.dev_zeeshan_url));
+    }
 
+    public String prepareCreditsDialogText() {
+        return getLineSpacings()
+                .concat(context.getString(R.string.credits_text));
     }
 
     private String getLineSpacings() {

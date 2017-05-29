@@ -5,6 +5,13 @@
     <!-- Licenses -->
     <string name="license_screen_title">Open-Source Licenses</string>
 
+    <!-- Credits -->
+    <string name="credits_text">
+         Allama `Iqbal
+        \nDr. Mohammad Yaqub `Aamir`
+        \nDaagh `Dehlvi`
+    </string>
+
     <!-- About Developer -->
     <string name="dev_wahib_name">Wahib-Ul-Haq</string>
     <string name="dev_wahib_url">http://wahibhaq.com</string>
@@ -39,17 +46,22 @@
     <string name="urdu_sample_text_poetry_2">
     تو رہ نوردِ شوق ہے منزل نہ کر قبول\n
 لیلیٰ بھی ہم نشیں ہو تو محمل نہ کر قبول
-  </string>
+    </string>
 
     <string name="urdu_sample_text_poetry_3">
     گیسوئےِ اردو  ابھی  مِنّت  پذیرِ  شانہ  ہے\n
 شمع  یہ  سودائیِ  دل  سوزئِ  پروانہ  ہے
-  </string>
+    </string>
 
     <string name="urdu_sample_text_poetry_4">
     بعدِ نفرت  پھر موحبّت  کو  زُبان  درکار  ہے\n
 پھر عزیزِ جان  وہی  اردو  ُزبان  ہونے  لگی
-  </string>
+    </string>
+
+    <string name="urdu_sample_text_poetry_5">
+      نہیں کھیل اے داغ یاروں سے کہ دو\n
+کہ آتی ہے اُردو زباں آتے آتے
+    </string>
 
     <string name="urdu_sample_text_bold">اردو رسم الخط زبان کی ساری مروج آوازوں کی نمائندگی کرتا ہے۔ اردو کے حروف بناوٹ کے لحاظ سے حددرجہ سادہ اور اشکال کے اعتبار سے بہت کم ہیں ۔ اردو زبان اپنے الفاظ کی بناوٹ کی بناء پر دنیا کی ہر زبان کے مقابلہ میں لکھنے ، پڑھنے اور سیکھنے کے حوالے سے آسان ترین زبان ہے۔</string>
 
@@ -62,13 +74,14 @@
     <!-- Actionbar Overflow Menu -->
     <string name="menu_about_devs">About Developers</string>
     <string name="menu_licenses">Licenses</string>
+    <string name="menu_credits">Credits</string>
     <string name="menu_contact">Contact Us</string>
     <string name="menu_contact_via_email">Email</string>
     <string name="menu_contact_via_tweet">Tweet</string>
     <string name="menu_contact_email_subject">My Feedback</string>
 
 
-  <!-- Font Info Dialog -->
+    <!-- Font Info Dialog -->
     <string name="ok">Ok</string>
     <string name="dialog_font_provider_label">Provided By: %s</string>
     <string name="dialog_font_website_label">Website: %s</string>

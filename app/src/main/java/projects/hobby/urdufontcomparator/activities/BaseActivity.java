@@ -58,7 +58,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_licenses:
-                // User chose the "Licenses" item, show the font licenses info
                 Fragment fragment = LicenseFragment.newInstance();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content, fragment)
@@ -67,12 +66,16 @@ public abstract class BaseActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_about_dev:
-                // User chose the "About Dev" item, show about me info
-                UrduTextSource urduTextSource = new UrduTextSource(this);
+                UrduTextSource textSourceDev = new UrduTextSource(this);
                 Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_devs,
-                        urduTextSource.prepareDevsInfoDialogText());
+                        textSourceDev.prepareDevsInfoDialogText());
                 return true;
 
+            case R.id.action_credits:
+                UrduTextSource textSourceCredits = new UrduTextSource(this);
+                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_credits,
+                        textSourceCredits.prepareCreditsDialogText());
+                return true;
             case R.id.action_email:
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO,
                         Uri.fromParts("mailto", getString(R.string.dev_wahib_email), null));

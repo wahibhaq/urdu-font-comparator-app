@@ -15,6 +15,12 @@
             android:id="@+id/action_about_dev"
             android:title="@string/menu_about_devs"
             app:showAsAction="never" />
+
+        <item
+            android:id="@+id/action_credits"
+            android:title="@string/menu_credits"
+            app:showAsAction="never" />
+
         <item
             android:id="@+id/action_contact_us"
             android:title="@string/menu_contact"
