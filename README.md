@@ -17,7 +17,8 @@ I wanted to play with Urdu fonts for a while but was still not getting a startin
 As mentioned, I started this project for a problem I was facing but I am quite hopeful that it will add some value for others as well. Long story short, It can assist you in making a better decision on chosing the right Urdu font for your Android app or mobile app in general. The font is the first contact, which the user makes with an application on his screen, and largely it is the choice and attractiveness of the font, which makes the application visually appealing. The beauty, aesthetics and size of a font are one of the key factors. The choice of font matters a lot because it makes the text more natural to read and fairly easy to understand.
 
 <img src="https://i.imgur.com/9nw5ttS.png" width="500" height="200" align="middle">
-Credits: [Rekhta](https://rekhta.org)
+
+Credits: [Rekhta](https://rekhta.org/couplets/saliiqe-se-havaaon-men-jo-khushbuu-ghol-sakte-hain-unknown-couplets?lang=ur)
 
 <br><br>
 
