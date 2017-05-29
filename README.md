@@ -2,8 +2,10 @@
 
 ## Motivation
 
-<img src="https://i.imgur.com/LlKatq4.jpg" width="800" height="500" align="middle" alt="Source: Dawn Images">
-Credits: [Dawn Images](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakistans-official-language)
+<img src="https://i.imgur.com/LlKatq4.jpg" width="600" height="300" align="middle" alt="Source: Dawn Images">
+
+Credits: [Dawn](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakistans-official-language)
+
 <br>
 
 This project is about an Android application which allows users to choose different Urdu Fonts and visually see how it impacts sample Urdu text.
@@ -16,14 +18,19 @@ As mentioned, I started this project for a problem I was facing but I am quite h
 
 <img src="https://i.imgur.com/9nw5ttS.png" width="500" height="200" align="middle">
 Credits: [Rekhta](https://rekhta.org)
-<br>
+
+<br><br>
 
 Urdu is my mother tongue, National language of Pakistan and widely spoken in 6 countries by [60+ million people](http://mentalfloss.com/article/64594/proportional-map-worlds-largest-languages) but still Urdu as a language has not been sufficiently integrated with what we call "Digital Age". A significant number of Urdu speakers aren't technologically active, especially those residing in India and Pakistan due to poor economic conditions of the demographic. Among those active, majority of whom are Millenials don't write Urdu at all and are comfortable with using Roman Urdu as a medium of communication. I, myself, started using Urdu on Whatsapp and Messenger roughly 2 years ago after installing Urdu keyboard on my Android device. For strangers, they find it odd and fascinating at the same time but I am quite comfortable and also fluent with the writing speed.
 
 I feel like there are several problems which need to be addressed. Firstly, we only have handful of websites (e.g [BBC-Urdu](http://www.bbc.co.uk/urdu/)) entirely in Urdu and even fewer mobile apps. Secondly, there's only a small chunk (e.g [Jang News](https://jang.com.pk/)) in Nastaliq script. Thirdly, Google Translator performs extremely poor with English to Urdu translation reducing reach. Last but not the least, there's a need to encourage our friends, family members and specially youth to proudly use Urdu as a communication medium and own it.  
 
-<img src="https://i.imgur.com/UpAfjQO.jpg" width="800" height="500" align="middle" alt="Source: Dawn Images">
-Credits: [Dawn Images](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakistans-official-language)
+
+
+<img src="https://i.imgur.com/UpAfjQO.jpg" width="600" height="300" align="middle" alt="Source: Dawn Images">
+
+Credits: [Dawn](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakistans-official-language)
+
 <br>
 
 ### Naskh vs Nastaliq
@@ -43,7 +50,7 @@ Nastaliq on [Daily Pakistan](http://dailypakistan.com.pk/latest) website <br><br
 Naskh on [BBC Urdu](http://www.bbc.com/urdu/world) website <br><br>
 <img src="https://i.imgur.com/lFUGYu0.png" width="200" height="400" align="center">
 
-<br><br>
+<br>
 
 A brief overview of both scripts:
 
