@@ -69,15 +69,15 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.action_about_dev:
                 // User chose the "About Dev" item, show about me info
                 UrduTextSource urduTextSource = new UrduTextSource(this);
-                Utils.showDialogWithUrlsWithTitle(this, R.string.about_me,
+                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_devs,
                         urduTextSource.prepareDevsInfoDialogText());
                 return true;
 
             case R.id.action_email:
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO,
-                        Uri.fromParts("mailto", getString(R.string.dev_email), null));
+                        Uri.fromParts("mailto", getString(R.string.dev_wahib_email), null));
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-                        getString(R.string.email_subject));
+                        getString(R.string.menu_contact_email_subject));
 
                 if(Utils.isIntentSafe(this, emailIntent)) {
                     startActivity(emailIntent);
@@ -89,7 +89,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             case R.id.action_tweet:
                 Intent twitterIntent = new Intent(Intent.ACTION_SEND);
-                twitterIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.dev_twitter_handle));
+                twitterIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.dev_wahib_twitter));
                 twitterIntent.setType(getString(R.string.intent_type));
                 if (Utils.isTwitterInstalled(this, twitterIntent)) {
                     startActivity(twitterIntent);

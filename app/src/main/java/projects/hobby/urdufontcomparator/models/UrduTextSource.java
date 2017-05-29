@@ -1,13 +1,11 @@
 package projects.hobby.urdufontcomparator.models;
 
 import android.content.Context;
-
 import javax.inject.Inject;
-
 import projects.hobby.urdufontcomparator.R;
 
 /**
- * Acts as a Model for Content as for now it serves for Sample Text and Font Info Dialog
+ * Acts as a Model for Content as for now it serves for Sample Text and Overflow Menu Items
  */
 public class UrduTextSource {
 
@@ -49,9 +47,16 @@ public class UrduTextSource {
     }
 
     public String prepareDevsInfoDialogText() {
-        return context.getString(R.string.dev_name)
+        return  getLineSpacings()
+                .concat(context.getString(R.string.dev_wahib_name))
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.dev_url));
+                .concat(context.getString(R.string.dev_wahib_url))
+                .concat(getLineSpacings())
+                .concat(getLineSpacings())
+                .concat(context.getString(R.string.dev_zeeshan_name))
+                .concat(getLineSpacings())
+                .concat(context.getString(R.string.dev_zeeshan_url));
+
     }
 
     private String getLineSpacings() {

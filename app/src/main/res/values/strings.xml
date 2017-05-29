@@ -6,10 +6,13 @@
     <string name="license_screen_title">Open-Source Licenses</string>
 
     <!-- About Developer -->
-    <string name="dev_name">Wahib-Ul-Haq</string>
-    <string name="dev_url">http://wahibhaq.com</string>
-    <string name="dev_email">wahib.tech@gmail.com</string>
-    <string name="dev_twitter_handle">\@wahibhaq</string>
+    <string name="dev_wahib_name">Wahib-Ul-Haq</string>
+    <string name="dev_wahib_url">http://wahibhaq.com</string>
+    <string name="dev_wahib_email">wahib.tech@gmail.com</string>
+    <string name="dev_wahib_twitter">\@wahibhaq</string>
+    <string name="dev_zeeshan_name">Zeeshan Shabbir</string>
+    <string name="dev_zeeshan_url">https://github.com/ZeeshanShabbir</string>
+    <string name="dev_zeeshan_email">zeeshan.shabbir79@gmail.com</string>
 
     <!-- General -->
     <string name="select_font">Select Font</string>
@@ -57,12 +60,12 @@
     <string name="line_spacing">"\n"</string>
 
     <!-- Actionbar Overflow Menu -->
-    <string name="about_me">About Developer</string>
-    <string name="licenses">Licenses</string>
-    <string name="contact_us">Contact Us</string>
-    <string name="email_us">Email</string>
-    <string name="tweet_us">Tweet</string>
-    <string name="email_subject">My Feedback</string>
+    <string name="menu_about_devs">About Developers</string>
+    <string name="menu_licenses">Licenses</string>
+    <string name="menu_contact">Contact Us</string>
+    <string name="menu_contact_via_email">Email</string>
+    <string name="menu_contact_via_tweet">Tweet</string>
+    <string name="menu_contact_email_subject">My Feedback</string>
 
 
   <!-- Font Info Dialog -->
