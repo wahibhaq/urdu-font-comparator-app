@@ -1,8 +1,7 @@
 package projects.hobby.urdufontcomparator.dagger;
 
-import javax.inject.Singleton;
-
 import dagger.Subcomponent;
+import javax.inject.Singleton;
 import projects.hobby.urdufontcomparator.fragments.MainFragment;
 
 @Singleton

@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import javax.inject.Inject;
+import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.fragments.LicenseFragment;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
@@ -23,10 +25,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     protected Toolbar toolbar;
 
+    @Inject
+    UrduTextSource urduTextSource;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MainApplication.get(this).getComponent().inject(this);
+
         ButterKnife.bind(this);
         setupToolbar();
         if (savedInstanceState == null) {
@@ -66,15 +73,15 @@ public abstract class BaseActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_about_dev:
-                UrduTextSource textSourceDev = new UrduTextSource(this);
+                //UrduTextSource textSourceDev = new UrduTextSource(this);
                 Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_devs,
-                        textSourceDev.prepareDevsInfoDialogText());
+                        urduTextSource.prepareDevsInfoDialogText());
                 return true;
 
             case R.id.action_credits:
-                UrduTextSource textSourceCredits = new UrduTextSource(this);
+                //UrduTextSource textSourceCredits = new UrduTextSource(this);
                 Utils.showDialogWithUrlsWithTitle(this, R.string.menu_credits,
-                        textSourceCredits.prepareCreditsDialogText());
+                        urduTextSource.prepareCreditsDialogText());
                 return true;
             case R.id.action_email:
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO,
