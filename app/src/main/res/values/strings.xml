@@ -82,11 +82,17 @@
 
 
     <!-- Font Info Dialog -->
-    <string name="ok">Ok</string>
+    <string name="button_got_it">GOT IT</string>
     <string name="dialog_font_provider_label">Provided By: %s</string>
     <string name="dialog_font_website_label">Website: %s</string>
     <string name="dialog_font_filename_label">Filename: %s</string>
     <string name="dialog_font_size_label">File Size: %s</string>
+
+    <!-- Rate Font Dialog -->
+    <string name="button_submit">SUBMIT</string>
+    <string name="button_cancel">NO, THANKS</string>
+    <string name="rate_font_dialog_title">Rate %s Font</string>
+    <string name="rate_font_dialog_message">Hi, kindly rate this font on the basis of its attractiveness, aesthetics and readability. Your feedback will assist other users in making a more informed decision.</string>
 
     <!-- Alerts -->
     <string name="loading_message">Loading ........</string>
@@ -96,5 +102,7 @@
     <string name="email_client_app_not_found">Email client application was not found on your device</string>
     <string name="twitter_client_app_not_found">Twitter client application was not found on your device</string>
     <string name="connection_error">Seems like you don\'t have an Internet Connection!</string>
+    <string name="rate_this_font">Rate this font</string>
+    <string name="button_ok">OK</string>
 
 </resources>

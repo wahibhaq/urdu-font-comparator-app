@@ -1,11 +1,17 @@
 package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,9 +19,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+import com.hsalf.smilerating.SmileRating;
+import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +65,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private UrduFont currentSelectedFont;
 
-    private String currentSelectedFontName;
-
     private Dialog progressDialog;
 
     private List<UrduFont> fonts;
@@ -65,6 +72,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     private List<String> fontNames;
 
     private UniversalPickerDialog.Builder builderPickerDialog;
+
+    private static int fontRatingValue = 0;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -96,7 +105,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(Utils.isOnline(getActivity())) {
+        if (Utils.isOnline(getActivity())) {
             presenter.loadFontsAvailable();
         } else {
             Utils.showConnectionErrorDialog(getActivity());
@@ -123,13 +132,18 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         presenter.handleFontInfoAction(currentSelectedFont);
     }
 
+    @OnClick(R.id.button_rate_this_font)
+    void showFontRatingDialog() {
+        presenter.handleFontRateAction(currentSelectedFont);
+    }
+
     @Override
     public void setFontSelectorContent(final List<UrduFont> fonts) {
         //Gets called after successful fetching from backend
         this.fonts = fonts;
 
         fontNames = new ArrayList<>();
-        for(UrduFont font: fonts) {
+        for (UrduFont font : fonts) {
             fontNames.add(font.getFontName());
         }
 
@@ -154,8 +168,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset,
-                    int positionOffsetPixels) {
-
+                                       int positionOffsetPixels) {
             }
 
             @Override
@@ -165,7 +178,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
     }
@@ -173,8 +185,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @OnTouch(R.id.spinner_font_names)
     protected boolean onSpinnerTouchListener(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
-            if(currentSelectedFont != null && builderPickerDialog != null) {
-                    builderPickerDialog.show();
+            if (currentSelectedFont != null && builderPickerDialog != null) {
+                builderPickerDialog.show();
             } else {
                 presenter.loadFontsAvailable();
             }
@@ -183,8 +195,51 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void showFontInfoDialog(UrduFont font, String content) {
-        Utils.showDialogWithUrlsWithTitle(getActivity(), font.getFontName(), content);
+    public void showFontDetailsDialog(UrduFont font, String content) {
+        showFontDetailsDialog(getActivity(),font.getFontName(), content);
+    }
+
+    public static void showFontDetailsDialog(Context context, String title, String message) {
+        LayoutInflater inflater = (LayoutInflater)
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View viewFontDetails = inflater.inflate(R.layout.dialog_font_details, null);
+
+        //To make sure Font FileName doesn't end up as a clickable url because it is automatically
+        //turned into a url
+        final SpannableString content = new SpannableString(message);
+        Linkify.addLinks(content, Patterns.WEB_URL, null, new Linkify.MatchFilter() {
+            @Override
+            public boolean acceptMatch(CharSequence seq, int start, int end) {
+                String url = seq.subSequence(start, end).toString();
+                //Apply the default matcher too. This will remove filenames that matched.
+                return !url.contains(".ttf") && Linkify.sUrlMatchFilter
+                        .acceptMatch(seq, start, end);
+            }
+        }, null);
+
+        TextView tvMessage = (TextView) viewFontDetails
+                .findViewById(R.id.text_font_details_message);
+        if(tvMessage != null) {
+            tvMessage.setText(content);
+            tvMessage.setMovementMethod(LinkMovementMethod.getInstance()); //Making link clickable
+            tvMessage.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
+        }
+
+        final Dialog dialog = new LovelyCustomDialog(context)
+                .setView(viewFontDetails)
+                .setTopColorRes(R.color.colorPrimaryLight)
+                .setTitle(title)
+                .setIcon(R.drawable.ic_info_outline)
+                .show();
+
+        TextView btnGotIt = (TextView) viewFontDetails.findViewById(R.id.button_font_details_got_it);
+        btnGotIt.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                if(dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        });
     }
 
     @Override
@@ -233,6 +288,51 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         }
     }
 
+    @Override
+    public void showFontRatingDialog(UrduFont font) {
+        showRatingDialog(getActivity(), font.getFontName());
+    }
+
+    public static void showRatingDialog(Context context , String fontName){
+        LayoutInflater inflater = (LayoutInflater)
+                context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View viewRatingBar = inflater.inflate(R.layout.dialog_rating_bar, null);
+        final Dialog dialog = new LovelyCustomDialog(context)
+                .setView(viewRatingBar)
+                .setTopColorRes(R.color.colorPrimary)
+                .setTitle(context.getString(R.string.rate_font_dialog_title, fontName))
+                .setIcon(R.drawable.ic_star_border)
+                .show();
+
+        SmileRating smileRating = (SmileRating) viewRatingBar.findViewById(R.id.rating_bar);
+        smileRating.setOnRatingSelectedListener(new SmileRating.OnRatingSelectedListener() {
+            @Override
+            public void onRatingSelected(int level, boolean reselected) {
+                //Log.d("TAG", level + " clicked");
+                fontRatingValue = level;
+            }
+        });
+
+        TextView btnSubmit = (TextView) viewRatingBar.findViewById(R.id.button_rating_submit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //call submit function
+                //Send fontRatingValue to endpoint and show Toast with message "Thank You!"
+            }
+        });
+
+        TextView btnCancel = (TextView) viewRatingBar.findViewById(R.id.button_rating_cancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        });
+    }
+
     private void saveUpdatedFontSize(int updatedFontSize) {
         applySharedPref(R.string.font_size, updatedFontSize);
     }
@@ -248,7 +348,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private void setCurrentSelectedFont(int position) {
         spinnerFontNames.setSelection(position);
-        currentSelectedFontName = fontNames.get(position);
         currentSelectedFont = fonts.get(position);
     }
 

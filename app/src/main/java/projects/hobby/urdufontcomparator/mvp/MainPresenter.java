@@ -75,7 +75,16 @@ public class MainPresenter implements MainMvp.Presenter {
         if(font == null) {
             view.showError(R.string.error_message_unknown_font);
         } else {
-            view.showFontInfoDialog(font, urduTextSource.prepareFontInfoDialogText(font));
+            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font));
+        }
+    }
+
+    @Override
+    public void handleFontRateAction(UrduFont font) {
+        if(font == null) {
+            view.showError(R.string.error_message_unknown_font);
+        } else {
+            view.showFontRatingDialog(font);
         }
     }
 

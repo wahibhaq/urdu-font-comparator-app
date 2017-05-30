@@ -17,7 +17,7 @@ android {
   buildToolsVersion "25.0.2"
   defaultConfig {
     applicationId "projects.hobby.urdufontcomparator"
-    minSdkVersion 19
+    minSdkVersion 18
     targetSdkVersion 25
     versionCode 1
     versionName "1.0"
@@ -68,6 +68,9 @@ dependencies {
 
   //Lovely dialogue
   compile 'com.yarolegovich:lovely-dialog:1.0.7'
+
+  //SmileyRating
+  compile 'com.github.sujithkanna:smileyrating:1.6.5'
 
   //Circle Indicator
   compile 'me.relex:circleindicator:1.2.2@aar'
