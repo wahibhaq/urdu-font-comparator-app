@@ -105,11 +105,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (Utils.isOnline(getActivity())) {
-            presenter.loadFontsAvailable();
-        } else {
+        presenter.loadFontsAvailable();
+        if (!Utils.isOnline(getActivity())) {
+            //To let user know that there is no internet connection
             Utils.showConnectionErrorDialog(getActivity());
         }
+
         setActionbarTitle();
         setDefaultFontSize();
     }
