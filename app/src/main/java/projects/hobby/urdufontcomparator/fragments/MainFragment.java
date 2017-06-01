@@ -309,7 +309,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         smileRating.setOnRatingSelectedListener(new SmileRating.OnRatingSelectedListener() {
             @Override
             public void onRatingSelected(int level, boolean reselected) {
-                //Log.d("TAG", level + " clicked");
                 fontRatingValue = level;
             }
         });

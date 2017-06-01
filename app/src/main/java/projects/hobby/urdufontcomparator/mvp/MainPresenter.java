@@ -10,6 +10,7 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class MainPresenter implements MainMvp.Presenter {
 
@@ -93,7 +94,7 @@ public class MainPresenter implements MainMvp.Presenter {
     }
 
     private void handleError(Throwable throwable) {
-        Log.e(getClass().getSimpleName(), throwable.getMessage());
+        Timber.e(getClass().getSimpleName(), throwable.getMessage());
         view.showError(R.string.error_message_generic);
     }
 }

@@ -19,6 +19,7 @@ import projects.hobby.urdufontcomparator.utils.Utils;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import timber.log.Timber;
 
 import static okhttp3.logging.HttpLoggingInterceptor.Level.HEADERS;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.NONE;
@@ -69,7 +70,7 @@ public class NetworkModule {
                 new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
                     @Override
                     public void log (String message) {
-                        Log.d(NetworkModule.class.getSimpleName(), message);
+                        Timber.d(NetworkModule.class.getSimpleName(), message);
                     }
                 });
 
