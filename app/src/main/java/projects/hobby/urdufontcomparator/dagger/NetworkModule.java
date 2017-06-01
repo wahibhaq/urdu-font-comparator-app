@@ -1,7 +1,6 @@
 package projects.hobby.urdufontcomparator.dagger;
 
 import android.content.Context;
-import android.util.Log;
 import dagger.Module;
 import dagger.Provides;
 import java.io.IOException;
@@ -32,12 +31,14 @@ public class NetworkModule {
             "https://quarkbackend.com/getfile/wahib-tech/";
 
     private static final String CACHE_CONTROL = "Cache-Control";
+    public static final int CACHE_MAX_AGE = 2; //2 Minutes
+    public static final int CACHE_MAX_STALE = 60; //60 Days, to be on safe side
+    public static final int CACHE_SIZE = 10 * 1024 * 1024; //10 MiB
 
     @Singleton
     @Provides
     protected Cache provideCache(Context context) {
-        int cacheSize = 10 * 1024 * 1024; // 10 MiB
-        return new Cache(context.getCacheDir(), cacheSize);
+        return new Cache(context.getCacheDir(), CACHE_SIZE);
     }
 
     @Singleton
@@ -86,7 +87,7 @@ public class NetworkModule {
 
                 // re-write response header to force use of cache
                 CacheControl cacheControl = new CacheControl.Builder()
-                        .maxAge(2, TimeUnit.MINUTES)
+                        .maxAge(CACHE_MAX_AGE, TimeUnit.MINUTES)
                         .build();
 
                 return response.newBuilder()
@@ -104,7 +105,7 @@ public class NetworkModule {
 
                 if (!Utils.isOnline(context)) {
                     CacheControl cacheControl = new CacheControl.Builder()
-                            .maxStale(7, TimeUnit.DAYS)
+                            .maxStale(CACHE_MAX_STALE, TimeUnit.DAYS)
                             .build();
 
                     request = request.newBuilder()
