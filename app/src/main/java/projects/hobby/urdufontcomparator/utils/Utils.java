@@ -12,6 +12,8 @@ import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.TextView;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
@@ -34,14 +36,22 @@ public class Utils {
 
     private static void createAndShowDialog(Context context, String title, String content,
             boolean showOkButton) {
-        SpannableString s = new SpannableString(content);
+        final SpannableString s = new SpannableString(content);
         createAndShowDialog(context, title, s, showOkButton);
     }
 
     //TODO find a better way to show custom view
     private static void createAndShowDialog(Context context, String title,
                                             SpannableString message, boolean showOkButton) {
-        Dialog dialog = new LovelyInfoDialog(context)
+
+        Linkify.addLinks(message, Patterns.WEB_URL, null, new Linkify.MatchFilter() {
+            @Override
+            public boolean acceptMatch(CharSequence seq, int start, int end) {
+                return Linkify.sUrlMatchFilter.acceptMatch(seq, start, end);
+            }
+        }, null);
+
+        final Dialog dialog = new LovelyInfoDialog(context)
                 .setTopColorRes(R.color.colorPrimaryLight)
                 .setTitle(title)
                 .setIcon(R.drawable.ic_info_outline)
