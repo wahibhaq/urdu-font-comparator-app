@@ -104,5 +104,7 @@
     <string name="connection_error">Seems like you don\'t have an Internet Connection!</string>
     <string name="rate_this_font">Rate this font</string>
     <string name="button_ok">OK</string>
+    <string name="fonts">fonts</string>
+    <string name="thank_you">Thank You!</string>
 
 </resources>

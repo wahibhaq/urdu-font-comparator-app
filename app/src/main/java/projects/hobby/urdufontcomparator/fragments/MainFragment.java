@@ -1,10 +1,19 @@
 package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -12,13 +21,30 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.hsalf.smilerating.SmileRating;
+import com.yarolegovich.lovelydialog.LovelyCustomDialog;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import me.relex.circleindicator.CircleIndicator;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
@@ -34,6 +60,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         UniversalPickerDialog.OnPickListener {
 
     private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
+    private static int fontRatingValue;
 
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
@@ -63,7 +90,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private List<String> fontNames;
 
+    private List<UrduFont> fontsFromFirebase;
+
+    private int currentFontIndex;
+
     private UniversalPickerDialog.Builder builderPickerDialog;
+
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -105,6 +137,31 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         setDefaultFontSize();
     }
 
+    private void fetchFontsFromFirebase() {
+        FirebaseApp.initializeApp(getActivity());
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(getString(R.string.fonts));
+        fontsFromFirebase = new ArrayList<UrduFont>();
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    try {
+                        UrduFont font = child.getValue(UrduFont.class);
+                        fontsFromFirebase.add(font);
+                    } catch (Exception ex) {
+                        Log.d(getClass().getSimpleName(), ex.getLocalizedMessage());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Log.d(getClass().getSimpleName(), error.getMessage());
+            }
+        });
+    }
+
     private void setDefaultFontSize() {
         seekBar.setProgress(0);
         saveUpdatedFontSize(MIN_SEEKBAR_LEVEL);
@@ -116,6 +173,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         if (actionBar != null) {
             actionBar.setTitle(R.string.app_name_expanded);
         }
+
+
     }
 
     @OnClick(R.id.button_font_details)
@@ -135,7 +194,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
         fontNames = new ArrayList<>();
         for (UrduFont font : fonts) {
-            fontNames.add(font.getFontName());
+            fontNames.add(font.getName());
         }
 
         ContentAdapter contentAdapter = new ContentAdapter(getChildFragmentManager(), fonts);
@@ -149,7 +208,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
         setPickerDialog();
         currentSelectedFont = fonts.get(0); //setting default value
-        presenter.handleFontSelection(currentSelectedFont.getFontName());
+        presenter.handleFontSelection(currentSelectedFont.getName());
         viewPager.setVisibility(View.VISIBLE);
         circleIndicator.setViewPager(viewPager);
         setViewPagerPageChangeListener();
@@ -160,6 +219,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
             @Override
             public void onPageScrolled(int position, float positionOffset,
                                        int positionOffsetPixels) {
+
             }
 
             @Override
@@ -188,7 +248,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void showFontDetailsDialog(UrduFont font, String content) {
-        showFontDetailsDialog(getActivity(),font.getFontName(), content);
+        showFontDetailsDialog(getActivity(), font.getName(), content);
     }
 
     public static void showFontDetailsDialog(Context context, String title, String message) {
@@ -211,7 +271,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
         TextView tvMessage = (TextView) viewFontDetails
                 .findViewById(R.id.text_font_details_message);
-        if(tvMessage != null) {
+        if (tvMessage != null) {
             tvMessage.setText(content);
             tvMessage.setMovementMethod(LinkMovementMethod.getInstance()); //Making link clickable
             tvMessage.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
@@ -226,8 +286,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
         TextView btnGotIt = (TextView) viewFontDetails.findViewById(R.id.button_font_details_got_it);
         btnGotIt.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                if(dialog != null && dialog.isShowing()) {
+            @Override
+            public void onClick(View v) {
+                if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
             }
@@ -282,10 +343,10 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void showFontRatingDialog(UrduFont font) {
-        showRatingDialog(getActivity(), font.getFontName());
+        showRatingDialog(getActivity(), font.getName());
     }
 
-    public static void showRatingDialog(Context context , String fontName){
+    public void showRatingDialog(Context context, String fontName) {
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View viewRatingBar = inflater.inflate(R.layout.dialog_rating_bar, null);
@@ -308,8 +369,34 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //call submit function
-                //Send fontRatingValue to endpoint and show Toast with message "Thank You!"
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                    UrduFont urduFont = fontsFromFirebase.get(currentFontIndex);
+                    int rating = urduFont.getRatingCount();
+                    int ratingSum = urduFont.getRatingSum();
+                    urduFont.setRatingCount(rating + fontRatingValue);
+                    urduFont.setRatingSum(ratingSum + 1);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference(getString(R.string.fonts));
+                /*right now this is updating whole single font node, find a better way to update
+                only properties of node instead of whole node.*/
+                    myRef.child(currentFontIndex + "")
+                            .setValue(urduFont)
+                            .addOnCompleteListener(getActivity(), new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getActivity(), R.string.thank_you,
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(getActivity(),
+                                                getString(R.string.error_message_generic),
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            });
+                }
             }
         });
 
@@ -317,12 +404,13 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dialog != null && dialog.isShowing()) {
+                if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
             }
         });
     }
+
 
     private void saveUpdatedFontSize(int updatedFontSize) {
         applySharedPref(R.string.font_size, updatedFontSize);
@@ -332,12 +420,13 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     public void onPick(int[] selectedValues, int key) {
         int position = selectedValues[0];
         setCurrentSelectedFont(position);
-        presenter.handleFontSelection(currentSelectedFont.getFontName());
+        presenter.handleFontSelection(currentSelectedFont.getName());
         viewPager.setCurrentItem(position, false); // updating viewpager item
     }
 
 
     private void setCurrentSelectedFont(int position) {
+        currentFontIndex = position;
         spinnerFontNames.setSelection(position);
         currentSelectedFontName = fontNames.get(position);
         currentSelectedFont = fonts.get(position);
