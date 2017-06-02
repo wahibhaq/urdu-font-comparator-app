@@ -1,6 +1,7 @@
 package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +9,12 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +33,9 @@ import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
 import me.relex.circleindicator.CircleIndicator;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
@@ -78,7 +87,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private int currentFontIndex = 0; //default value
 
+    private List<UrduFont> fontsFromFirebase;
+
+    private int currentFontIndex;
+
     private UniversalPickerDialog.Builder builderPickerDialog;
+
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -130,6 +144,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         if (actionBar != null) {
             actionBar.setTitle(R.string.app_name_expanded);
         }
+
+
     }
 
     @OnClick(R.id.button_font_details)
@@ -182,6 +198,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
             @Override
             public void onPageScrolled(int position, float positionOffset,
                                        int positionOffsetPixels) {
+
             }
 
             @Override
