@@ -23,7 +23,9 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.OnTouch;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -34,17 +36,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hsalf.smilerating.SmileRating;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
-
-import butterknife.BindView;
-import butterknife.OnClick;
-import butterknife.OnTouch;
-
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import me.relex.circleindicator.CircleIndicator;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
@@ -79,6 +74,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Inject
     protected SharedPreferences sharedPreferences;
+
+    @Inject
+    protected FirebaseDatabase firebaseDatabase;
 
     private UrduFont currentSelectedFont;
 
@@ -139,9 +137,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private void fetchFontsFromFirebase() {
         FirebaseApp.initializeApp(getActivity());
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference(getString(R.string.fonts));
-        fontsFromFirebase = new ArrayList<UrduFont>();
+        firebaseDatabase.setPersistenceEnabled(true);
+        DatabaseReference myRef = firebaseDatabase.getReference(getString(R.string.fonts));
+        fontsFromFirebase = new ArrayList<>();
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
