@@ -374,8 +374,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                     UrduFont urduFont = fontsFromFirebase.get(currentFontIndex);
                     int rating = urduFont.getRatingCount();
                     int ratingSum = urduFont.getRatingSum();
-                    urduFont.setRatingCount(rating + fontRatingValue);
-                    urduFont.setRatingSum(ratingSum + 1);
+                    urduFont.setRatingCount(rating + 1);
+                    urduFont.setRatingSum(ratingSum + fontRatingValue);
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference(getString(R.string.fonts));
                 /*right now this is updating whole single font node, find a better way to update
