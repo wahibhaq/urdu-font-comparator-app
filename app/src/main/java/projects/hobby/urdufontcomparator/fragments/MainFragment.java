@@ -33,9 +33,7 @@ import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import me.relex.circleindicator.CircleIndicator;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
