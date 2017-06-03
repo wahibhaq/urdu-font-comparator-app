@@ -6,6 +6,7 @@ import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
+import timber.log.Timber;
 
 /**
  *  Manager responsible to handle validation of font assets and efficient access of Fonts.
@@ -41,7 +42,7 @@ public class CustomFontManager {
             fonts.put(asset, font);
             return font;
         } catch (Exception e) {
-            Log.e("Error", e.getMessage());
+            Timber.e(e, e.getMessage());
         }
 
         if (font == null) {
@@ -52,7 +53,7 @@ public class CustomFontManager {
                 fonts.put(fixedAsset, font);
                 return font;
             } catch (Exception e) {
-                Log.e("Error", e.getMessage());
+                Timber.e(e, e.getMessage());
             }
         }
 

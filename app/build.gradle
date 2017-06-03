@@ -17,7 +17,7 @@ android {
   buildToolsVersion "25.0.2"
   defaultConfig {
     applicationId "projects.hobby.urdufontcomparator"
-    minSdkVersion 18
+    minSdkVersion 19
     targetSdkVersion 25
     versionCode 1
     versionName "1.0"
@@ -76,10 +76,14 @@ dependencies {
   compile 'me.relex:circleindicator:1.2.2@aar'
 
   //Networking
-  compile 'com.squareup.retrofit2:retrofit:2.0.2'
-  compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-  compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
-  compile 'com.squareup.okhttp3:okhttp:3.4.1'
+  compile 'com.squareup.retrofit2:retrofit:2.2.0'
+  compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+  compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
+  compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+  compile 'com.squareup.okhttp3:okhttp:3.6.0'
   compile "com.google.code.gson:gson:2.8.0"
+
+  //Logging
+  compile 'com.jakewharton.timber:timber:4.5.1'
 
 }
