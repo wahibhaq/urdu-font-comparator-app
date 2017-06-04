@@ -51,6 +51,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private static int fontRatingValue;
 
+    private static final String CURRENT_SELECTED_FONT_INDEX = "CURRENT_SELECTED_FONT_INDEX";
+
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
 
@@ -78,14 +80,11 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private List<UrduFont> fontsList;
 
-    private List<String> fontNames = new ArrayList<>();
+    private List<String> fontNames;
 
     private int currentFontIndex = 0; //default value
 
-    private int currentFontIndex;
-
     private UniversalPickerDialog.Builder builderPickerDialog;
-
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -94,6 +93,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            //for handling case when user moves to a different screen e.g licenses and
+            //should see the last selected font on return
+            currentFontIndex = savedInstanceState.getInt(CURRENT_SELECTED_FONT_INDEX);
+        }
+
         MainApplication.get(getActivity()).getComponent()
             .mvpComponent(new MainMvpModule(this))
             .inject(this);
@@ -137,8 +142,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         if (actionBar != null) {
             actionBar.setTitle(R.string.app_name_expanded);
         }
-
-
     }
 
     @OnClick(R.id.button_font_details)
