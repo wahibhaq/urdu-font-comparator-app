@@ -96,8 +96,8 @@
 
     <!-- Alerts -->
     <string name="loading_message">Loading ........</string>
-    <string name="error_message_generic">Apologies, something doesn\'t look right!</string>
-    <string name="error_message_unknown_font">Apologies, Selected Font is Unknown!</string>
+    <string name="error_message_generic">Apologies, something doesn\'t look right.</string>
+    <string name="error_message_unknown_font">Apologies, selected Font is Unknown.</string>
     <string name="select_font_size">Select Font Size</string>
     <string name="email_client_app_not_found">Email client application was not found on your device</string>
     <string name="twitter_client_app_not_found">Twitter client application was not found on your device</string>
@@ -105,6 +105,8 @@
     <string name="rate_this_font">Rate this font</string>
     <string name="button_ok">OK</string>
     <string name="fonts">fonts</string>
-    <string name="thank_you">Thank You!</string>
+    <string name="thank_you">Thank You for Rating!</string>
+    <string name="error_unable_to_fetch_fonts">Apologies, failed to load Fonts.</string>
+    <string name="error_unable_to_update_rating">Apologies, unable to submit Rating. Kindly check your Internet Connection and try again.</string>
 
 </resources>

@@ -40,9 +40,11 @@ public class UrduTextSource {
     }
 
     public String prepareFontInfoDialogText(UrduFont font) {
-        return context.getString(R.string.dialog_font_provider_label, font.getProvider())
+        return context.getString(R.string.dialog_font_provider_label,
+                        font.getProvider() != null ? font.getProvider() : R.string.not_available)
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.dialog_font_website_label, font.getWebsite()))
+                .concat(context.getString(R.string.dialog_font_website_label,
+                        font.getWebsite() != null ? font.getWebsite() : R.string.not_available))
                 .concat(getLineSpacings())
                 .concat(context.getString(R.string.dialog_font_filename_label, font.getFilename()))
                 .concat(getLineSpacings())

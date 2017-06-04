@@ -1,5 +1,7 @@
 package projects.hobby.urdufontcomparator.mvp;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.StringRes;
 import java.util.List;
 import projects.hobby.urdufontcomparator.models.UrduFont;
 
@@ -9,27 +11,38 @@ import projects.hobby.urdufontcomparator.models.UrduFont;
 public interface MainMvp {
 
     interface View {
-        void setFontSelectorContent(List<UrduFont> fonts);
+
+        void setFontSelectorContent(@NonNull List<UrduFont> fonts);
 
         void showFontDetailsDialog(UrduFont font, String content);
 
-        void showProgress(boolean show);
+        void showProgress();
 
-        void showError(int errorMessageId);
+        void hideProgress();
+
+        void showError(@StringRes int errorMessageId);
 
         void showAndSetSeekbar(boolean show);
 
         void showFontRatingDialog(UrduFont font);
+
+        void showToast(@StringRes int messageId);
+
     }
 
     interface Presenter {
+
+        void dispose();
+
         void loadFontsAvailable();
 
         void handleFontSelection(String fontName);
 
         void handleFontInfoAction(UrduFont font);
 
-        void handleFontRateAction(UrduFont font);
+        void handleFontRatingShowAction(UrduFont font);
+
+        void handleRatingUpdateAction(int fontIndex, UrduFont font);
 
     }
 }

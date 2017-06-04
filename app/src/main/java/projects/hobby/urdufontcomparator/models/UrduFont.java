@@ -1,7 +1,6 @@
 package projects.hobby.urdufontcomparator.models;
 
 import android.support.annotation.Nullable;
-
 import com.google.gson.annotations.SerializedName;
 
 public class UrduFont {
@@ -52,11 +51,11 @@ public class UrduFont {
         return filename;
     }
 
-    public String getProvider() {
+    public @Nullable String getProvider() {
         return provider;
     }
 
-    public String getWebsite() {
+    public @Nullable String getWebsite() {
         return website;
     }
 
@@ -64,6 +63,8 @@ public class UrduFont {
         return filesize;
     }
 
+    // I have found out that these getter functions are important to be present
+    // so that values can be updated on server
     public int getRatingCount() {
         return ratingCount;
     }
@@ -79,4 +80,13 @@ public class UrduFont {
     public void setRatingSum(int ratingSum) {
         this.ratingSum = ratingSum;
     }
+
+    public void incrementRatingCount() {
+        setRatingCount(getRatingCount() + 1);
+    }
+
+    public void updatingRatingSum(int ratingSum) {
+        setRatingSum(getRatingSum() + ratingSum);
+    }
+
 }
