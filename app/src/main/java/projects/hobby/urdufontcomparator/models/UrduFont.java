@@ -85,7 +85,7 @@ public class UrduFont {
         setRatingCount(getRatingCount() + 1);
     }
 
-    public void updatingRatingSum(int ratingSum) {
+    public void updateRatingSum(int ratingSum) {
         setRatingSum(getRatingSum() + ratingSum);
     }
 

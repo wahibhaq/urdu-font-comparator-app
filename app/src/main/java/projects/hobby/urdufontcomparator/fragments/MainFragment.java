@@ -48,7 +48,10 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         UniversalPickerDialog.OnPickListener {
 
     private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
+
     private static int fontRatingValue;
+
+    private static final String CURRENT_SELECTED_FONT_INDEX = "CURRENT_SELECTED_FONT_INDEX";
 
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
@@ -77,12 +80,11 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private List<UrduFont> fontsList;
 
-    private List<String> fontNames;
+    private List<String> fontNames = new ArrayList<>();
 
-    private int currentFontIndex;
+    private int currentFontIndex = 0; //default value
 
     private UniversalPickerDialog.Builder builderPickerDialog;
-
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -91,17 +93,27 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            //for handling case when user moves to a different screen e.g licenses and
+            //should see the last selected font on return
+            currentFontIndex = savedInstanceState.getInt(CURRENT_SELECTED_FONT_INDEX);
+        }
+
         MainApplication.get(getActivity()).getComponent()
-                .mvpComponent(new MainMvpModule(this))
-                .inject(this);
+            .mvpComponent(new MainMvpModule(this))
+            .inject(this);
     }
 
-    private void setPickerDialog() {
+    /**
+     * Picker is supposed to show the currently selected font as value in focus
+     */
+    private void setFontPickerDialog() {
         builderPickerDialog = new UniversalPickerDialog.Builder(getActivity())
                 .setTitle(R.string.select_font)
                 .setTitleColorRes(R.color.blue)
                 .setListener(this)
-                .setInputs(new UniversalPickerDialog.Input(0, (AbstractList<String>) fontNames));
+                .setInputs(new UniversalPickerDialog.Input(currentFontIndex,
+                        (AbstractList<String>) fontNames));
     }
 
     @Override
@@ -124,6 +136,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         setDefaultFontSize();
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(CURRENT_SELECTED_FONT_INDEX, currentFontIndex);
+    }
+
     private void setDefaultFontSize() {
         seekBar.setProgress(0);
         saveUpdatedFontSize(MIN_SEEKBAR_LEVEL);
@@ -135,8 +153,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         if (actionBar != null) {
             actionBar.setTitle(R.string.app_name_expanded);
         }
-
-
     }
 
     @OnClick(R.id.button_font_details)
@@ -154,26 +170,36 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         //Gets called after successful fetching from backend
         fontsList = fonts;
 
-        fontNames = new ArrayList<>();
+        //extracting font names for other usage
+        fontNames.clear();
         for (UrduFont font : fonts) {
             fontNames.add(font.getName());
         }
 
+        //setting content
         ContentAdapter contentAdapter = new ContentAdapter(getChildFragmentManager(), fonts);
         viewPager.setAdapter(contentAdapter);
 
-        //Initialize and set Adapter
+        //setting combo box
+        setSpinnerContent();
+
+        //setting picker dialog
+        setFontPickerDialog();
+
+        presenter.handleFontSelection(currentSelectedFont.getName());
+
+        viewPager.setVisibility(View.VISIBLE);
+        circleIndicator.setViewPager(viewPager);
+        setViewPagerPageChangeListener();
+    }
+
+    private void setSpinnerContent() {
         ArrayAdapter<String> fontArrayAdapter =
                 new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, fontNames);
         fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFontNames.setAdapter(fontArrayAdapter);
         spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
-        setPickerDialog();
-        currentSelectedFont = fonts.get(0); //setting default value
-        presenter.handleFontSelection(currentSelectedFont.getName());
-        viewPager.setVisibility(View.VISIBLE);
-        circleIndicator.setViewPager(viewPager);
-        setViewPagerPageChangeListener();
+        setCurrentSelectedFont(currentFontIndex);
     }
 
     private void setViewPagerPageChangeListener() {
@@ -198,9 +224,14 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     protected boolean onSpinnerTouchListener(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
             if (currentSelectedFont != null && builderPickerDialog != null) {
+                //to update currently selected font
+                builderPickerDialog.setInputs(new UniversalPickerDialog.Input(currentFontIndex,
+                        (AbstractList<String>) fontNames));
                 builderPickerDialog.show();
             } else {
+                //fallback plan
                 presenter.loadFontsAvailable();
+                setFontPickerDialog();
             }
         }
         return true;
@@ -342,7 +373,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                     dialog.dismiss();
                     UrduFont fontToUpdate = fontsList.get(currentFontIndex);
                     fontToUpdate.incrementRatingCount();
-                    fontToUpdate.updatingRatingSum(fontRatingValue);
+                    fontToUpdate.updateRatingSum(fontRatingValue);
                     presenter.handleRatingUpdateAction(currentFontIndex, fontToUpdate);
                 }
 
