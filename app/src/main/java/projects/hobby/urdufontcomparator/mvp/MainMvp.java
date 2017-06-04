@@ -22,8 +22,6 @@ public interface MainMvp {
 
         void showError(@StringRes int errorMessageId);
 
-        void showAndSetSeekbar(boolean show);
-
         void showFontRatingDialog(UrduFont font);
 
         void showToast(@StringRes int messageId);
@@ -35,8 +33,6 @@ public interface MainMvp {
         void dispose();
 
         void loadFontsAvailable();
-
-        void handleFontSelection(String fontName);
 
         void handleFontInfoAction(UrduFont font);
 

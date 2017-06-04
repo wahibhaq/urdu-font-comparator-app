@@ -14,13 +14,9 @@ import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.models.UrduFont;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.Utils;
-import rx.Observable;
-import rx.functions.Action1;
 import timber.log.Timber;
 
 public class MainPresenter implements MainMvp.Presenter {
-
-    private static final String FONTS = "fonts/";
 
     private final MainMvp.View view;
 
@@ -38,34 +34,7 @@ public class MainPresenter implements MainMvp.Presenter {
         this.view = view;
         this.urduTextSource = urduTextSource;
         this.databaseReference = databaseReference;
-        init();
-    }
-
-    private void init() {
         fontsFromFirebase = new ArrayList<>();
-        valueEventListener = new ValueEventListener() {
-            @Override public void onDataChange(DataSnapshot dataSnapshot) {
-                fontsFromFirebase.clear();
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    try {
-                        UrduFont font = child.getValue(UrduFont.class);
-                        fontsFromFirebase.add(font);
-                    } catch (Exception ex) {
-                        view.showProgress();
-                        handleError(R.string.error_unable_to_fetch_fonts, ex.getMessage());
-                    }
-                }
-
-                view.showProgress();
-                view.setFontSelectorContent(fontsFromFirebase);
-                dispose();
-            }
-
-            @Override public void onCancelled(DatabaseError error) {
-                view.hideProgress();
-                handleError(R.string.error_unable_to_fetch_fonts, error.getMessage());
-            }
-        };
     }
 
     @Override
@@ -76,29 +45,34 @@ public class MainPresenter implements MainMvp.Presenter {
     @Override
     public void loadFontsAvailable() {
         view.showProgress();
-        databaseReference.addValueEventListener(valueEventListener);
+        addDatabaseFetchEventListener();
     }
 
-    @Override
-    public void handleFontSelection(String fontFileName) {
-        if(fontFileName.isEmpty()) {
-            handleError(R.string.error_message_unknown_font);
-        } else {
-            view.showProgress();
-            Observable.just(getFontAsset(fontFileName))
-                    .subscribe(new Action1<String>() {
-                        @Override public void call(String fontAsset) {
-                            view.hideProgress();
-                            view.showAndSetSeekbar(true);
-                        }
-                    }, new Action1<Throwable>() {
-                        @Override public void call(Throwable throwable) {
-                            view.hideProgress();
-                            view.showAndSetSeekbar(false);
-                            handleError(R.string.error_message_unknown_font, throwable.getMessage());
-                        }
-                    });
-        }
+    private void addDatabaseFetchEventListener() {
+        valueEventListener = new ValueEventListener() {
+            @Override public void onDataChange(DataSnapshot dataSnapshot) {
+                fontsFromFirebase.clear();
+                for (DataSnapshot child : dataSnapshot.getChildren()) {
+                    try {
+                        UrduFont font = child.getValue(UrduFont.class);
+                        fontsFromFirebase.add(font);
+                    } catch (Exception ex) {
+                        view.hideProgress();
+                        handleError(R.string.error_unable_to_fetch_fonts, ex.getMessage());
+                    }
+                }
+
+                view.hideProgress();
+                view.setFontSelectorContent(fontsFromFirebase);
+                dispose();
+            }
+
+            @Override public void onCancelled(DatabaseError error) {
+                view.hideProgress();
+                handleError(R.string.error_unable_to_fetch_fonts, error.getMessage());
+            }
+        };
+        databaseReference.addValueEventListener(valueEventListener);
     }
 
     @Override
@@ -133,10 +107,6 @@ public class MainPresenter implements MainMvp.Presenter {
                         }
                     }
                 });
-    }
-
-    private String getFontAsset(String fileName) {
-        return FONTS.concat(fileName);
     }
 
     private void handleError(@StringRes int errorToDisplay, String errorMessageToLog) {

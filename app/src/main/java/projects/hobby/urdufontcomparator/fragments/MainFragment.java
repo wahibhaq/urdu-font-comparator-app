@@ -47,17 +47,15 @@ import stfalcon.universalpickerdialog.UniversalPickerDialog;
 public class MainFragment extends BaseFragment implements MainMvp.View,
         UniversalPickerDialog.OnPickListener {
 
-    private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
+    protected final static int MIN_SEEKBAR_LEVEL = 10;
 
     private static int fontRatingValue;
-
-    private static final String CURRENT_SELECTED_FONT_INDEX = "CURRENT_SELECTED_FONT_INDEX";
 
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
 
     @BindView(R.id.seekbar)
-    protected SeekBar seekBar;
+    protected SeekBar fontSizeSeekbar;
 
     @BindView(R.id.content_viewpager)
     protected ViewPager viewPager;
@@ -93,12 +91,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            //for handling case when user moves to a different screen e.g licenses and
-            //should see the last selected font on return
-            currentFontIndex = savedInstanceState.getInt(CURRENT_SELECTED_FONT_INDEX);
-        }
-
         MainApplication.get(getActivity()).getComponent()
             .mvpComponent(new MainMvpModule(this))
             .inject(this);
@@ -133,18 +125,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         }
 
         setActionbarTitle();
-        setDefaultFontSize();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(CURRENT_SELECTED_FONT_INDEX, currentFontIndex);
-    }
-
-    private void setDefaultFontSize() {
-        seekBar.setProgress(0);
-        saveUpdatedFontSize(MIN_SEEKBAR_LEVEL);
+        setSeekbar();
     }
 
     private void setActionbarTitle() {
@@ -185,8 +166,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
         //setting picker dialog
         setFontPickerDialog();
-
-        presenter.handleFontSelection(currentSelectedFont.getName());
 
         viewPager.setVisibility(View.VISIBLE);
         circleIndicator.setViewPager(viewPager);
@@ -308,32 +287,28 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         Utils.showSimpleDialogWithoutTitle(getActivity(), getString(errorMessageIf));
     }
 
-    @Override
-    public void showAndSetSeekbar(boolean show) {
-        if (show) {
-            seekBar.setVisibility(View.VISIBLE);
-            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                //setting default value so seekbar and contentBody font size
-                //doesn't conflict with each other.
-                int updatedFontSize = MIN_SEEKBAR_LEVEL;
+    public void setSeekbar() {
+        fontSizeSeekbar.setMax(50);
+        fontSizeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            //setting default value so seekbar and contentBody font size
+            //doesn't conflict with each other.
+            int updatedFontSize = MIN_SEEKBAR_LEVEL;
 
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    updatedFontSize = MIN_SEEKBAR_LEVEL + progress;
-                    saveUpdatedFontSize(updatedFontSize);
-                }
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                updatedFontSize = MIN_SEEKBAR_LEVEL + progress;
+                saveUpdatedFontSize(updatedFontSize);
+            }
 
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-                }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                }
-            });
-        } else {
-            seekBar.setVisibility(View.INVISIBLE);
-        }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+        fontSizeSeekbar.setProgress(MIN_SEEKBAR_LEVEL);
     }
 
     @Override
@@ -373,7 +348,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                     dialog.dismiss();
                     UrduFont fontToUpdate = fontsList.get(currentFontIndex);
                     fontToUpdate.incrementRatingCount();
-                    fontToUpdate.updateRatingSum(fontRatingValue);
+                    //fix: sometimes if rating value is not touched/changed, it sends 0
+                    fontToUpdate.updateRatingSum((fontRatingValue == 0) ? 3 : fontRatingValue);
+
                     presenter.handleRatingUpdateAction(currentFontIndex, fontToUpdate);
                 }
 
@@ -404,10 +381,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     public void onPick(int[] selectedValues, int key) {
         int position = selectedValues[0];
         setCurrentSelectedFont(position);
-        presenter.handleFontSelection(currentSelectedFont.getName());
         viewPager.setCurrentItem(position, false); // updating viewpager item
     }
-
 
     private void setCurrentSelectedFont(int position) {
         currentFontIndex = position;
