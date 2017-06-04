@@ -1,7 +1,6 @@
 package projects.hobby.urdufontcomparator.models;
 
 import android.support.annotation.Nullable;
-
 import com.google.gson.annotations.SerializedName;
 
 public class UrduFont {

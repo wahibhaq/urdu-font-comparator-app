@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -75,8 +74,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private UrduFont currentSelectedFont;
 
-    private String currentSelectedFontName;
-
     private Dialog progressDialog;
 
     private List<UrduFont> fontsList;
@@ -84,8 +81,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     private List<String> fontNames = new ArrayList<>();
 
     private int currentFontIndex = 0; //default value
-
-    private List<UrduFont> fontsFromFirebase;
 
     private int currentFontIndex;
 
@@ -196,7 +191,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
             @Override
             public void onPageScrolled(int position, float positionOffset,
                                        int positionOffsetPixels) {
-
             }
 
             @Override
@@ -206,7 +200,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
     }
