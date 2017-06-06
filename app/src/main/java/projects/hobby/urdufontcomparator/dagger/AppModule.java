@@ -3,19 +3,16 @@ package projects.hobby.urdufontcomparator.dagger;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
-import javax.inject.Singleton;
 import projects.hobby.urdufontcomparator.MainApplication;
-import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
-@Module
+@Module (includes = FirebaseModule.class)
 public class AppModule {
 
     private final MainApplication mainApplication;
@@ -52,20 +49,6 @@ public class AppModule {
     @Provides
     SharedPreferences provideSharedPreferences(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context);
-    }
-
-    @Singleton
-    @Provides
-    FirebaseDatabase provideFirebaseDatabase() {
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
-        return firebaseDatabase;
-    }
-
-    @Singleton
-    @Provides
-    DatabaseReference provideDatabaseReference(Context context, FirebaseDatabase firebaseDatabase) {
-         return firebaseDatabase.getReference(context.getString(R.string.fonts));
     }
 
 }

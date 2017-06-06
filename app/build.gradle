@@ -82,7 +82,10 @@ dependencies {
   compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
   compile 'com.squareup.okhttp3:okhttp:3.6.0'
   compile "com.google.code.gson:gson:2.8.0"
-  compile 'com.google.firebase:firebase-database:10.0.1'
+
+  //Firebase
+  compile 'com.google.firebase:firebase-database:10.2.6'
+  compile 'com.google.firebase:firebase-core:10.2.6'
 
   //Logging
   compile 'com.jakewharton.timber:timber:4.5.1'

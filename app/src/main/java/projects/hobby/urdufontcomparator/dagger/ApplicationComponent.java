@@ -11,9 +11,8 @@ public interface ApplicationComponent {
 
     void inject(BaseActivity baseActivity);
 
-    //Subcomponent
+    //Subcomponents
     MainMvpComponent mvpComponent(MainMvpModule mainMvpModule);
-
     ContentMvpComponent contentmvpComponent(ContentMvpModule contentMvpModule);
 
 }
