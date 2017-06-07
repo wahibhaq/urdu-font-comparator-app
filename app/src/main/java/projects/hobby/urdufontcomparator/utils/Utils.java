@@ -125,4 +125,14 @@ public class Utils {
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnected();
     }
+
+    /**
+     * To check if String is null or empty
+     *
+     * @param message
+     * @return
+     */
+    public static boolean isNullOrEmpty(String message) {
+        return message == null || message.isEmpty();
+    }
 }

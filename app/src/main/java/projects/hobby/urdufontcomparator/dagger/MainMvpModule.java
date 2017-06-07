@@ -1,9 +1,9 @@
 package projects.hobby.urdufontcomparator.dagger;
 
+import com.google.firebase.database.DatabaseReference;
 import dagger.Module;
 import dagger.Provides;
 import javax.inject.Singleton;
-import projects.hobby.urdufontcomparator.data.FontApi;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.mvp.MainPresenter;
@@ -19,7 +19,8 @@ public class MainMvpModule {
 
     @Singleton
     @Provides
-    MainMvp.Presenter provideMainMvpPresenter(UrduTextSource urduTextSource, FontApi fontSource) {
-        return new MainPresenter(view, urduTextSource, fontSource);
+    MainMvp.Presenter provideMainMvpPresenter(UrduTextSource urduTextSource,
+            DatabaseReference databaseReference) {
+        return new MainPresenter(view, urduTextSource, databaseReference);
     }
 }

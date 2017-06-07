@@ -4,7 +4,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -20,9 +22,11 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+import com.google.firebase.database.DatabaseReference;
 import com.hsalf.smilerating.SmileRating;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 import java.util.AbstractList;
@@ -43,13 +47,15 @@ import stfalcon.universalpickerdialog.UniversalPickerDialog;
 public class MainFragment extends BaseFragment implements MainMvp.View,
         UniversalPickerDialog.OnPickListener {
 
-    private static final int MIN_SEEKBAR_LEVEL = 16; //min font size allowed
+    protected final static int MIN_SEEKBAR_LEVEL = 10;
+
+    private static int fontRatingValue;
 
     @BindView(R.id.spinner_font_names)
     protected Spinner spinnerFontNames;
 
     @BindView(R.id.seekbar)
-    protected SeekBar seekBar;
+    protected SeekBar fontSizeSeekbar;
 
     @BindView(R.id.content_viewpager)
     protected ViewPager viewPager;
@@ -63,17 +69,20 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     @Inject
     protected SharedPreferences sharedPreferences;
 
+    @Inject
+    protected DatabaseReference firebaseDbReference;
+
     private UrduFont currentSelectedFont;
 
     private Dialog progressDialog;
 
-    private List<UrduFont> fonts;
+    private List<UrduFont> fontsList;
 
-    private List<String> fontNames;
+    private List<String> fontNames = new ArrayList<>();
+
+    private int currentFontIndex = 0; //default value
 
     private UniversalPickerDialog.Builder builderPickerDialog;
-
-    private static int fontRatingValue = 0;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -83,16 +92,20 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainApplication.get(getActivity()).getComponent()
-                .mvpComponent(new MainMvpModule(this))
-                .inject(this);
+            .mvpComponent(new MainMvpModule(this))
+            .inject(this);
     }
 
-    private void setPickerDialog() {
+    /**
+     * Picker is supposed to show the currently selected font as value in focus
+     */
+    private void setFontPickerDialog() {
         builderPickerDialog = new UniversalPickerDialog.Builder(getActivity())
                 .setTitle(R.string.select_font)
                 .setTitleColorRes(R.color.blue)
                 .setListener(this)
-                .setInputs(new UniversalPickerDialog.Input(0, (AbstractList<String>) fontNames));
+                .setInputs(new UniversalPickerDialog.Input(currentFontIndex,
+                        (AbstractList<String>) fontNames));
     }
 
     @Override
@@ -112,12 +125,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         }
 
         setActionbarTitle();
-        setDefaultFontSize();
-    }
-
-    private void setDefaultFontSize() {
-        seekBar.setProgress(0);
-        saveUpdatedFontSize(MIN_SEEKBAR_LEVEL);
+        setSeekbar();
     }
 
     private void setActionbarTitle() {
@@ -135,34 +143,42 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @OnClick(R.id.button_rate_this_font)
     void showFontRatingDialog() {
-        presenter.handleFontRateAction(currentSelectedFont);
+        presenter.handleFontRatingShowAction(currentSelectedFont);
     }
 
     @Override
-    public void setFontSelectorContent(final List<UrduFont> fonts) {
+    public void setFontSelectorContent(@NonNull final List<UrduFont> fonts) {
         //Gets called after successful fetching from backend
-        this.fonts = fonts;
+        fontsList = fonts;
 
-        fontNames = new ArrayList<>();
+        //extracting font names for other usage
+        fontNames.clear();
         for (UrduFont font : fonts) {
-            fontNames.add(font.getFontName());
+            fontNames.add(font.getName());
         }
 
+        //setting content
         ContentAdapter contentAdapter = new ContentAdapter(getChildFragmentManager(), fonts);
         viewPager.setAdapter(contentAdapter);
 
-        //Initialize and set Adapter
+        //setting combo box
+        setSpinnerContent();
+
+        //setting picker dialog
+        setFontPickerDialog();
+
+        viewPager.setVisibility(View.VISIBLE);
+        circleIndicator.setViewPager(viewPager);
+        setViewPagerPageChangeListener();
+    }
+
+    private void setSpinnerContent() {
         ArrayAdapter<String> fontArrayAdapter =
                 new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, fontNames);
         fontArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFontNames.setAdapter(fontArrayAdapter);
         spinnerFontNames.setTextDirection(View.TEXT_DIRECTION_RTL);
-        setPickerDialog();
-        currentSelectedFont = fonts.get(0); //setting default value
-        presenter.handleFontSelection(currentSelectedFont.getFontName());
-        viewPager.setVisibility(View.VISIBLE);
-        circleIndicator.setViewPager(viewPager);
-        setViewPagerPageChangeListener();
+        setCurrentSelectedFont(currentFontIndex);
     }
 
     private void setViewPagerPageChangeListener() {
@@ -187,9 +203,14 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     protected boolean onSpinnerTouchListener(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
             if (currentSelectedFont != null && builderPickerDialog != null) {
+                //to update currently selected font
+                builderPickerDialog.setInputs(new UniversalPickerDialog.Input(currentFontIndex,
+                        (AbstractList<String>) fontNames));
                 builderPickerDialog.show();
             } else {
+                //fallback plan
                 presenter.loadFontsAvailable();
+                setFontPickerDialog();
             }
         }
         return true;
@@ -197,8 +218,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Override
     public void showFontDetailsDialog(UrduFont font, String content) {
-        showFontDetailsDialog(getActivity(),font.getFontName(), content);
+        showFontDetailsDialog(getActivity(), font.getName(), content);
     }
+
 
     public static void showFontDetailsDialog(Context context, String title, String message) {
         LayoutInflater inflater = (LayoutInflater)
@@ -220,7 +242,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
         TextView tvMessage = (TextView) viewFontDetails
                 .findViewById(R.id.text_font_details_message);
-        if(tvMessage != null) {
+        if (tvMessage != null) {
             tvMessage.setText(content);
             tvMessage.setMovementMethod(LinkMovementMethod.getInstance()); //Making link clickable
             tvMessage.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
@@ -235,8 +257,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
         TextView btnGotIt = (TextView) viewFontDetails.findViewById(R.id.button_font_details_got_it);
         btnGotIt.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                if(dialog != null && dialog.isShowing()) {
+            @Override
+            public void onClick(View v) {
+                if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
             }
@@ -244,13 +267,16 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void showProgress(boolean show) {
-        if (show) {
-            if (progressDialog == null) {
-                progressDialog = Utils.showProgressUpdateDialog(getActivity(),
-                        getString(R.string.loading_message));
-            }
-        } else if (progressDialog != null) {
+    public void showProgress() {
+        if (progressDialog == null) {
+            progressDialog = Utils.showProgressUpdateDialog(getActivity(),
+                    getString(R.string.loading_message));
+        }
+    }
+
+    @Override
+    public void hideProgress() {
+        if (progressDialog != null) {
             progressDialog.dismiss();
             progressDialog = null;
         }
@@ -261,40 +287,41 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         Utils.showSimpleDialogWithoutTitle(getActivity(), getString(errorMessageIf));
     }
 
-    @Override
-    public void showAndSetSeekbar(boolean show) {
-        if (show) {
-            seekBar.setVisibility(View.VISIBLE);
-            seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                //setting default value so seekbar and contentBody font size
-                //doesn't conflict with each other.
-                int updatedFontSize = MIN_SEEKBAR_LEVEL;
+    public void setSeekbar() {
+        fontSizeSeekbar.setMax(50);
+        fontSizeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            //setting default value so seekbar and contentBody font size
+            //doesn't conflict with each other.
+            int updatedFontSize = MIN_SEEKBAR_LEVEL;
 
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    updatedFontSize = MIN_SEEKBAR_LEVEL + progress;
-                    saveUpdatedFontSize(updatedFontSize);
-                }
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                updatedFontSize = MIN_SEEKBAR_LEVEL + progress;
+                saveUpdatedFontSize(updatedFontSize);
+            }
 
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-                }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
 
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                }
-            });
-        } else {
-            seekBar.setVisibility(View.INVISIBLE);
-        }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+        fontSizeSeekbar.setProgress(MIN_SEEKBAR_LEVEL);
     }
 
     @Override
     public void showFontRatingDialog(UrduFont font) {
-        showRatingDialog(getActivity(), font.getFontName());
+        showRatingDialog(getActivity(), font.getName());
     }
 
-    public static void showRatingDialog(Context context , String fontName){
+    @Override
+    public void showToast(@StringRes int messageId) {
+        Toast.makeText(getActivity(), messageId, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showRatingDialog(Context context, String fontName) {
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View viewRatingBar = inflater.inflate(R.layout.dialog_rating_bar, null);
@@ -317,8 +344,20 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //call submit function
-                //Send fontRatingValue to endpoint and show Toast with message "Thank You!"
+                if (dialog != null && dialog.isShowing()) {
+                    dialog.dismiss();
+                    UrduFont fontToUpdate = fontsList.get(currentFontIndex);
+                    fontToUpdate.incrementRatingCount();
+                    //fix: sometimes if rating value is not touched/changed, it sends 0
+                    fontToUpdate.updateRatingSum((fontRatingValue == 0) ? 3 : fontRatingValue);
+
+                    presenter.handleRatingUpdateAction(currentFontIndex, fontToUpdate);
+                }
+
+                if (!Utils.isOnline(getActivity())) {
+                    //To let user know that there is no internet connection
+                    Utils.showConnectionErrorDialog(getActivity());
+                }
             }
         });
 
@@ -326,12 +365,13 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(dialog != null && dialog.isShowing()) {
+                if (dialog != null && dialog.isShowing()) {
                     dialog.dismiss();
                 }
             }
         });
     }
+
 
     private void saveUpdatedFontSize(int updatedFontSize) {
         applySharedPref(R.string.font_size, updatedFontSize);
@@ -341,19 +381,19 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     public void onPick(int[] selectedValues, int key) {
         int position = selectedValues[0];
         setCurrentSelectedFont(position);
-        presenter.handleFontSelection(currentSelectedFont.getFontName());
         viewPager.setCurrentItem(position, false); // updating viewpager item
     }
 
-
     private void setCurrentSelectedFont(int position) {
+        currentFontIndex = position;
         spinnerFontNames.setSelection(position);
-        currentSelectedFont = fonts.get(position);
+        currentSelectedFont = fontsList.get(position);
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         removeSharedPref(R.string.font_size);
+        presenter.dispose();
+        super.onDestroy();
     }
 }

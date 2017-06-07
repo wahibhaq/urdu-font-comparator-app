@@ -21,7 +21,7 @@ import projects.hobby.urdufontcomparator.mvp.ContentMvp;
 public class ContentFragment extends BaseFragment implements ContentMvp.View,
         SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private final static int DEFAULT_FONT_SIZE = 16;
+    private final static int DEFAULT_FONT_SIZE = 20; //min font size
 
     @BindView(R.id.text_body)
     protected TextView contentBody;
@@ -67,8 +67,11 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
         super.onViewCreated(view, savedInstanceState);
         String fontFileName = getArguments().getString(ARG_FONT);
         presenter.handleFontSelection(fontFileName);
-        contentBody.setTextSize(TypedValue.COMPLEX_UNIT_SP,
-                sharedPreferences.getInt(getString(R.string.font_size), DEFAULT_FONT_SIZE));
+        setTextFontSize(sharedPreferences.getInt(getString(R.string.font_size), DEFAULT_FONT_SIZE));
+    }
+
+    public void setTextFontSize(int size) {
+        contentBody.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
     }
 
     @Override
@@ -89,8 +92,7 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         if (key.equals(getString(R.string.font_size)) && contentBody != null) {
-            contentBody.setTextSize(TypedValue.COMPLEX_UNIT_SP,
-                    sharedPreferences.getInt(key, DEFAULT_FONT_SIZE));
+            setTextFontSize(sharedPreferences.getInt(key, DEFAULT_FONT_SIZE));
         }
     }
 
