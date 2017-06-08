@@ -78,7 +78,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     private List<UrduFont> fontsList;
 
-    private List<String> fontNames;
+    private List<String> fontNames = new ArrayList<>();
 
     private int currentFontIndex = 0; //default value
 
