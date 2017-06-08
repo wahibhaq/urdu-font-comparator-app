@@ -11,14 +11,17 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import projects.hobby.urdufontcomparator.R;
+import projects.hobby.urdufontcomparator.tracking.AppTracker;
+import projects.hobby.urdufontcomparator.tracking.FirebaseTracker;
 
 @Module
 public class FirebaseModule {
 
     @Singleton
     @Provides
-    FirebaseAnalytics provideFirebaseAnalytics(Context context) {
-        return FirebaseAnalytics.getInstance(context);
+    AppTracker provideFirebaseAnalytics(Context context) {
+        FirebaseAnalytics analytics = FirebaseAnalytics.getInstance(context);
+        return new FirebaseTracker(analytics);
     }
 
     @Singleton
