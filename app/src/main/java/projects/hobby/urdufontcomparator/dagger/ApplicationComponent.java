@@ -4,6 +4,8 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import projects.hobby.urdufontcomparator.activities.BaseActivity;
+import projects.hobby.urdufontcomparator.tracking.ActiveTrackingManager;
+import projects.hobby.urdufontcomparator.tracking.TrackingManager;
 
 @Singleton
 @Component(modules = {AppModule.class, RetroApiModule.class})
@@ -14,5 +16,7 @@ public interface ApplicationComponent {
     //Subcomponents
     MainMvpComponent mvpComponent(MainMvpModule mainMvpModule);
     ContentMvpComponent contentmvpComponent(ContentMvpModule contentMvpModule);
+
+    TrackingManager getTrackingManager();
 
 }
