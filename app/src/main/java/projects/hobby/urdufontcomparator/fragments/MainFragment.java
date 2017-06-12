@@ -2,7 +2,6 @@ package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,16 +22,19 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.BindView;
-import butterknife.OnClick;
-import butterknife.OnTouch;
-import com.google.firebase.database.DatabaseReference;
+
 import com.hsalf.smilerating.SmileRating;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
+
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import butterknife.OnTouch;
 import me.relex.circleindicator.CircleIndicator;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
@@ -65,12 +67,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
     @Inject
     protected MainMvp.Presenter presenter;
-
-    @Inject
-    protected SharedPreferences sharedPreferences;
-
-    @Inject
-    protected DatabaseReference firebaseDbReference;
 
     private UrduFont currentSelectedFont;
 

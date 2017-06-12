@@ -7,6 +7,8 @@ import javax.inject.Singleton;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.mvp.MainMvp;
 import projects.hobby.urdufontcomparator.mvp.MainPresenter;
+import projects.hobby.urdufontcomparator.tracking.AppTracker;
+import projects.hobby.urdufontcomparator.tracking.TrackingManager;
 
 @Module
 public class MainMvpModule {
@@ -20,7 +22,8 @@ public class MainMvpModule {
     @Singleton
     @Provides
     MainMvp.Presenter provideMainMvpPresenter(UrduTextSource urduTextSource,
-            DatabaseReference databaseReference) {
-        return new MainPresenter(view, urduTextSource, databaseReference);
+                                              DatabaseReference databaseReference,
+                                              TrackingManager trackingManager) {
+        return new MainPresenter(view, urduTextSource, databaseReference, trackingManager);
     }
 }

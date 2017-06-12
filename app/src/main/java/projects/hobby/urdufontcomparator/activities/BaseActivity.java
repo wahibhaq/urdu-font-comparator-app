@@ -18,6 +18,7 @@ import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.fragments.LicenseFragment;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
+import projects.hobby.urdufontcomparator.tracking.TrackingManager;
 import projects.hobby.urdufontcomparator.utils.Utils;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -27,6 +28,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Inject
     UrduTextSource urduTextSource;
+
+    @Inject
+    TrackingManager tracker;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_licenses:
+                tracker.openLicenses();
                 Fragment fragment = LicenseFragment.newInstance();
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content, fragment)
@@ -73,13 +78,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_about_dev:
-                //UrduTextSource textSourceDev = new UrduTextSource(this);
+                tracker.openAboutDevs();
                 Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_devs,
                         urduTextSource.prepareDevsInfoDialogText());
                 return true;
 
             case R.id.action_credits:
-                //UrduTextSource textSourceCredits = new UrduTextSource(this);
+                tracker.openCredits();
                 Utils.showDialogWithUrlsWithTitle(this, R.string.menu_credits,
                         urduTextSource.prepareCreditsDialogText());
                 return true;
@@ -90,8 +95,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                         getString(R.string.menu_contact_email_subject));
 
                 if(Utils.isIntentSafe(this, emailIntent)) {
+                    tracker.sendEmail();
                     startActivity(emailIntent);
                 } else {
+                    tracker.errorShown();
                     Toast.makeText(this, R.string.email_client_app_not_found,
                             Toast.LENGTH_SHORT).show();
                 }
@@ -102,8 +109,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 twitterIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.dev_wahib_twitter));
                 twitterIntent.setType(getString(R.string.intent_type));
                 if (Utils.isTwitterInstalled(this, twitterIntent)) {
+                    tracker.sendTweet();
                     startActivity(twitterIntent);
                 } else {
+                    tracker.errorShown();
                     Toast.makeText(this, R.string.twitter_client_app_not_found,
                             Toast.LENGTH_SHORT).show();
                 }

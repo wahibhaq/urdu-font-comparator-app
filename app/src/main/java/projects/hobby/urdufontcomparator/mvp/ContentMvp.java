@@ -9,14 +9,18 @@ import android.graphics.Typeface;
 public interface ContentMvp {
 
     interface View {
+
         void setConvertedText(Typeface typeface);
 
         void setSampleText(String sampleText);
+
     }
 
     interface Presenter {
-        void handleFontSelection(String fontFileName);
+
+        void handleFontSelection(String fontName, String fontFileName);
 
         void handleSampleTextShowing();
+
     }
 }

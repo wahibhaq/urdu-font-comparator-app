@@ -18,7 +18,9 @@ public class MainApplication extends Application {
                 .appModule(new AppModule(this))
                 .build();
 
+
         FirebaseApp.initializeApp(this.getApplicationContext());
+        getComponent().getTrackingManager().appOpen();
     }
 
     public ApplicationComponent getComponent() {

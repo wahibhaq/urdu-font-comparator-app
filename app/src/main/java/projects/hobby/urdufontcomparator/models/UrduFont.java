@@ -28,19 +28,10 @@ public class UrduFont {
     @SerializedName("ratingSum")
     private int ratingSum;
 
+    private int ratingValue;
+
     public UrduFont() {
 
-    }
-
-    public UrduFont(String name, String filename, String provider, String website,
-                    String filesize, int ratingCount, int ratingSum) {
-        this.name = name;
-        this.filename = filename;
-        this.provider = provider;
-        this.website = website;
-        this.filesize = filesize;
-        this.ratingCount = ratingCount;
-        this.ratingSum = ratingSum;
     }
 
     public String getName() {
@@ -81,11 +72,20 @@ public class UrduFont {
         this.ratingSum = ratingSum;
     }
 
+    public void setRatingValue(int ratingValue) {
+        this.ratingValue = ratingValue;
+    }
+
+    public int getRatingValue() {
+        return ratingValue;
+    }
+
     public void incrementRatingCount() {
         setRatingCount(getRatingCount() + 1);
     }
 
     public void updateRatingSum(int ratingSum) {
+        setRatingValue(ratingSum);
         setRatingSum(getRatingSum() + ratingSum);
     }
 

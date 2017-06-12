@@ -8,6 +8,7 @@ import dagger.Provides;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.mvp.ContentMvp;
 import projects.hobby.urdufontcomparator.mvp.ContentPresenter;
+import projects.hobby.urdufontcomparator.tracking.TrackingManager;
 import projects.hobby.urdufontcomparator.utils.CustomFontManager;
 
 @Module
@@ -22,8 +23,9 @@ public class ContentMvpModule {
     @Singleton
     @Provides
     ContentMvp.Presenter provideContentMvpPresenter(CustomFontManager fontManager,
-                                                    UrduTextSource urduTextSource) {
-        return new ContentPresenter(view, fontManager, urduTextSource);
+                                                    UrduTextSource urduTextSource,
+                                                    TrackingManager trackingManager) {
+        return new ContentPresenter(view, fontManager, urduTextSource, trackingManager);
     }
 
 }
