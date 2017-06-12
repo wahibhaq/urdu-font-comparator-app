@@ -26,7 +26,10 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
     @BindView(R.id.text_body)
     protected TextView contentBody;
 
-    private static final String ARG_FONT = "font";
+    private static final String ARG_FONT_NAME = "font_name";
+
+    private static final String ARG_FONT_FILE = "font_file";
+
 
     @Inject
     protected ContentMvp.Presenter presenter;
@@ -41,7 +44,8 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
     public static ContentFragment newInstance(UrduFont font) {
         ContentFragment fragment = new ContentFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_FONT, font.getFilename());
+        args.putString(ARG_FONT_NAME, font.getName());
+        args.putString(ARG_FONT_FILE, font.getFilename());
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,8 +69,9 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        String fontFileName = getArguments().getString(ARG_FONT);
-        presenter.handleFontSelection(fontFileName);
+        String fontName = getArguments().getString(ARG_FONT_NAME);
+        String fontFileName = getArguments().getString(ARG_FONT_FILE);
+        presenter.handleFontSelection(fontName, fontFileName);
         setTextFontSize(sharedPreferences.getInt(getString(R.string.font_size), DEFAULT_FONT_SIZE));
     }
 
