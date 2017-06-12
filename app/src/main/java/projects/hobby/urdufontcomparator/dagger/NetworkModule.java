@@ -23,6 +23,10 @@ import timber.log.Timber;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.HEADERS;
 import static okhttp3.logging.HttpLoggingInterceptor.Level.NONE;
 
+/**
+ * Not in use anymore but I am keeping it for future just in case if needed
+ * to integrate any external api endpoint
+ */
 @SuppressWarnings("WeakerAccess")
 @Module
 public class NetworkModule {

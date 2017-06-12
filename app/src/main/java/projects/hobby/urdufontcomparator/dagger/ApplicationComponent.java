@@ -4,11 +4,10 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import projects.hobby.urdufontcomparator.activities.BaseActivity;
-import projects.hobby.urdufontcomparator.tracking.ActiveTrackingManager;
 import projects.hobby.urdufontcomparator.tracking.TrackingManager;
 
 @Singleton
-@Component(modules = {AppModule.class, RetroApiModule.class})
+@Component(modules = {AppModule.class})
 public interface ApplicationComponent {
 
     void inject(BaseActivity baseActivity);
