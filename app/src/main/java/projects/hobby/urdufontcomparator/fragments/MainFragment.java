@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -88,8 +89,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainApplication.get(getActivity()).getComponent()
-            .mvpComponent(new MainMvpModule(this))
-            .inject(this);
+                .mvpComponent(new MainMvpModule(this))
+                .inject(this);
     }
 
     /**
@@ -213,12 +214,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void showFontDetailsDialog(UrduFont font, String content) {
-        showFontDetailsDialog(getActivity(), font.getName(), content);
+    public void showFontDetailsDialog(UrduFont font, String content, String ratingStr) {
+        showFontDetailsDialog(getActivity(), font.getName(), content, ratingStr);
     }
 
 
-    public static void showFontDetailsDialog(Context context, String title, String message) {
+    public void showFontDetailsDialog(Context context, String title, String message, String ratingStr) {
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View viewFontDetails = inflater.inflate(R.layout.dialog_font_details, null);
@@ -250,7 +251,6 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                 .setTitle(title)
                 .setIcon(R.drawable.ic_info_outline)
                 .show();
-
         TextView btnGotIt = (TextView) viewFontDetails.findViewById(R.id.button_font_details_got_it);
         btnGotIt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,6 +260,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
                 }
             }
         });
+        TextView tvRating = (TextView) viewFontDetails.findViewById(R.id.tv_rating);
+        tvRating.setText(ratingStr);
     }
 
     @Override

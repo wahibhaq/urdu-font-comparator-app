@@ -108,5 +108,6 @@
     <string name="thank_you">Thank You for Rating!</string>
     <string name="error_unable_to_fetch_fonts">Apologies, failed to load Fonts.</string>
     <string name="error_unable_to_update_rating">Apologies, unable to submit Rating. Kindly check your Internet Connection and try again.</string>
+    <string name="rating_lbl">Rating :</string>
 
 </resources>
