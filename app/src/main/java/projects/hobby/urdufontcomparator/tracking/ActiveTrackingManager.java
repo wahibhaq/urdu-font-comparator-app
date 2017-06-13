@@ -10,10 +10,10 @@ import javax.inject.Singleton;
 public class ActiveTrackingManager implements TrackingManager {
 
     private enum EventExtendedParamValue {
-        FONT_SELECT ("font_select"),
-        FONT_DETAILS ("font_details"),
+        EVENT_FONT_SELECT ("font_select"),
+        EVENT_FONT_DETAILS ("font_details"),
         FONT_RATING ("font_rating"),
-        FONT_RATING_SUBMIT ("font_rating_submit"),
+        EVENT_FONT_RATING_SUBMIT ("font_rating_submit"),
         OPEN_LICENSES ("open_licenses"),
         OPEN_ABOUT_DEVELOPERS ("open_about_developers"),
         OPEN_CREDITS ("open_credits"),
@@ -48,9 +48,7 @@ public class ActiveTrackingManager implements TrackingManager {
     public void openFontDetails(String fontName) {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME, fontName);
-        params.putString(FirebaseAnalytics.Param.ITEM_CATEGORY,
-                EventExtendedParamValue.FONT_DETAILS.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+        appTracker.trackEvent(EventExtendedParamValue.EVENT_FONT_DETAILS.getName(), params);
     }
 
     @Override
@@ -67,18 +65,14 @@ public class ActiveTrackingManager implements TrackingManager {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME, fontName);
         params.putInt(FirebaseAnalytics.Param.VALUE, ratingValue);
-        params.putString(FirebaseAnalytics.Param.ITEM_CATEGORY,
-                EventExtendedParamValue.FONT_RATING_SUBMIT.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+        appTracker.trackEvent(EventExtendedParamValue.EVENT_FONT_RATING_SUBMIT.getName(), params);
     }
 
     @Override
     public void pickFont(String fontName) {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME, fontName);
-        params.putString(FirebaseAnalytics.Param.ITEM_CATEGORY,
-                EventExtendedParamValue.FONT_SELECT.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.SELECT_CONTENT, params);
+        appTracker.trackEvent(EventExtendedParamValue.EVENT_FONT_SELECT.getName(), params);
     }
 
     @Override
