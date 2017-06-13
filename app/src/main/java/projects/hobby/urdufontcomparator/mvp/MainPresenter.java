@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,10 +92,13 @@ public class MainPresenter implements MainMvp.Presenter {
         if (font == null) {
             handleError(R.string.error_message_unknown_font);
         } else {
-            float rating = font.getRatingSum() / font.getRatingCount();
-            String ratingStr = rating + " (" + font.getRatingCount() + ")";
+            double ratingSum = font.getRatingSum();
+            double ratingCount = font.getRatingCount();
+            double rating = ratingSum /ratingCount;
+            NumberFormat.getInstance().format(rating);
             tracker.openFontDetails(font.getName());
-            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font),ratingStr);
+            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font), rating,
+                    font.getRatingCount());
         }
     }
 

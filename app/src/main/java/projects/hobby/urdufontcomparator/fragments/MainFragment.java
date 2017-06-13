@@ -2,6 +2,7 @@ package projects.hobby.urdufontcomparator.fragments;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 import com.hsalf.smilerating.SmileRating;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
+import java.text.DecimalFormat;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -214,12 +216,13 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void showFontDetailsDialog(UrduFont font, String content, String ratingStr) {
-        showFontDetailsDialog(getActivity(), font.getName(), content, ratingStr);
+    public void showFontDetailsDialog(UrduFont font, String content, Double rating, int ratingCount) {
+        showFontDetailsDialog(getActivity(), font.getName(), content, rating, ratingCount);
     }
 
 
-    public void showFontDetailsDialog(Context context, String title, String message, String ratingStr) {
+    public void showFontDetailsDialog(Context context, String title, String message, Double rating,
+                                      int ratingCount) {
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View viewFontDetails = inflater.inflate(R.layout.dialog_font_details, null);
@@ -261,7 +264,13 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
             }
         });
         TextView tvRating = (TextView) viewFontDetails.findViewById(R.id.tv_rating);
-        tvRating.setText(ratingStr);
+        Resources res = getResources();
+        String text = res.getString(R.string.dialog_font_rating, formatRating(rating), ratingCount);
+        tvRating.setText(text);
+    }
+
+    public String formatRating(double rating) {
+        return new DecimalFormat("#.#").format(rating);
     }
 
     @Override
