@@ -37,6 +37,4 @@
     <!-- License file -->
     <string name="asset_file_path_license">file:///android_asset/licenses.html</string>
 
-    <!-- API keys -->
-    <string name="fabric_api_key">6708df77443948964ccbbd72cbcca57db0497443</string>
 </resources>
