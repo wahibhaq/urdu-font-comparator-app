@@ -4,4 +4,5 @@
         <item quantity="one"> %1$s (%2$d vote)</item>
         <item quantity="other"> %1$s (%2$d votes)</item>
     </plurals>
+
 </resources>

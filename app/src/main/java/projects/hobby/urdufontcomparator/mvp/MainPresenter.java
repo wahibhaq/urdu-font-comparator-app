@@ -93,13 +93,12 @@ public class MainPresenter implements MainMvp.Presenter {
             handleError(R.string.error_message_unknown_font);
         } else {
             double ratingSum = font.getRatingSum();
-            double ratingCount = font.getRatingCount();
-            double ratingAvg = ratingSum / ratingCount;
-            int ratingCountInt = font.getRatingCount();
+            int ratingCount = font.getRatingCount();
+            double ratingAvg = ratingSum / (double) ratingCount;
             NumberFormat.getInstance().format(ratingAvg);
             tracker.openFontDetails(font.getName());
             view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font), ratingAvg,
-                    ratingCountInt);
+                    ratingCount);
         }
     }
 
