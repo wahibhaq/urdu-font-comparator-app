@@ -31,7 +31,7 @@ public class UrduFont {
     private int ratingValue;
 
     public UrduFont() {
-
+        // Default constructor required for calls to DataSnapshot.getValue(UrduFont.class)
     }
 
     public String getName() {

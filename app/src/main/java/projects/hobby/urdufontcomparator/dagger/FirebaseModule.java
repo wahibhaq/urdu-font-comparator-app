@@ -10,11 +10,10 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.tracking.ActiveTrackingManager;
 import projects.hobby.urdufontcomparator.tracking.AppTracker;
-import projects.hobby.urdufontcomparator.tracking.TrackingManager;
 import projects.hobby.urdufontcomparator.tracking.FirebaseTracker;
+import projects.hobby.urdufontcomparator.tracking.TrackingManager;
 
 @Module
 public class FirebaseModule {
@@ -36,8 +35,8 @@ public class FirebaseModule {
 
     @Singleton
     @Provides
-    DatabaseReference provideDatabaseReference(Context context, FirebaseDatabase firebaseDatabase) {
-        return firebaseDatabase.getReference(context.getString(R.string.fonts));
+    DatabaseReference provideDatabaseReference(FirebaseDatabase firebaseDatabase) {
+        return firebaseDatabase.getReference();
     }
 
     @Singleton

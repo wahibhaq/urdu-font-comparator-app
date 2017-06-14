@@ -8,12 +8,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import projects.hobby.urdufontcomparator.R;
+import projects.hobby.urdufontcomparator.models.Contributors;
 import projects.hobby.urdufontcomparator.models.UrduFont;
 import projects.hobby.urdufontcomparator.models.UrduTextSource;
 import projects.hobby.urdufontcomparator.tracking.TrackingManager;
@@ -34,6 +36,8 @@ public class MainPresenter implements MainMvp.Presenter {
 
     private ValueEventListener valueEventListener;
 
+    private final DatabaseReference reference;
+
     public MainPresenter(MainMvp.View view,
                          UrduTextSource urduTextSource,
                          DatabaseReference databaseReference,
@@ -43,6 +47,7 @@ public class MainPresenter implements MainMvp.Presenter {
         this.databaseReference = databaseReference;
         this.tracker = trackingManager;
         fontsFromFirebase = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference("contributors");
     }
 
     @Override
@@ -58,29 +63,37 @@ public class MainPresenter implements MainMvp.Presenter {
 
     private void addDatabaseFetchEventListener() {
         valueEventListener = new ValueEventListener() {
-            @Override public void onDataChange(DataSnapshot dataSnapshot) {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 fontsFromFirebase.clear();
-                for (DataSnapshot child : dataSnapshot.getChildren()) {
-                    try {
-                        UrduFont font = child.getValue(UrduFont.class);
-                        fontsFromFirebase.add(font);
-                    } catch (Exception ex) {
-                        view.hideProgress();
-                        handleError(R.string.error_unable_to_fetch_fonts, ex.getMessage());
-                    }
+                for(DataSnapshot child : dataSnapshot.getChildren()) {
+                    Contributors contributor = child.getValue(Contributors.class);
+                    String name = contributor.getName();
                 }
+
+//                for (DataSnapshot child : dataSnapshot.getChildren()) {
+//                    try {
+//                        UrduFont font = child.getValue(UrduFont.class);
+//                        fontsFromFirebase.add(font);
+//                    } catch (Exception ex) {
+//                        view.hideProgress();
+//                        handleError(R.string.error_unable_to_fetch_fonts, ex.getMessage());
+//                    }
+//                }
 
                 view.hideProgress();
                 view.setFontSelectorContent(fontsFromFirebase);
                 dispose();
             }
 
-            @Override public void onCancelled(DatabaseError error) {
+            @Override
+            public void onCancelled(DatabaseError error) {
                 view.hideProgress();
                 handleError(R.string.error_unable_to_fetch_fonts, error.getMessage());
             }
         };
-        databaseReference.addValueEventListener(valueEventListener);
+//        databaseReference.addListenerForSingleValueEvent(valueEventListener);
+        reference.addListenerForSingleValueEvent(valueEventListener);
     }
 
     @Override
