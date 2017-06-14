@@ -265,7 +265,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         });
         TextView tvRating = (TextView) viewFontDetails.findViewById(R.id.tv_rating);
         Resources res = getResources();
-        String text = res.getString(R.string.dialog_font_rating, formatRating(rating), ratingCount);
+        String text = res.getQuantityString(R.plurals.dialog_font_rating, ratingCount,
+                formatRating(rating), ratingCount);
         tvRating.setText(text);
     }
 

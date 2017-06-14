@@ -94,11 +94,12 @@ public class MainPresenter implements MainMvp.Presenter {
         } else {
             double ratingSum = font.getRatingSum();
             double ratingCount = font.getRatingCount();
-            double rating = ratingSum /ratingCount;
-            NumberFormat.getInstance().format(rating);
+            double ratingAvg = ratingSum / ratingCount;
+            int ratingCountInt = font.getRatingCount();
+            NumberFormat.getInstance().format(ratingAvg);
             tracker.openFontDetails(font.getName());
-            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font), rating,
-                    font.getRatingCount());
+            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font), ratingAvg,
+                    ratingCountInt);
         }
     }
 
