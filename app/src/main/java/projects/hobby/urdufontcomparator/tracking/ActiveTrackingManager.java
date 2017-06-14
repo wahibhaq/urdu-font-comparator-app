@@ -9,21 +9,23 @@ import javax.inject.Singleton;
 @Singleton
 public class ActiveTrackingManager implements TrackingManager {
 
-    private enum EventExtendedParamValue {
+    private enum CustomEvents {
         EVENT_FONT_SELECT ("font_select"),
         EVENT_FONT_DETAILS ("font_details"),
-        FONT_RATING ("font_rating"),
+        EVENT_FONT_RATING ("font_rating"),
         EVENT_FONT_RATING_SUBMIT ("font_rating_submit"),
-        OPEN_LICENSES ("open_licenses"),
-        OPEN_ABOUT_DEVELOPERS ("open_about_developers"),
-        OPEN_CREDITS ("open_credits"),
+        EVENT_OPEN_LICENSES ("open_licenses"),
+        EVENT_OPEN_ABOUT_DEVELOPERS ("open_about_developers"),
+        EVENT_OPEN_CREDITS ("open_credits"),
+        EVENT_CONTACT_US ("contact_us"),
         SEND_EMAIL ("send_email"),
         SEND_TWEET ("send_tweet"),
-        ERROR_SHOWN ("error_shown");
+        EVENT_DIALOG_SHOWN ("dialog_shown"),
+        ERROR_DIALOG ("error_dialog");
 
         private final String name;
 
-        EventExtendedParamValue(String name) {
+        CustomEvents(String name) {
             this.name = name;
         }
 
@@ -48,16 +50,14 @@ public class ActiveTrackingManager implements TrackingManager {
     public void openFontDetails(String fontName) {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME, fontName);
-        appTracker.trackEvent(EventExtendedParamValue.EVENT_FONT_DETAILS.getName(), params);
+        appTracker.trackEvent(CustomEvents.EVENT_FONT_DETAILS.getName(), params);
     }
 
     @Override
     public void openFontRating(String fontName) {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME, fontName);
-        params.putString(FirebaseAnalytics.Param.ITEM_CATEGORY,
-                EventExtendedParamValue.FONT_RATING.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+        appTracker.trackEvent(CustomEvents.EVENT_FONT_RATING.getName(), params);
     }
 
     @Override
@@ -65,61 +65,61 @@ public class ActiveTrackingManager implements TrackingManager {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME, fontName);
         params.putInt(FirebaseAnalytics.Param.VALUE, ratingValue);
-        appTracker.trackEvent(EventExtendedParamValue.EVENT_FONT_RATING_SUBMIT.getName(), params);
+        appTracker.trackEvent(CustomEvents.EVENT_FONT_RATING_SUBMIT.getName(), params);
     }
 
     @Override
     public void pickFont(String fontName) {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME, fontName);
-        appTracker.trackEvent(EventExtendedParamValue.EVENT_FONT_SELECT.getName(), params);
+        appTracker.trackEvent(CustomEvents.EVENT_FONT_SELECT.getName(), params);
     }
 
     @Override
     public void openLicenses() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                EventExtendedParamValue.OPEN_LICENSES.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+                CustomEvents.EVENT_OPEN_LICENSES.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_OPEN_LICENSES.getName(), params);
     }
 
     @Override
     public void openAboutDevs() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                EventExtendedParamValue.OPEN_ABOUT_DEVELOPERS.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+                CustomEvents.EVENT_OPEN_ABOUT_DEVELOPERS.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_OPEN_ABOUT_DEVELOPERS.getName(), params);
     }
 
     @Override
     public void openCredits() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                EventExtendedParamValue.OPEN_CREDITS.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+                CustomEvents.EVENT_OPEN_CREDITS.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_OPEN_CREDITS.getName(), params);
     }
 
     @Override
     public void sendEmail() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                EventExtendedParamValue.SEND_EMAIL.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+                CustomEvents.SEND_EMAIL.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_CONTACT_US.getName(), params);
     }
 
     @Override
     public void sendTweet() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                EventExtendedParamValue.SEND_TWEET.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+                CustomEvents.SEND_TWEET.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_CONTACT_US.getName(), params);
     }
 
     @Override
     public void errorShown() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                EventExtendedParamValue.ERROR_SHOWN.getName());
-        appTracker.trackEvent(FirebaseAnalytics.Event.VIEW_ITEM, params);
+                CustomEvents.ERROR_DIALOG.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_DIALOG_SHOWN.getName(), params);
     }
 }
