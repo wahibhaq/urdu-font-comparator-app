@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,7 +60,8 @@ public class MainPresenter implements MainMvp.Presenter {
 
     private void addDatabaseFetchEventListener() {
         valueEventListener = new ValueEventListener() {
-            @Override public void onDataChange(DataSnapshot dataSnapshot) {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
                 fontsFromFirebase.clear();
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     try {
@@ -75,7 +78,8 @@ public class MainPresenter implements MainMvp.Presenter {
                 dispose();
             }
 
-            @Override public void onCancelled(DatabaseError error) {
+            @Override
+            public void onCancelled(DatabaseError error) {
                 view.hideProgress();
                 handleError(R.string.error_unable_to_fetch_fonts, error.getMessage());
             }
@@ -85,17 +89,22 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void handleFontInfoAction(UrduFont font) {
-        if(font == null) {
+        if (font == null) {
             handleError(R.string.error_message_unknown_font);
         } else {
+            double ratingSum = font.getRatingSum();
+            int ratingCount = font.getRatingCount();
+            double ratingAvg = ratingSum / (double) ratingCount;
+            NumberFormat.getInstance().format(ratingAvg);
             tracker.openFontDetails(font.getName());
-            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font));
+            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font), ratingAvg,
+                    ratingCount);
         }
     }
 
     @Override
     public void handleFontRatingShowAction(UrduFont font) {
-        if(font == null) {
+        if (font == null) {
             handleError(R.string.error_message_unknown_font);
         } else {
             tracker.openFontRating(font.getName());
@@ -121,7 +130,7 @@ public class MainPresenter implements MainMvp.Presenter {
     }
 
     private void handleError(@StringRes int errorToDisplay, String errorMessageToLog) {
-        if(Utils.isNullOrEmpty(errorMessageToLog)) {
+        if (Utils.isNullOrEmpty(errorMessageToLog)) {
             handleError(R.string.error_message_generic);
         } else {
             Timber.e(getClass().getSimpleName(), errorMessageToLog);

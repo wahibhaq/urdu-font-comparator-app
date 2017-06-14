@@ -87,6 +87,7 @@
     <string name="dialog_font_website_label">Website: %s</string>
     <string name="dialog_font_filename_label">Filename: %s</string>
     <string name="dialog_font_size_label">File Size: %s</string>
+    <string name="dialog_font_rating"> %1$s (%2$d votes)</string>
 
     <!-- Rate Font Dialog -->
     <string name="button_submit">SUBMIT</string>
@@ -108,5 +109,6 @@
     <string name="thank_you">Thank You for Rating!</string>
     <string name="error_unable_to_fetch_fonts">Apologies, failed to load Fonts.</string>
     <string name="error_unable_to_update_rating">Apologies, unable to submit Rating. Kindly check your Internet Connection and try again.</string>
+    <string name="font_rating_result">Rating :</string>
 
 </resources>
