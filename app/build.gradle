@@ -23,6 +23,17 @@ repositories {
 }
 
 android {
+  signingConfigs {
+    debug {
+      storeFile file("debug.keystore")
+    }
+    release {
+      keyAlias 'UrduAppKeyRelease'
+      keyPassword 'key_7rd7@pp'
+      storeFile file('/Users/Wahib/Documents/perosnal-projects-workspace/urdu-font-comparator/google play/keystore/urduapp_android.jks')
+      storePassword 'store_7rd7@pp'
+    }
+  }
   compileSdkVersion 25
   buildToolsVersion "25.0.3"
   defaultConfig {
@@ -33,81 +44,67 @@ android {
     versionName "1.0"
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
-
   buildTypes {
     debug {
       minifyEnabled false
       debuggable true
       ext.enableCrashlytics = false
+      signingConfig signingConfigs.debug
     }
     release {
       minifyEnabled true
       debuggable false
       ext.enableCrashlytics = true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.release
     }
   }
 }
 
 dependencies {
-  compile fileTree(dir: 'libs', include: ['*.jar'])
-
+  compile fileTree(include: ['*.jar'], dir: 'libs')
   // App's support dependencies
   compile 'com.android.support:appcompat-v7:25.3.1'
   compile 'com.android.support:support-v4:25.3.1'
-
   // Dependencies for Android UI Tests
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
     exclude module: 'jsr305'
   })
-  androidTestCompile "com.google.dagger:dagger:2.7"
-
+  androidTestCompile 'com.google.dagger:dagger:2.7'
   // Dependencies for local unit tests
   testCompile 'junit:junit:4.12'
-
   // Dependencies for Android unit tests
-  androidTestCompile "junit:junit:3.12"
-
+  androidTestCompile 'junit:junit:3.12'
   //UI
-  compile "com.jakewharton:butterknife:8.5.1"
+  compile 'com.jakewharton:butterknife:8.5.1'
   apt "com.jakewharton:butterknife-compiler:8.5.1"
-
   //Dependency Injection
-  compile "com.google.dagger:dagger:2.7"
+  compile 'com.google.dagger:dagger:2.7'
   apt "com.google.dagger:dagger-compiler:2.7"
-
   //Rx
-  compile "io.reactivex:rxjava:1.2.1"
-  compile "io.reactivex:rxandroid:1.2.1"
-
+  compile 'io.reactivex:rxjava:1.2.1'
+  compile 'io.reactivex:rxandroid:1.2.1'
   //Dialogs
   compile 'com.github.stfalcon:universalpickerdialog:0.1.0'
-
   //Lovely dialogue
   compile 'com.yarolegovich:lovely-dialog:1.0.7'
-
   //SmileyRating
   compile 'com.github.sujithkanna:smileyrating:1.6.5'
-
   //Circle Indicator
   compile 'me.relex:circleindicator:1.2.2@aar'
-
   //Networking
   compile 'com.squareup.retrofit2:retrofit:2.2.0'
   compile 'com.squareup.retrofit2:converter-gson:2.2.0'
   compile 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
   compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
   compile 'com.squareup.okhttp3:okhttp:3.6.0'
-  compile "com.google.code.gson:gson:2.8.0"
-
+  compile 'com.google.code.gson:gson:2.8.0'
   //Firebase
   compile 'com.google.firebase:firebase-database:10.2.6'
   compile 'com.google.firebase:firebase-core:10.2.6'
-
   //Logging
   compile 'com.jakewharton.timber:timber:4.5.1'
-
   // Crashlytics Kit
   releaseCompile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
     transitive = true

@@ -22,7 +22,6 @@ public class MainApplication extends Application {
 
 
         FirebaseApp.initializeApp(this.getApplicationContext());
-//        Fabric.with(this, new Crashlytics());
         getComponent().getTrackingManager().appOpen();
     }
 
