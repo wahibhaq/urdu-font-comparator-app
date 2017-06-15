@@ -2,9 +2,9 @@ package projects.hobby.urdufontcomparator;
 
 import android.app.Application;
 import android.content.Context;
-import com.crashlytics.android.Crashlytics;
+
 import com.google.firebase.FirebaseApp;
-import io.fabric.sdk.android.Fabric;
+
 import projects.hobby.urdufontcomparator.dagger.AppModule;
 import projects.hobby.urdufontcomparator.dagger.ApplicationComponent;
 import projects.hobby.urdufontcomparator.dagger.DaggerApplicationComponent;
@@ -22,7 +22,7 @@ public class MainApplication extends Application {
 
 
         FirebaseApp.initializeApp(this.getApplicationContext());
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         getComponent().getTrackingManager().appOpen();
     }
 
