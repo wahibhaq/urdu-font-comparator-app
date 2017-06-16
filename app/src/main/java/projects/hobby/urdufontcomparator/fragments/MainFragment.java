@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
@@ -266,7 +265,8 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         TextView tvRating = (TextView) viewFontDetails.findViewById(R.id.tv_rating);
         Resources res = getResources();
         String text = res.getQuantityString(R.plurals.dialog_font_rating, ratingCount,
-                formatRating(rating), ratingCount);
+                formatRating(rating), res.getInteger(R.integer.rating_max_possible_value),
+                ratingCount);
         tvRating.setText(text);
     }
 
