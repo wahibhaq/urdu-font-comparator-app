@@ -20,6 +20,36 @@ allprojects {
   }
 }
 
+// This block encapsulates custom properties and makes them available to all
+// modules in the project.
+ext {
+
+  //sdk and versions
+  compileSdkVersion = 25
+  buildToolsVersion = '25.0.3'
+  minSdkVersion = 19
+  targetSdkVersion = 25
+  versionCode = 1
+  versionName = '1.0'
+
+  //dependencies
+  supportLib = '25.3.1'
+  androidapt = '1.8'
+  fabricGradlePlugin = '1.22.2'
+  espresso = '2.2.2'
+  dagger = '2.7'
+  junit = '4.12'
+  butterknife = '8.5.1'
+  universalpickerdialog = '0.1.0'
+  lovelydialog = '1.0.7'
+  smileyrating = '1.6.5'
+  circleindicator = '1.2.2'
+  firebase = '10.2.6'
+  timber = '4.5.1'
+  crashlytics = '2.6.8'
+  gson = '2.8.0'
+}
+
 task clean(type: Delete) {
   delete rootProject.buildDir
 }
