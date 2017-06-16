@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="dialog_font_rating">
-        <item quantity="one"> %1$s/%2$d (%3$d vote)</item>
-        <item quantity="other"> %1$s/%2$d (%3$d votes)</item>
+        <item quantity="one"> %1$s/%2$s (%3$d vote)</item>
+        <item quantity="other"> %1$s/%2$s (%3$d votes)</item>
     </plurals>
 
 </resources>

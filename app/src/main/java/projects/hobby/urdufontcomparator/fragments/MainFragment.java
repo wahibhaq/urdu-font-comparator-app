@@ -28,6 +28,7 @@ import com.hsalf.smilerating.SmileRating;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
@@ -215,12 +216,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void showFontDetailsDialog(UrduFont font, String content, Double rating, int ratingCount) {
+    public void showFontDetailsDialog(UrduFont font, String content, double rating, int ratingCount) {
         showFontDetailsDialog(getActivity(), font.getName(), content, rating, ratingCount);
     }
 
 
-    public void showFontDetailsDialog(Context context, String title, String message, Double rating,
+    public void showFontDetailsDialog(Context context, String title, String message, double rating,
                                       int ratingCount) {
         LayoutInflater inflater = (LayoutInflater)
                 context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -265,13 +266,17 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         TextView tvRating = (TextView) viewFontDetails.findViewById(R.id.tv_rating);
         Resources res = getResources();
         String text = res.getQuantityString(R.plurals.dialog_font_rating, ratingCount,
-                formatRating(rating), res.getInteger(R.integer.rating_max_possible_value),
+                formatToOneDecimalPlace(rating),
+                formatToOneDecimalPlace(res.getInteger(R.integer.rating_max_possible_value)),
                 ratingCount);
         tvRating.setText(text);
     }
 
-    public String formatRating(double rating) {
-        return new DecimalFormat("#.#").format(rating);
+    public String formatToOneDecimalPlace(double value) {
+        NumberFormat format = DecimalFormat.getInstance();
+        format.setMinimumFractionDigits(1);
+        format.setMaximumFractionDigits(1);
+        return format.format(value);
     }
 
     @Override

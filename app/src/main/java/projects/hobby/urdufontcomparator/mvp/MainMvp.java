@@ -14,7 +14,7 @@ public interface MainMvp {
 
         void setFontSelectorContent(@NonNull List<UrduFont> fonts);
 
-        void showFontDetailsDialog(UrduFont font, String content, Double rating, int ratingCount);
+        void showFontDetailsDialog(UrduFont font, String content, double rating, int ratingCount);
 
         void showProgress();
 
