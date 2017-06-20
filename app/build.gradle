@@ -14,7 +14,6 @@ buildscript {
 
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 
 repositories {
@@ -26,12 +25,6 @@ android {
   signingConfigs {
     debug {
       storeFile file("debug.keystore")
-    }
-    release {
-      keyAlias 'UrduAppKeyRelease'
-      keyPassword 'key_7rd7@pp'
-      storeFile file('/Users/Wahib/Documents/personal-projects-workspace/urdu-font-comparator/google-play/keystore/urduapp_android.jks')
-      storePassword 'store_7rd7@pp'
     }
   }
   compileSdkVersion rootProject.ext.compileSdkVersion
@@ -56,7 +49,7 @@ android {
       debuggable false
       ext.enableCrashlytics = true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-      signingConfig signingConfigs.release
+      signingConfig signingConfigs.debug
     }
   }
 }
@@ -102,3 +95,7 @@ dependencies {
     transitive = true
   }
 }
+
+//THIS PLUGIN HAS TO BE AT THE BOTTOM
+//https://firebase.google.com/docs/android/setup
+apply plugin: 'com.google.gms.google-services'
