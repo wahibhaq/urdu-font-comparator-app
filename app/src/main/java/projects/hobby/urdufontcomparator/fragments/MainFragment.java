@@ -400,7 +400,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     private void setCurrentSelectedFont(int position) {
         currentFontIndex = position;
         spinnerFontNames.setSelection(position);
-        currentSelectedFont = fontsList.get(position);
+        if(fontsList != null && !fontsList.isEmpty()) {
+            currentSelectedFont = fontsList.get(position);
+        }
     }
 
     @Override

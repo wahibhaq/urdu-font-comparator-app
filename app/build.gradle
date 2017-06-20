@@ -30,7 +30,7 @@ android {
     release {
       keyAlias 'UrduAppKeyRelease'
       keyPassword 'key_7rd7@pp'
-      storeFile file('/Users/Wahib/Documents/perosnal-projects-workspace/urdu-font-comparator/google play/keystore/urduapp_android.jks')
+      storeFile file('/Users/Wahib/Documents/personal-projects-workspace/urdu-font-comparator/google-play/keystore/urduapp_android.jks')
       storePassword 'store_7rd7@pp'
     }
   }
