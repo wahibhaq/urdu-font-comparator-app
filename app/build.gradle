@@ -26,6 +26,12 @@ android {
     debug {
       storeFile file("debug.keystore")
     }
+    release {
+      keyAlias 'ReleaseUrduAppKey'
+      keyPassword 'k3y_7rd7'
+      storeFile file('/Users/Wahib/Documents/personal-projects-workspace/urdu-font-comparator/google-play/keystore/release_android.jks')
+      storePassword 'k3ystore@7rd7'
+    }
   }
   compileSdkVersion rootProject.ext.compileSdkVersion
   buildToolsVersion rootProject.ext.buildToolsVersion
@@ -49,7 +55,7 @@ android {
       debuggable false
       ext.enableCrashlytics = true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-      signingConfig signingConfigs.debug
+      signingConfig signingConfigs.release
     }
   }
 }
