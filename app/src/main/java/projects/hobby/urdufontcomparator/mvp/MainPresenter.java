@@ -10,7 +10,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +83,7 @@ public class MainPresenter implements MainMvp.Presenter {
                 handleError(R.string.error_unable_to_fetch_fonts, error.getMessage());
             }
         };
-        databaseReference.addValueEventListener(valueEventListener);
+        databaseReference.addListenerForSingleValueEvent(valueEventListener);
     }
 
     @Override
@@ -118,7 +117,7 @@ public class MainPresenter implements MainMvp.Presenter {
         if(font == null) {
             handleError(R.string.error_message_unknown_font);
         } else {
-            tracker.submitFontRating(font.getName(), font.getRatingValue());
+            tracker.submitFontRating(font.getName(), font.getLastRatingValue());
             databaseReference.child(String.valueOf(fontIndex))
                     .setValue(font)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
