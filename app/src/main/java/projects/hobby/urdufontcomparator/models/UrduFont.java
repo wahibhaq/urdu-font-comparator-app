@@ -28,10 +28,11 @@ public class UrduFont {
     @SerializedName("ratingSum")
     private int ratingSum;
 
-    private int ratingValue;
+    @SerializedName("lastRatingValue")
+    private int lastRatingValue;
 
     public UrduFont() {
-
+        // Default constructor required for calls to DataSnapshot.getValue(UrduFont.class)
     }
 
     public String getName() {
@@ -72,12 +73,12 @@ public class UrduFont {
         this.ratingSum = ratingSum;
     }
 
-    public void setRatingValue(int ratingValue) {
-        this.ratingValue = ratingValue;
+    public void setLastRatingValue(int lastRatingValue) {
+        this.lastRatingValue = lastRatingValue;
     }
 
-    public int getRatingValue() {
-        return ratingValue;
+    public int getLastRatingValue() {
+        return lastRatingValue;
     }
 
     public void incrementRatingCount() {
@@ -85,7 +86,7 @@ public class UrduFont {
     }
 
     public void updateRatingSum(int ratingSum) {
-        setRatingValue(ratingSum);
+        setLastRatingValue(ratingSum);
         setRatingSum(getRatingSum() + ratingSum);
     }
 

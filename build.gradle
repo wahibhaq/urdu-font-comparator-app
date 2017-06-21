@@ -9,7 +9,7 @@ buildscript {
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files
-    classpath 'com.google.gms:google-services:3.0.0'
+    classpath 'com.google.gms:google-services:3.1.0'
 
   }
 }
@@ -44,7 +44,7 @@ ext {
   lovelydialog = '1.0.7'
   smileyrating = '1.6.5'
   circleindicator = '1.2.2'
-  firebase = '10.2.6'
+  firebase = '11.0.1'
   timber = '4.5.1'
   crashlytics = '2.6.8'
   gson = '2.8.0'

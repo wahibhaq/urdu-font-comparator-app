@@ -1,6 +1,7 @@
 package projects.hobby.urdufontcomparator.mvp;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import java.util.List;
 import projects.hobby.urdufontcomparator.models.UrduFont;
@@ -34,9 +35,9 @@ public interface MainMvp {
 
         void loadFontsAvailable();
 
-        void handleFontInfoAction(UrduFont font);
+        void handleFontInfoAction(@Nullable UrduFont font);
 
-        void handleFontRatingShowAction(UrduFont font);
+        void handleFontRatingShowAction(@Nullable UrduFont font);
 
         void handleRatingUpdateAction(int fontIndex, UrduFont font);
 
