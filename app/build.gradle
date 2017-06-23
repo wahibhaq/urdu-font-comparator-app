@@ -49,6 +49,7 @@ android {
       debuggable true
       ext.enableCrashlytics = false
       signingConfig signingConfigs.debug
+      applicationIdSuffix ".debug"
     }
     release {
       minifyEnabled true
