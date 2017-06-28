@@ -75,6 +75,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "677949819785-r5bl3100t98ogccf9b44qk1uiqc2o1su.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "projects.hobby.urdufontcomparator.debug",
+            "certificate_hash": "219d3869deb2759ed5d87ff3260ef8c488e27d4e"
+          }
+        },
+        {
+          "client_id": "677949819785-8hltqtlu91v51d961ckf8hkncnm3bpt1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "projects.hobby.urdufontcomparator.debug",
+            "certificate_hash": "fc94f1655ffb02a4cea4c0d72a5304798f943151"
+          }
+        },
+        {
           "client_id": "677949819785-h23seemr7io68lbfjh01t9gpbtm4em25.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

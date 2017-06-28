@@ -39,6 +39,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
 import me.relex.circleindicator.CircleIndicator;
+import projects.hobby.urdufontcomparator.BuildConfig;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.adapter.ContentAdapter;
@@ -125,6 +126,12 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
 
         setActionbarTitle();
         setSeekbar();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.loadFontsAvailable();
     }
 
     private void setActionbarTitle() {
@@ -354,6 +361,7 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         });
 
         TextView btnSubmit = (TextView) viewRatingBar.findViewById(R.id.button_rating_submit);
+        btnSubmit.setVisibility(BuildConfig.SHOW_RATING_DIALOG ? View.VISIBLE : View.GONE);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import projects.hobby.urdufontcomparator.BuildConfig;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.tracking.ActiveTrackingManager;
 import projects.hobby.urdufontcomparator.tracking.AppTracker;
@@ -30,7 +31,7 @@ public class FirebaseModule {
     @Provides
     FirebaseDatabase provideFirebaseDatabase() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(true);
+        firebaseDatabase.setPersistenceEnabled(!BuildConfig.DEBUG); //force sync on debug
         return firebaseDatabase;
     }
 
