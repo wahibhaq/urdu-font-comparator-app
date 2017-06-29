@@ -49,6 +49,10 @@ android {
       debuggable true
       ext.enableCrashlytics = false
       signingConfig signingConfigs.debug
+      applicationIdSuffix ".debug"
+
+      //This is to disable submitting ratings for debug builds to avoid polluting database
+      buildConfigField "boolean", "SHOW_RATING_DIALOG", "false"
     }
     release {
       minifyEnabled true
@@ -56,6 +60,7 @@ android {
       ext.enableCrashlytics = true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       signingConfig signingConfigs.release
+      buildConfigField "boolean", "SHOW_RATING_DIALOG", "true"
     }
   }
 }
