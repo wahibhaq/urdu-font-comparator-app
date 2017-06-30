@@ -37,5 +37,9 @@
             </menu>
 
         </item>
+        <item
+            android:id="@+id/action_share"
+            android:title="@string/share_with_a_friend"
+            app:showAsAction="never"/>
     </group>
 </menu>

@@ -24,7 +24,7 @@ repositories {
 android {
   signingConfigs {
     debug {
-      storeFile file("debug.keystore")
+      //storeFile file("debug.keystore")
     }
     release {
       keyAlias 'ReleaseUrduAppKey'

@@ -11,9 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import javax.inject.Inject;
+
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.fragments.LicenseFragment;
@@ -94,7 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
                         getString(R.string.menu_contact_email_subject));
 
-                if(Utils.isIntentSafe(this, emailIntent)) {
+                if (Utils.isIntentSafe(this, emailIntent)) {
                     tracker.sendEmail();
                     startActivity(emailIntent);
                 } else {
@@ -116,6 +119,20 @@ public abstract class BaseActivity extends AppCompatActivity {
                     Toast.makeText(this, R.string.twitter_client_app_not_found,
                             Toast.LENGTH_SHORT).show();
                 }
+                return true;
+
+            case R.id.action_share:
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType(getString(R.string.intent_type));
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.app_url));
+                if (Utils.isIntentSafe(this, shareIntent)) {
+                    // TODO: 6/30/2017 add sharing tracking event
+                    startActivity(Intent.createChooser(shareIntent, getString(R.string.share_with_a_friend)));
+                } else {
+                    // TODO: 6/30/2017 add share error tracking event
+                    Toast.makeText(this, R.string.sharing_client_not_found, Toast.LENGTH_SHORT).show();
+                }
+
                 return true;
 
             default:
