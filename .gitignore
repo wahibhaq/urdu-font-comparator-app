@@ -2,6 +2,7 @@
 keystore.properties
 *.keystore
 gradle.properties
+*.jks
 
 #Android generated
 bin

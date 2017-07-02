@@ -27,10 +27,15 @@ android {
       storeFile file("debug.keystore")
     }
     release {
-      keyAlias 'ReleaseUrduAppKey'
-      keyPassword 'k3y_7rd7'
-      storeFile file('/Users/Wahib/Documents/personal-projects-workspace/urdu-font-comparator/google-play/keystore/release_android.jks')
-      storePassword 'k3ystore@7rd7'
+      try {
+        keyAlias RELEASE_KEY_ALIAS
+        keyPassword RELEASE_KEY_PASSWORD
+        storeFile file(RELEASE_STORE_FILE)
+        storePassword RELEASE_KEYSTORE_PASSWORD
+      }
+      catch (ex) {
+        throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+      }
     }
   }
   compileSdkVersion rootProject.ext.compileSdkVersion
