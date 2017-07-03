@@ -37,4 +37,7 @@
     <!-- License file -->
     <string name="asset_file_path_license">file:///android_asset/licenses.html</string>
 
+    <!-- App's url for share -->
+    <string name="app_url">https://play.google.com/store/apps/details?id=projects.hobby.urdufontcomparator</string>
+
 </resources>
