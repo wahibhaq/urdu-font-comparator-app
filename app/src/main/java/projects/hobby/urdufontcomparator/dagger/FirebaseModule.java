@@ -1,6 +1,7 @@
 package projects.hobby.urdufontcomparator.dagger;
 
 import android.content.Context;
+import android.os.Debug;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DatabaseReference;
@@ -31,13 +32,16 @@ public class FirebaseModule {
     @Provides
     FirebaseDatabase provideFirebaseDatabase() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabase.setPersistenceEnabled(!BuildConfig.DEBUG); //force sync on debug
+        firebaseDatabase.setPersistenceEnabled(true); //for offline access
         return firebaseDatabase;
     }
 
     @Singleton
     @Provides
     DatabaseReference provideDatabaseReference(Context context, FirebaseDatabase firebaseDatabase) {
+        DatabaseReference fontsRef = firebaseDatabase.getReference(
+                context.getString(R.string.fonts));
+        fontsRef.keepSynced(BuildConfig.DEBUG); //force sync on debug
         return firebaseDatabase.getReference(context.getString(R.string.fonts));
     }
 
