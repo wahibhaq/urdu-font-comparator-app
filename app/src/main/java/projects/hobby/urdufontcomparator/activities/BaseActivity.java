@@ -126,10 +126,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                 shareIntent.setType(getString(R.string.intent_type));
                 shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.app_url));
                 if (Utils.isIntentSafe(this, shareIntent)) {
-                    // TODO: 6/30/2017 add sharing tracking event
-                    startActivity(Intent.createChooser(shareIntent, getString(R.string.share_with_a_friend)));
+                    tracker.shareWithFriend();
+                    startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share_with_a_friend)));
                 } else {
-                    // TODO: 6/30/2017 add share error tracking event
+                    tracker.errorShown();
                     Toast.makeText(this, R.string.sharing_client_not_found, Toast.LENGTH_SHORT).show();
                 }
 

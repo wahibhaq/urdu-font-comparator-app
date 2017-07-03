@@ -10,18 +10,19 @@ import javax.inject.Singleton;
 public class ActiveTrackingManager implements TrackingManager {
 
     private enum CustomEvents {
-        EVENT_FONT_SELECT ("font_select"),
-        EVENT_FONT_DETAILS ("font_details"),
-        EVENT_FONT_RATING ("font_rating"),
-        EVENT_FONT_RATING_SUBMIT ("font_rating_submit"),
-        EVENT_OPEN_LICENSES ("open_licenses"),
-        EVENT_OPEN_ABOUT_DEVELOPERS ("open_about_developers"),
-        EVENT_OPEN_CREDITS ("open_credits"),
-        EVENT_CONTACT_US ("contact_us"),
-        SEND_EMAIL ("send_email"),
-        SEND_TWEET ("send_tweet"),
-        EVENT_DIALOG_SHOWN ("dialog_shown"),
-        ERROR_DIALOG ("error_dialog");
+        EVENT_FONT_SELECT("font_select"),
+        EVENT_FONT_DETAILS("font_details"),
+        EVENT_FONT_RATING("font_rating"),
+        EVENT_FONT_RATING_SUBMIT("font_rating_submit"),
+        EVENT_OPEN_LICENSES("open_licenses"),
+        EVENT_OPEN_ABOUT_DEVELOPERS("open_about_developers"),
+        EVENT_OPEN_CREDITS("open_credits"),
+        EVENT_CONTACT_US("contact_us"),
+        SEND_EMAIL("send_email"),
+        SEND_TWEET("send_tweet"),
+        EVENT_DIALOG_SHOWN("dialog_shown"),
+        ERROR_DIALOG("error_dialog"),
+        SHARE_WITH_FRIEND("share_with_friend");
 
         private final String name;
 
@@ -33,7 +34,7 @@ public class ActiveTrackingManager implements TrackingManager {
             return name;
         }
     }
-    
+
     private final AppTracker appTracker;
 
     public ActiveTrackingManager(AppTracker appTracker) {
@@ -121,5 +122,13 @@ public class ActiveTrackingManager implements TrackingManager {
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
                 CustomEvents.ERROR_DIALOG.getName());
         appTracker.trackEvent(CustomEvents.EVENT_DIALOG_SHOWN.getName(), params);
+    }
+
+    @Override
+    public void shareWithFriend() {
+        Bundle params = new Bundle();
+        params.putString(FirebaseAnalytics.Param.ITEM_NAME,
+                CustomEvents.SHARE_WITH_FRIEND.getName());
+        appTracker.trackEvent(CustomEvents.SHARE_WITH_FRIEND.getName(), params);
     }
 }

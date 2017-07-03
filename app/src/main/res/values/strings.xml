@@ -79,7 +79,7 @@
     <string name="menu_contact_via_email">Email</string>
     <string name="menu_contact_via_tweet">Tweet</string>
     <string name="menu_contact_email_subject">My Feedback</string>
-    <string name="share_with_a_friend">Share with a friend</string>
+    <string name="menu_share_with_a_friend">Share with a friend</string>
 
     <!-- Font Info Dialog -->
     <string name="button_got_it">GOT IT</string>
@@ -102,7 +102,7 @@
     <string name="select_font_size">Select Font Size</string>
     <string name="email_client_app_not_found">Email client application was not found on your device</string>
     <string name="twitter_client_app_not_found">Twitter client application was not found on your device</string>
-    <string name="sharing_client_not_found">Sharing client was not found on your device</string>
+    <string name="sharing_client_not_found">Sharing is not natively supported on your device</string>
     <string name="connection_error">Seems like you don\'t have an Internet Connection!</string>
     <string name="rate_this_font">Rate this font</string>
     <string name="button_ok">OK</string>
