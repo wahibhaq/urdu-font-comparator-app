@@ -124,13 +124,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.action_share:
                 Intent shareIntent = new Intent(Intent.ACTION_SEND);
                 shareIntent.setType(getString(R.string.intent_type));
-                shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.app_url));
+                shareIntent.putExtra(Intent.EXTRA_TEXT,
+                        String.format(getString(R.string.share_app_url_message),
+                        getString(R.string.app_name_expanded), getString(R.string.app_url)));
                 if (Utils.isIntentSafe(this, shareIntent)) {
-                    tracker.shareWithFriend();
-                    startActivity(Intent.createChooser(shareIntent, getString(R.string.menu_share_with_a_friend)));
+                    tracker.shareAppWithFriend();
+                    startActivity(Intent.createChooser(shareIntent,
+                            getString(R.string.menu_share_with_a_friend)));
                 } else {
                     tracker.errorShown();
-                    Toast.makeText(this, R.string.sharing_client_not_found, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.sharing_client_not_found,
+                            Toast.LENGTH_SHORT).show();
                 }
 
                 return true;

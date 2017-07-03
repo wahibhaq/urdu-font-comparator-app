@@ -80,6 +80,7 @@
     <string name="menu_contact_via_tweet">Tweet</string>
     <string name="menu_contact_email_subject">My Feedback</string>
     <string name="menu_share_with_a_friend">Share with a friend</string>
+    <string name="share_app_url_message">Checkout \"%1$s\" app %2$s</string>
 
     <!-- Font Info Dialog -->
     <string name="button_got_it">GOT IT</string>

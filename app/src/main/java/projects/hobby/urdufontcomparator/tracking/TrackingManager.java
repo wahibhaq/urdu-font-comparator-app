@@ -25,6 +25,6 @@ public interface TrackingManager {
 
     void errorShown();
 
-    void shareWithFriend();
+    void shareAppWithFriend();
 
 }

@@ -22,7 +22,7 @@ public class ActiveTrackingManager implements TrackingManager {
         SEND_TWEET("send_tweet"),
         EVENT_DIALOG_SHOWN("dialog_shown"),
         ERROR_DIALOG("error_dialog"),
-        EVENT_SHARE_WITH_FRIEND("share_with_friend");
+        EVENT_SHARE_APP_WITH_FRIEND("share_app_with_friend");
 
         private final String name;
 
@@ -125,10 +125,10 @@ public class ActiveTrackingManager implements TrackingManager {
     }
 
     @Override
-    public void shareWithFriend() {
+    public void shareAppWithFriend() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                CustomEvents.SHARE_WITH_FRIEND.getName());
-        appTracker.trackEvent(CustomEvents.EVENT_SHARE_WITH_FRIEND.getName(), params);
+                CustomEvents.EVENT_SHARE_APP_WITH_FRIEND.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_SHARE_APP_WITH_FRIEND.getName(), params);
     }
 }
