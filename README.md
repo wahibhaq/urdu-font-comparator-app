@@ -83,7 +83,9 @@ Nastaa'liq is one of the most complex scripts to design. Nasta'liq is written on
 It's complexity also makes it one of the most difficult scripts to render using a computer font. Its right-to-left direction, vertical nature, and context-specific shaping provide a challenge to any font rendering engine and make it much more difficult to render than the flat (Naskh) Arabic script that it is based on. As a result, font developers have long struggled to produce a font with the correct shaping but at the same time avoid overlapping of dots and diacritics.
 
 
-#### Status of Nasta'liq support on Digital Devices
+## Status of Urdu on Digital Devices
+
+### Nasta'liq support
 
 Nasta'liq became part of Windows 8 with introduction of [Urdu Typesetting](http://archives.miloush.net/michkap/archive/2011/11/16/10237715.html), a new member of the Arabic script font family. It was supposedly first widely available Unicode font to support Nasta'liq. Thanks to [Michael S. Kaplan and his team](http://archives.miloush.net/michkap/archive/2013/10/09/10455209.html) for this. 
 
@@ -91,9 +93,34 @@ Android started offering Urdu from [Marshmallow (Oct, 2015)](https://www.android
 
 [Mudassir Azeemi](https://twitter.com/maxeemi) was quite excited to inform us that Apple finally included Nasta'liq support in [iOS 11](https://www.apple.com/ios/ios-11-preview/) beta. He shared this news via a [facebook post](https://www.facebook.com/photo.php?fbid=10155735481406686&set=a.10150233210736686.314863.516911685&type=3&permPage=1) and we all hope to see the update reaching release.
 
+### Urdu apps on Google Play
 
-<!-- TODO Enter image links here from http://tabish.freeshell.org/u-font/ -->
-<!-- I plan to additional valuable information about fonts like Provider, File Size, Licenses, Performance metrics etc. -->
+I started a research to find out Android apps which fulfill following criteria:
+
+* Entire content is in Urdu
+* Customized for [RTL](https://developer.android.com/about/versions/jelly-bean.html#42-native-rtl) (Right-to-left) layout mirroring
+* Using a Nasta'liq font
+
+It's an ongoing study and I will keep updating this section in future. Honestly, there aren't many apps which fulfill these criteria and that's exactly why it's important to highlight and encourage other apps creators. 
+
+> Note: Right now, my app is also not configured for RTL layout mirroring in it's true sense and not all content is in Urdu but I will surely try to address both of these topics as an improvement in next update.
+
+#### Hall of Fame
+
+One app which I would like to mention is **[Pencil News](http://www.pencil.pk/home)**. It 
+allows users to read news on an Urdu-based interface in authentic “Nasta'liq Urdu” font.
+
+Pencil app fulfills the criteria mentioned above and have done a pretty good job with their app. It was also covered by [TechJuice](https://www.techjuice.pk/pencil-news-is-a-cool-urdu-news-application/) and you can also download it from [here](https://play.google.com/store/apps/details?id=com.pencil.news.android).
+
+I am attaching some of the screenshots to give an idea how it should be done. 
+
+
+<img src="https://i.imgur.com/oHPwhsh.png" width="200" height="400" align="center"> 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://i.imgur.com/WEpKcY9.png" width="200" height="400" align="center">
+
+
+<br> <br>
 
 ## How can I contribute?
 
