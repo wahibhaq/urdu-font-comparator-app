@@ -116,7 +116,6 @@ I am attaching some of the screenshots to give an idea how it should be done.
 
 
 <img src="https://i.imgur.com/oHPwhsh.png" width="200" height="400" align="center"> 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="https://i.imgur.com/WEpKcY9.png" width="200" height="400" align="center">
 
 
