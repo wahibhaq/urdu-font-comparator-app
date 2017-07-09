@@ -140,4 +140,4 @@ I tried my best to keep my research legitimate and only include information for 
 
 ## Where can I get more help, if I need it?
 
-You can contact me (obviously!) at wahib.tech@gmail.com or tweet me at @wahibhaq. I will also try to get in contact with the R&D team behind [Center for Speech and Language Technologies (CSaLT)](http://csalt.itu.edu.pk/), [ITU](http://itu.edu.pk/). They can be of great help to us. 
+You can contact me at wahib.tech@gmail.com or tweet me at [@wahibhaq](https://twitter.com/wahibhaq).
