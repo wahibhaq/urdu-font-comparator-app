@@ -4,7 +4,7 @@
 
 ## Description
 
-This project is about an Android application which allows users to explore various Urdu Fonts, but more importantly see and appreciate why Nasta'liq script should be a natural choice for Urdu content on mobile devices. 
+This project is about an Android application which allows users to explore various Urdu Fonts, but more importantly see and appreciate why [Nasta'liq](https://en.wikipedia.org/wiki/Nasta%CA%BFl%C4%ABq_script) script should be a natural choice for Urdu content on mobile devices. 
 
 ## Motivation
 
@@ -28,13 +28,11 @@ Credits: [Rekhta](https://rekhta.org/couplets/saliiqe-se-havaaon-men-jo-khushbuu
 
 <br><br>
 
-Urdu is my mother tongue, lingua franca as well as the national language of Pakistan and widely spoken in 6 countries by [60+ million people](http://mentalfloss.com/article/64594/proportional-map-worlds-largest-languages) but still Urdu as a language has not been successfully integrated with what we call "Digital Age". A significant number of Urdu speakers aren't technologically active, especially those residing in India and Pakistan due to poor economic conditions of the demographic. Among those active, majority of whom are Millennials don't write Urdu at all and are comfortable with using Roman Urdu as a medium of communication. 
+Urdu is my mother tongue, lingua franca as well as the national language of Pakistan and widely spoken in 6 countries by [60+ million people](http://mentalfloss.com/article/64594/proportional-map-worlds-largest-languages) but still Urdu as a language has not been successfully integrated with what we know as "[Digital Age](https://en.wikipedia.org/wiki/Information_Age)". A significant number of Urdu speakers aren't technologically active, especially those residing in India and Pakistan due to poor economic conditions of the demographic. Among those active, majority of whom are Millennials don't write Urdu at all and are comfortable with using Roman Urdu as a medium of communication. 
 
-I, myself, started using Urdu on Whatsapp and Messenger roughly 2 years ago after installing [SwiftKey Keyboard](https://play.google.com/store/apps/details?id=com.touchtype.swiftkey&hl=en) on my personal phone. It took like 3-4 months of regular usage before I became comfortable and developed fluent writing speed. Family and Friends poked fun and found it odd but I continued using it. Many of them later joined me after my constant encouragement. My International friends find Urdu script  quite fascinating and it's a shame that unlike every other countries, we don't write in our native language in daily lives. Many of us only realize it once we start living outside Pakistan.
+I, myself, started using Urdu on Whatsapp and Messenger roughly 2 years ago after installing [SwiftKey Keyboard](https://play.google.com/store/apps/details?id=com.touchtype.swiftkey&hl=en) on my personal phone. It took like 3-4 months of daily usage before I became comfortable and developed fluent writing speed. Family and Friends poked fun and found it odd but I continued using it. Many of them later joined me after my constant encouragement. My International friends find Urdu script  quite fascinating and it's a shame that unlike every other countries, we don't write in our native language in daily lives. Many of us only realize it once we start living outside Pakistan.
 
-> I am always sorry when any language is lost, because languages are the pedigrees of nations. ~ Samuel Johnson
-
-Coming back to the topic, I feel like there are several problems which exist today. First, we only have handful of websites (e.g [BBC-Urdu](http://www.bbc.co.uk/urdu/)) entirely in Urdu and mobile apps are almost non-existent. Most of them tend to publish images instead of text which is highly non-productive. So there is an impression that market doesn't exist and users won't value it. Second, there's only a small chunk of websites (e.g [Jang News](https://jang.com.pk/)) which publishes content in Nasta'liq which is it's default writing style. Third, Google Translator performs extremely poor with English to Urdu translation, reducing reach. Last but not the least, there is a critical need to encourage our friends, family and especially millennials to start using Urdu as a communication medium and take pride in it.  
+> I am always sorry when any language is lost, because languages are the pedigrees of nations. ~ Samuel Johnson 
 
 
 <img src="https://i.imgur.com/UpAfjQO.jpg" width="600" height="300" align="middle" alt="Source: Dawn Images">
@@ -43,14 +41,15 @@ Credits: [Dawn](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakista
 
 <br>
 
-### Naskh vs Nasta'liq
+### [Naskh](https://en.wikipedia.org/wiki/Naskh_(script)) vs [Nasta'liq](https://en.wikipedia.org/wiki/Nasta%CA%BFl%C4%ABq_script)
 
-By and large, Arabic today is written in Naskh and subsequently the Urdu text you see on Web is also predominantly in Naskh script. Urdu is not a child of Arabic but somehow Naskh was accepted as de facto style for Urdu on Internet. Urdu is typically written in a Nasta'liq style i.e. the connected letters in a word tend to follow a sloping baseline. The difference between Nasta'liq and Naskh is much more than just a different style and Nasta'liq is deeply connected to feelings of origin and pride of Urdu speakers (at least for those who care). Nasta'liq, based on a century-old calligraphic tradition, is considered one of the most beautiful scripts on the planet and also known as “the bride of calligraphy”. 
+Urdu as a language has an Indo-Aryan base and is written from right to left like Arabic or Farsi. According to [linguist-historians](https://www.wdl.org/en/item/9700/), it started evolving from Farsi and Arabic contacts during the invasions of the Indian subcontinent by Persian and Turkic forces from the 11th century onward.
+By and large, Arabic today is written in [Naskh](https://en.wikipedia.org/wiki/Naskh_(script)) and subsequently the Urdu text you see on Web is also predominantly in Naskh script. Urdu is not a child of Arabic but somehow Naskh was accepted as de facto style for Urdu on Internet. Urdu is typically written in a Nasta'liq style i.e. the connected letters in a word tend to follow a sloping baseline. The difference between Nasta'liq and Naskh is much more than just a different style and Nasta'liq is deeply connected to feelings of origin and pride of Urdu speakers (at least for those who care). Nasta'liq, based on a century-old calligraphic tradition, is considered one of the most beautiful scripts on the planet and also known as “the bride of calligraphy”. 
 
 I would ignore geo-political affiliation for now but I can confidently say that the past two or three generations of Urdu readers and writers grew up associating Nasta'liq and Urdu almost exclusively with each other. Nasta'liq was the default script when reading Urdu books in schools. Therefore, our generation is so used to reading Urdu in Nasta'liq that we can't even read properly when written in Naskh, but due to the limited use of Nastal'iq, we are forced to read Urdu in Naskh on digital devices. I believe limited use of proper font for Urdu language has over the years led many people to lose interest in reading Urdu on Internet. 
 
 [Ali Eteraz](https://twitter.com/eteraz) has written an awesome article on this topic titled, [The Death of the Urdu Script
-](https://medium.com/@eteraz/the-death-of-the-urdu-script-9ce935435d90). Here is an example of Nasta'liq compared with the more common Naskh script.
+](https://medium.com/@eteraz/the-death-of-the-urdu-script-9ce935435d90). Ali's article created a good amount of splash and it touched the very sensitive point regarding the Urdu script in online world. Here is an example of Nasta'liq compared with the more common Naskh script.
 
 ![Naskh vs Nata'liq](https://cdn-images-1.medium.com/max/1600/0*9Cxd8PX0UX1WiU8b.jpeg)
 
@@ -62,10 +61,10 @@ Nasta'liq occupies a special place in Urdu, and decades of attempts from press t
 
 #### This is how both scripts look like on a mobile screen
 
-Nasta'liq on [Daily Pakistan](http://dailypakistan.com.pk/latest) website <br><br>
-<img src="https://i.imgur.com/ned1c7q.png" width="200" height="400" align="center">
-
-Naskh on [BBC Urdu](http://www.bbc.com/urdu/world) website <br><br>
+Nasta'liq on [Daily Pakistan](http://dailypakistan.com.pk/latest) website 
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+Naskh on [BBC Urdu](http://www.bbc.com/urdu/world) website  <br> <br>
+<img src="https://i.imgur.com/ned1c7q.png" width="200" height="400" align="left"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 <img src="https://i.imgur.com/lFUGYu0.png" width="200" height="400" align="center">
 
 <br>
@@ -83,17 +82,30 @@ Nastaa'liq is one of the most complex scripts to design. Nasta'liq is written on
 It's complexity also makes it one of the most difficult scripts to render using a computer font. Its right-to-left direction, vertical nature, and context-specific shaping provide a challenge to any font rendering engine and make it much more difficult to render than the flat (Naskh) Arabic script that it is based on. As a result, font developers have long struggled to produce a font with the correct shaping but at the same time avoid overlapping of dots and diacritics.
 
 
-## Status of Urdu on Digital Devices
+## Status of Urdu on Smartphones
 
 ### Nasta'liq support
 
-Nasta'liq became part of Windows 8 with introduction of [Urdu Typesetting](http://archives.miloush.net/michkap/archive/2011/11/16/10237715.html), a new member of the Arabic script font family. It was supposedly first widely available Unicode font to support Nasta'liq. Thanks to [Michael S. Kaplan and his team](http://archives.miloush.net/michkap/archive/2013/10/09/10455209.html) for this. 
+##### Windows
 
-Android started offering Urdu from [Marshmallow (Oct, 2015)](https://www.android.com/intl/en_in/versions/marshmallow-6-0/features/#marshmallow-features-1-body) and to my knowledge (at the moment of writing this) it still doesn't support Nasta'liq natively for Urdu language. 
+Nasta'liq became part of Windows 8 with introduction of [Urdu Typesetting](http://archives.miloush.net/michkap/archive/2011/11/16/10237715.html), a new member of the Arabic script font family. It was supposedly first widely available Unicode font to support Nasta'liq. Thanks to [Michael S. Kaplan and his team](http://archives.miloush.net/michkap/archive/2013/10/09/10455209.html) for this.  
 
-[Mudassir Azeemi](https://twitter.com/maxeemi) was quite excited to inform us that Apple finally included Nasta'liq support in [iOS 11](https://www.apple.com/ios/ios-11-preview/) beta. He shared this news via a [facebook post](https://www.facebook.com/photo.php?fbid=10155735481406686&set=a.10150233210736686.314863.516911685&type=3&permPage=1) and we all hope to see the update reaching release.
+##### iOS
 
-### Urdu apps on Google Play
+[Mudassir Azeemi](https://twitter.com/maxeemi) is another enthusiast with a similar [mission](https://medium.com/@mmudassir/the-revival-of-the-urdu-script-734eeeffef5d), who also wrote a [letter to Tim Cook](https://medium.com/@mmudassir/an-open-letter-to-tim-cook-and-jonathan-ive-be38cf88d8ee) back in 2014 to request for Nasta'liq support in iOS. He was quite excited to inform us that Apple finally included Nasta'liq support in [iOS 11](https://www.apple.com/ios/ios-11-preview/) beta and we all hope to see the update reaching release. 
+
+##### Android
+
+Android started offering Urdu from [Marshmallow (Oct, 2015)](https://www.android.com/intl/en_in/versions/marshmallow-6-0/features/#marshmallow-features-1-body) and to my knowledge (at the moment of writing this) it still doesn't support Nasta'liq natively for Urdu language.
+
+
+Coming back to the topic, I feel like there are several obstacles which exist today to full integration of Urdu in it's right typeface on mobile devices. First, we only have handful of websites (e.g [BBC-Urdu](http://www.bbc.co.uk/urdu/)) entirely in Urdu and mobile apps are almost non-existent. Most of them tend to publish images instead of text which is highly non-productive. So there is an impression that market doesn't exist and users don't see any value in it. Second, there's only a small chunk of websites (e.g [Jang News](https://jang.com.pk/)) which publishes content in Nasta'liq which is it's default writing style. Third, Google Translator performs extremely poor with English to Urdu translation, reducing reach. Fourth, there is a critical need to encourage our friends, family and especially millennials to start using Urdu as a communication medium in written form and take pride in it. 
+
+Lastly and most importantly, the world's most daunting Urdu script problem as we know it can be solved by providing the Nasta'liq font in all the popular Operating Systems of this brave new world. *Yes, Google I am talking to you*. As Mudassir has rightly put it, in order to write in Nasta'liq, Google will need to tie in the Nasta'liq font with the Unicode, relate it to Urdu and get rid of that Naskh typeface. OSes can revive the Urdu language’s true identity on the internet, without pulling too many hair because the hair-loss problem is still the toughest problem to crack so far. 
+
+I personally believe in order to make Google and other big players genuinely interested in doing their part of work, we first have to make them believe that it's about time to not ignore Urdu as a language. The more we start using and publishing mobile apps with Urdu content, the more it will get the deserving attention. Local IT industry and governing bodies can then push through various channels with more confidence and substance. 
+
+### Apps on Google Play in Urdu content
 
 I started a research to find out Android apps which fulfill following criteria:
 
