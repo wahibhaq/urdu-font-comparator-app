@@ -116,6 +116,8 @@ It's an ongoing study and I will keep updating this section in future. Honestly,
 
 > Note: Right now, my app is also not configured for RTL layout mirroring in it's true sense and not all content is in Urdu but I will surely try to address both of these topics as an improvement in next update.
 
+<br>
+
 #### Hall of Fame
 
 ##### [Pencil News](http://www.pencil.pk/home)
@@ -129,6 +131,8 @@ I am attaching some of the screenshots to give an idea how it should be done.
 
 <img src="https://i.imgur.com/oHPwhsh.png" width="200" height="400" align="center"> 
 <img src="https://i.imgur.com/WEpKcY9.png" width="200" height="400" align="center">
+
+<br>
 
 #### Honorary Mentions
 
