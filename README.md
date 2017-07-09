@@ -118,8 +118,9 @@ It's an ongoing study and I will keep updating this section in future. Honestly,
 
 #### Hall of Fame
 
-One app which I would like to mention is **[Pencil News](http://www.pencil.pk/home)**. It 
-allows users to read news on an Urdu-based interface in authentic “Nasta'liq Urdu” font.
+##### [Pencil News](http://www.pencil.pk/home)
+
+One app which I would like to mention is Pencil News. It allows users to read news on an Urdu-based interface in authentic “Nasta'liq Urdu” font.
 
 Pencil app fulfills the criteria mentioned above and have done a pretty good job with their app. It was also covered by [TechJuice](https://www.techjuice.pk/pencil-news-is-a-cool-urdu-news-application/) and you can also download it from [here](https://play.google.com/store/apps/details?id=com.pencil.news.android).
 
@@ -128,6 +129,16 @@ I am attaching some of the screenshots to give an idea how it should be done.
 
 <img src="https://i.imgur.com/oHPwhsh.png" width="200" height="400" align="center"> 
 <img src="https://i.imgur.com/WEpKcY9.png" width="200" height="400" align="center">
+
+#### Honorary Mentions
+
+##### [BYKEA بائیکیا](https://play.google.com/store/apps/details?id=com.bykea.pk&hl=en)
+
+BYKEA is an all in one app for transportation, delivery and payment services. It has incorporated Urdu along with English. 
+
+##### [CricName](https://play.google.com/store/apps/details?id=com.cricnama&rdid=com.cricnama) 
+
+CricName is a Cricket-oriented Android App in Urdu which keeps users up to date with standout coverage of the game. It has certain missing elements like RTL mirroring and not using one of the Nasta'liq font.
 
 
 <br> <br>
