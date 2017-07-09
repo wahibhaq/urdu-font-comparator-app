@@ -16,7 +16,7 @@ Credits: [Dawn](http://herald.dawn.com/news/1153737/the-case-for-urdu-as-pakista
 
 I wanted to play with Urdu fonts for a while but was still not getting a starting point or a solid motivation to do it. This idea originated when I read the news about a new and much improved font, [Meher Nasta'liq](http://csalt.itu.edu.pk/urdufont/) launched by [Center for Speech and Language Technologies (CSaLT)](http://csalt.itu.edu.pk/) lab at [International Technical University (ITU)](http://itu.edu.pk/), Lahore (Pakistan). The website claims it to be a step towards advanced Urdu Typography and a font which serves the need of modern mobile applications. Even Dawn covered a [story](https://www.dawn.com/news/1313737) about it being a Calligraphy-based Urdu font for the Internet. It was enough to catch my attention and I wanted to try it out and see how it is different from other fonts, especially Jameel Noori Nastaleeq Font, which is considered to be the best so far. Then once I started thinking about it, I realized that there is no app or resource where I can see how Urdu text looks like rendered in different fonts (there are a lot actually!).
 
-As mentioned, I started this project to address a problem I was facing but in a broader picture, I am quite hopeful that it will encourage developers to create apps with Urdu content. 
+As mentioned, I started this project to address a problem I was facing but in a broader picture, I am quite hopeful that it will encourage developers to create apps with Urdu content. Additionally, I didn't find any resource which addresses questions like why Urdu has a limited reach when it comes to Internet or Mobile devices and technical comparison of Naskh and Nasta'liq scripts. My goal is also to convert this research into an information source which provides answers for those who are equally concerned and interested to dig deeper in this area.
 
 ## Background
 
@@ -135,6 +135,8 @@ I am attaching some of the screenshots to give an idea how it should be done.
 ## How can I contribute?
 
 Nothing special, just fork and create a PR with your contributions. Later, I plan to define a certain criteria for those who want to include a new font in the app. 
+
+I tried my best to keep my research legitimate and only include information for which I found authentic resources. I have also shared my point of views on how I see the problems and my perspective which is open for debate and questioning. I am more than happy to receive constructive feedback on what I have written here or areas where you think I can improve. 
 
 ## Where can I get more help, if I need it?
 
