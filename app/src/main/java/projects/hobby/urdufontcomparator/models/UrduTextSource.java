@@ -1,11 +1,16 @@
 package projects.hobby.urdufontcomparator.models;
 
 import android.content.Context;
+
 import javax.inject.Inject;
+
 import projects.hobby.urdufontcomparator.R;
 
 /**
- * Acts as a Model for Content as for now it serves for Sample Text and Overflow Menu Items
+ * Acts as a Model for Content as for now it serves for Sample Text and Dialog for Overflow Menu Items
+ *
+ * I know it could have been done in a better way but going with an easy solution for now.
+ * //TODO Extract the Dialog part and introduce a Manager with a generic Fragment to handle this.
  */
 public class UrduTextSource {
 
@@ -51,21 +56,23 @@ public class UrduTextSource {
                 .concat(context.getString(R.string.dialog_font_size_label, font.getFilesize()));
     }
 
-    public String prepareDevsInfoDialogText() {
+    public String prepareAboutUsDialogText() {
         return  getLineSpacings()
-                .concat(context.getString(R.string.dev_wahib_name))
+                .concat(context.getString(R.string.project_description))
+                .concat(getLineSpacingsWithDash())
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.dev_wahib_url))
+                .concat(context.getString(R.string.project_blog_page_mention,
+                        context.getString(R.string.app_blog_page)))
                 .concat(getLineSpacings())
                 .concat(getLineSpacings())
-                .concat(context.getString(R.string.dev_zeeshan_name))
-                .concat(getLineSpacings())
-                .concat(context.getString(R.string.dev_zeeshan_url));
+                .concat(context.getString(R.string.project_github_comment,
+                        context.getString(R.string.app_github_repo_url)));
     }
 
     public String prepareCreditsDialogText() {
         return getLineSpacings()
-                .concat(context.getString(R.string.credits_text));
+                .concat(context.getString(R.string.credits_text,
+                        context.getString(R.string.app_github_credits_url)));
     }
 
     private String getLineSpacings() {

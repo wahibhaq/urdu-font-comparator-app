@@ -40,4 +40,11 @@
     <!-- App's url for share -->
     <string name="app_url">https://play.google.com/store/apps/details?id=projects.hobby.urdufontcomparator</string>
 
+    <!-- Project links -->
+    <string name="app_github_repo_url">https://github.com/wahibhaq/urdu-font-comparator-app</string>
+    <string name="app_blog_page">http://wahibhaq.com/projects/urdu-font-comparator-app</string>
+
+    <!-- Credits page link -->
+    <string name="app_github_credits_url">https://github.com/wahibhaq/urdu-font-comparator-app/Credits.md</string>
+
 </resources>

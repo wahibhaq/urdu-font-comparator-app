@@ -15,7 +15,7 @@ public interface TrackingManager {
 
     void openLicenses();
 
-    void openAboutDevs();
+    void openAboutUs();
 
     void openCredits();
 

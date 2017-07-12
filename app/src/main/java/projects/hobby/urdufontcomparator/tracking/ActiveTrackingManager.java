@@ -15,7 +15,7 @@ public class ActiveTrackingManager implements TrackingManager {
         EVENT_FONT_RATING("font_rating"),
         EVENT_FONT_RATING_SUBMIT("font_rating_submit"),
         EVENT_OPEN_LICENSES("open_licenses"),
-        EVENT_OPEN_ABOUT_DEVELOPERS("open_about_developers"),
+        EVENT_OPEN_ABOUT_US("open_about_us"),
         EVENT_OPEN_CREDITS("open_credits"),
         EVENT_CONTACT_US("contact_us"),
         SEND_EMAIL("send_email"),
@@ -85,11 +85,11 @@ public class ActiveTrackingManager implements TrackingManager {
     }
 
     @Override
-    public void openAboutDevs() {
+    public void openAboutUs() {
         Bundle params = new Bundle();
         params.putString(FirebaseAnalytics.Param.ITEM_NAME,
-                CustomEvents.EVENT_OPEN_ABOUT_DEVELOPERS.getName());
-        appTracker.trackEvent(CustomEvents.EVENT_OPEN_ABOUT_DEVELOPERS.getName(), params);
+                CustomEvents.EVENT_OPEN_ABOUT_US.getName());
+        appTracker.trackEvent(CustomEvents.EVENT_OPEN_ABOUT_US.getName(), params);
     }
 
     @Override

@@ -12,11 +12,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import projects.hobby.urdufontcomparator.MainApplication;
 import projects.hobby.urdufontcomparator.R;
 import projects.hobby.urdufontcomparator.fragments.LicenseFragment;
@@ -80,10 +79,10 @@ public abstract class BaseActivity extends AppCompatActivity {
                         .commit();
                 return true;
 
-            case R.id.action_about_dev:
-                tracker.openAboutDevs();
-                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_devs,
-                        urduTextSource.prepareDevsInfoDialogText());
+            case R.id.action_about_us:
+                tracker.openAboutUs();
+                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_us,
+                        urduTextSource.prepareAboutUsDialogText());
                 return true;
 
             case R.id.action_credits:

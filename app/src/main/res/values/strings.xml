@@ -6,13 +6,13 @@
     <string name="license_screen_title">Open-Source Licenses</string>
 
     <!-- Credits -->
-    <string name="credits_text">
-         Allama `Iqbal
-        \nDr. Mohammad Yaqub `Aamir`
-        \nDaagh `Dehlvi`
-    </string>
+    <string name="credits_text">Visit Credits page %s</string>
 
-    <!-- About Developer -->
+    <!-- About Us -->
+    <string name="project_description">This application allows users to explore various Urdu Fonts, eventually helping them in choosing the right one. \n\nThis project is additionally intended to make users appreciate why Nasta\'liq script should be a natural choice for Urdu content on mobile devices.</string>
+    <string name="project_tagline">Explore Urdu Fonts. See and Appreciate Nasta\'liq script.</string>
+    <string name="project_github_comment">The source code is also available as open-source on GitHub %s</string>
+    <string name="project_blog_page_mention">You can read more about the project here %s</string>
     <string name="dev_wahib_name">Wahib-Ul-Haq</string>
     <string name="dev_wahib_url">http://wahibhaq.com</string>
     <string name="dev_wahib_email">wahib.tech@gmail.com</string>
@@ -72,7 +72,7 @@
     <string name="line_spacing">"\n"</string>
 
     <!-- Actionbar Overflow Menu -->
-    <string name="menu_about_devs">About Developers</string>
+    <string name="menu_about_us">About Us</string>
     <string name="menu_licenses">Licenses</string>
     <string name="menu_credits">Credits</string>
     <string name="menu_contact">Contact Us</string>
