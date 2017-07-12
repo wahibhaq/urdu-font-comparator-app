@@ -153,6 +153,12 @@ Nothing special, just fork and create a PR with your contributions. Later, I pla
 
 I tried my best to keep my research legitimate and only include information for which I found authentic resources. I have also shared my point of views on how I see the problems and my perspective which is open for debate and questioning. I am more than happy to receive constructive feedback on what I have written here or areas where you think I can improve. 
 
+## Who else contributed in this project?
+
+It is a very personal project which I formally kicked off in Feb 2017. I was also super motivated because one of my 2017 New Year's goals was to develop my own Android app from scratch and get it published on Google Play. This idea seemed like a good way to achieve this goal.
+
+It wouldn't have been possible without the assistance of [Zeeshan Shabbir](https://github.com/ZeeshanShabbir), who voluntarily jumped in and always did any task I asked of him with a smile. I hope he also learned a thing or two during this experience. So, overall, many people helped me in some way of other and I'm thankful to all of them. I have tried to mention all of them in [Contributors list](urdu-font-comparator-app/Contributors.md);
+
 ## Where can I get more help, if I need it?
 
 You can contact me at wahib.tech@gmail.com or tweet me at [@wahibhaq](https://twitter.com/wahibhaq).
