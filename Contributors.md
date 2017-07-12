@@ -2,7 +2,7 @@
 ### Code
 
   * [Wahib-Ul-Haq](https://twitter.com/wahibhaq)
-  * [Zeeshan Shabir](zeeshan.shabbir79@gmail.com)
+  * [Zeeshan Shabir](https://github.com/ZeeshanShabbir)
 
 ### Graphics Designing 
 
