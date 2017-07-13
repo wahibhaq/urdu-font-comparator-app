@@ -6,7 +6,7 @@
 
 ### Graphics Designing 
 
-  * Talha 
+  * [Talha Ahmad Khan](https://twitter.com/TalhaAhmad93) 
 
 ### Content
 
