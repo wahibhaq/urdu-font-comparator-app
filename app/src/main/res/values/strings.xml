@@ -112,5 +112,7 @@
     <string name="error_unable_to_update_rating">Apologies, unable to submit Rating. Kindly check your Internet Connection and try again.</string>
     <string name="font_rating_result">Rating :</string>
 
+    <!-- Splash screen -->
+    <string name="app_version_name">App Version: %s</string>
 
 </resources>
