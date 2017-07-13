@@ -41,7 +41,7 @@ android {
         storePassword keystoreProperties['storePassword']
       }
       catch (ex) {
-        throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in gradle.properties.")
+        throw new InvalidUserDataException("You should define required fields in keystore.properties.")
       }
     }
   }
@@ -117,6 +117,7 @@ dependencies {
   releaseCompile("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlytics@aar") {
     transitive = true
   }
+
 }
 
 //THIS PLUGIN HAS TO BE AT THE BOTTOM
