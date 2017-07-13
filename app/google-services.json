@@ -15,15 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "677949819785-e8ngmjniu9mc1scvatdj6gl65r4ncaus.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "projects.hobby.urdufontcomparator",
-            "certificate_hash": "fc94f1655ffb02a4cea4c0d72a5304798f943151"
-          }
-        },
-        {
-          "client_id": "677949819785-m10ugioei8p2lsip235ahjstlj63e9t1.apps.googleusercontent.com",
+          "client_id": "677949819785-aarii37ciriirlakdqfsgsdvuagu7stq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "projects.hobby.urdufontcomparator",
@@ -31,71 +23,11 @@
           }
         },
         {
-          "client_id": "677949819785-i9gnsqbmh9mt9srjub8r3bikjsmokrv1.apps.googleusercontent.com",
+          "client_id": "677949819785-la005o87uai145m8jbutotota2nsj0ii.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "projects.hobby.urdufontcomparator",
-            "certificate_hash": "19c0d5f1d643ab1ab723a302bbaf17d76ad10151"
-          }
-        },
-        {
-          "client_id": "677949819785-9k9t3ulv5rj7b0go005138htklkjknhk.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAMHKvtlzBfHuUOQT_uUbM09FaaBaUj_4A"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "677949819785-9k9t3ulv5rj7b0go005138htklkjknhk.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:677949819785:android:c86ade6d35407881",
-        "android_client_info": {
-          "package_name": "projects.hobby.urdufontcomparator.debug"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "677949819785-r5bl3100t98ogccf9b44qk1uiqc2o1su.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "projects.hobby.urdufontcomparator.debug",
-            "certificate_hash": "219d3869deb2759ed5d87ff3260ef8c488e27d4e"
-          }
-        },
-        {
-          "client_id": "677949819785-8hltqtlu91v51d961ckf8hkncnm3bpt1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "projects.hobby.urdufontcomparator.debug",
             "certificate_hash": "fc94f1655ffb02a4cea4c0d72a5304798f943151"
-          }
-        },
-        {
-          "client_id": "677949819785-h23seemr7io68lbfjh01t9gpbtm4em25.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "projects.hobby.urdufontcomparator.debug",
-            "certificate_hash": "e0dabc4e008b4f6c66bc19e6695723b553c70baf"
           }
         },
         {
