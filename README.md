@@ -86,8 +86,8 @@ Nasta'liq occupies a special place in Urdu, and decades of attempts from press t
 Nasta'liq on [Daily Pakistan](http://dailypakistan.com.pk/latest) website 
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
 Naskh on [BBC Urdu](http://www.bbc.com/urdu/world) website  <br> <br>
-<img src="https://i.imgur.com/ned1c7q.png" width="200" height="400" align="left"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<img src="https://i.imgur.com/lFUGYu0.png" width="200" height="400" align="center">
+<img src="https://i.imgur.com/ned1c7q.png" width="220" height="400" align="left"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<img src="https://i.imgur.com/lFUGYu0.png" width="220" height="400" align="center">
 
 <br>
 
@@ -120,11 +120,29 @@ Nasta'liq became part of Windows 8 with introduction of [Urdu Typesetting](http:
 
 Android started offering Urdu from [Marshmallow (Oct, 2015)](https://www.android.com/intl/en_in/versions/marshmallow-6-0/features/#marshmallow-features-1-body) and to my knowledge (at the time of writing this) it still does not support Nasta'liq natively for Urdu language.
 
-Coming back to the topic, I feel like there are several obstacles which exist today to full integration of Urdu in it's right typeface on mobile devices. First, we only have handful of websites such as [BBC-Urdu](http://www.bbc.co.uk/urdu/) or [Rekhta.org](https://rekhta.org/?lang=ur) which are entirely in Urdu and mobile apps are almost non-existent. Most of them tend to publish images instead of text which is highly non-productive. So there is an impression that market doesn't exist and users don't see any value in it. Second, there's only a small chunk of websites (e.g [Jang News](https://jang.com.pk/)) which publish content in Nasta'liq which is Urdu’s default writing style. Third, Google Translator performs extremely poor with English to Urdu translation, reducing reach. Fourth, there is a critical need to encourage our friends, family and especially millennials to start using Urdu as a communication medium in written form and take pride in it. 
+##### Urdu Fonts
+
+Interestingly, promising efforts are underway in terms of Urdu Fonts being developed according to the needs of modern web publishing and mobile applications. We always needed Fonts which allow electronic communication in Urdu using existing software (Google Chrome, Mozila, IE and Safari) which support OTF specifications but without any need to install plug-ins.
+
+Other desirable features include :
+
+  * Faster rendering speed
+  * Optimal Font file size
+  * Desirable look according to National Calligraphic Standards
+  * Aaraab and marks support
+  * Appropriate Kashida support and reduced line height.
+  
+[Mehr Nastaleeq](http://csalt.itu.edu.pk/urdufont/) Font is a very good example of a font which fulfills this requirement which was [launched](http://www.dawn.com/news/1313737) and made available for use in Feb 2017. Mehr font also became a reason why I wanted to develop such an Android app in first place to validate and see how it makes the Urdu text looks beautiful. In this application (at point of writing), I have included 9 Fonts in total containing 6 from Nasta'liq, 2 from Naskh and 1 from Riqa script. This was a concious decision to allow users to get a flavour of different options available but numbers are clear indication of my biases towards Nasta'liq for all good reasons. 
+
+My biggest challenge in searching and selecting the right Fonts was that there is no one resource where I could find them easily. All of this information about Fonts is scattered. Then, even if you are successful in finding a url to download, there is no description available about the purpose/features of respective Font or the creator. I genuinely struggled in finding the License information about most of the Fonts which I wanted to include and use. To save effort for other interested users, I have listed Licenses of all fonts (those included in application) in a separate [file](urdu-font-comparator-app/FONT-LICENSES.md) in this repo. I just wanted to ensure that concerned people/organizations should get their due acknowledgement. 
+
+<br>
+
+Coming back to the topic, I feel like there are several obstacles which exist today to full integration of Urdu in it's right typeface on mobile devices. First, we only have handful of websites such as [BBC-Urdu](http://www.bbc.co.uk/urdu/) or [Rekhta.org](https://rekhta.org/?lang=ur) which are entirely in Urdu and mobile apps are almost non-existent. Most of them tend to publish images instead of text which is highly non-productive. So there is an impression that market doesn't exist and users don't see any value in it. Second, there's only a small chunk of websites (e.g [Jang News](https://jang.com.pk/)) which publish content in Nasta'liq which is Urdu’s default writing style. Third, Google Translator performs extremely poor with English to Urdu translation, reducing reach to non-Urdu readers. Fourth, there is a critical need to encourage our friends, family and especially millennials to start using Urdu as a communication medium in written form and take pride in it.  
 
 Lastly and most importantly, the world's most daunting Urdu script problem as we know it can be solved by providing the Nasta'liq font in all the popular Operating Systems of this brave new world. *Yes, Google I am talking to you*. As Mudassir has rightly put it, in order to write in Nasta'liq, Google will need to tie in the Nasta'liq font with the Unicode, relate it to Urdu and get rid of that Naskh typeface. OSes can revive the Urdu language’s true identity on the internet, without pulling too many hair because the hair-loss problem is still the toughest problem to crack so far. 
 
-I personally believe in order to make Google and other big players genuinely interested in doing their part, we first have to make them believe that Urdu as a language can no longer be ignored due to it’s use and reach. The more we start using and publishing mobile apps with Urdu content, the more it will get the deserving attention. Local IT industry and governing bodies can then push through various channels with more confidence and substance. 
+I personally believe in order to make Google and other big players genuinely interested in doing their part, we first have to make them believe that Urdu as a language can no longer be ignored anymore considering it’s use by tens of millions and massive reach. The more we start using and publishing mobile apps with Urdu content, the more it will get the deserving attention. Local IT industry and governing bodies can then push through various channels with more confidence and substance. 
 
 ### Apps on Google Play in Urdu content
 
