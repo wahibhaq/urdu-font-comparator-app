@@ -18,6 +18,7 @@ The Android application offers following features:
 * See details of each font which provides important pointers about that font
 * Give feedback via rating which eventually helps other users to get an idea of popular fonts
 * More importantly, see and appreciate why [Nasta'liq](https://en.wikipedia.org/wiki/Nasta%CA%BFl%C4%ABq_script) script should be a natural choice for Urdu content on mobile devices. 
+* Application (at point of writing) includes 9 Fonts in total containing 6 from Nasta'liq, 2 from Naskh and 1 from Riqa script.
 
 <br>
 
