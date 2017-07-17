@@ -22,9 +22,15 @@ The Android application offers following features:
 
 <br>
 
-<img src="https://wahibhaq.github.io/img/projects/urdu-app-screenshot-home.png" width="200" height="350" align="left"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="https://media.giphy.com/media/xUOrvYu2MF4xXWGimQ/giphy.gif" width="250" height="450" align="middle"> 
+
+
+<br>
+
+<img src="https://wahibhaq.github.io/img/projects/urdu-app-screenshot-home.png" width="200" height="350" align="middle"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 <img src="https://wahibhaq.github.io/img/projects/urdu-app-screenshot-picker.png" width="200" height="350" align="middle"> 
-<img src="https://wahibhaq.github.io/img/projects/urdu-app-screenshot-font-info.png" width="200" height="350" align="right">
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<img src="https://wahibhaq.github.io/img/projects/urdu-app-screenshot-font-info.png" width="200" height="350" align="middle">
 
 <br>
 
