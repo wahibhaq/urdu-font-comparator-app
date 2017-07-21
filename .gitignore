@@ -39,6 +39,10 @@ proguard.cfg
 .gradle
 build
 
+#Google
+google-services.json
+fabric.properties
+
 #Other
 .DS_Store
 tmp
@@ -49,4 +53,4 @@ tmp
 *.launch
 captures
 *.apk
-google-services.json
+
