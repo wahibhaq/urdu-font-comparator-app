@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:scrollbars="vertical"
-    tools:context="projects.hobby.urdufontcomparator.fragments.MainFragment">
+    tools:context="com.androidistan.urdufontcomparator.fragments.MainFragment">
 
     <RelativeLayout
         android:id="@+id/layout_controls"

@@ -1,4 +1,4 @@
-package projects.hobby.urdufontcomparator;
+package com.androidistan.urdufontcomparator;
 
 import com.crashlytics.android.Crashlytics;
 

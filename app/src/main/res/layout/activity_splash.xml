@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="projects.hobby.urdufontcomparator.activities.SplashActivity">
+    tools:context="com.androidistan.urdufontcomparator.activities.SplashActivity">
 
     <ImageView
         android:id="@+id/image_background"
