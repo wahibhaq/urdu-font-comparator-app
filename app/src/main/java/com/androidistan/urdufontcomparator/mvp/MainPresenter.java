@@ -97,9 +97,7 @@ public class MainPresenter implements MainMvp.Presenter {
             double ratingAvg = ratingSum / ratingCount;
             NumberFormat.getInstance().format(ratingAvg);
             tracker.openFontDetails(font.getName());
-            view.showFontDetailsDialog(font, urduTextSource.prepareFontInfoDialogText(font),
-                    ratingAvg,
-                    ratingCount);
+            view.showFontDetailsDialog(font, ratingAvg, ratingCount);
         }
     }
 

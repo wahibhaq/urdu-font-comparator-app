@@ -23,4 +23,15 @@
         android:textSize="@dimen/text_size_16"
         tools:text="App Version: 1.0"/>
 
+    <TextView
+        android:id="@+id/text_brandname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_size_16"
+        android:text="@string/brand_name"/>
+
 </FrameLayout>

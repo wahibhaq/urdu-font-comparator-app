@@ -81,18 +81,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             case R.id.action_about_us:
                 tracker.openAboutUs();
-                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_us,
-                        urduTextSource.prepareAboutUsDialogText());
+                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_us, prepareAboutUsDialogText());
                 return true;
 
             case R.id.action_credits:
                 tracker.openCredits();
-                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_credits,
-                        urduTextSource.prepareCreditsDialogText());
+                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_credits, prepareCreditsDialogText());
                 return true;
             case R.id.action_email:
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO,
-                        Uri.fromParts("mailto", getString(R.string.dev_wahib_email), null));
+                        Uri.fromParts("mailto", getString(R.string.brand_email), null));
                 emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
                         getString(R.string.menu_contact_email_subject));
 
@@ -145,4 +143,24 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         }
     }
+
+    private String prepareAboutUsDialogText() {
+        return  Utils.getLineSpacings(this)
+                .concat(getString(R.string.project_description))
+                .concat(Utils.getLineSpacingsWithDash(this))
+                .concat(Utils.getLineSpacings(this))
+                .concat(getString(R.string.project_blog_page_mention,
+                        getString(R.string.app_blog_page)))
+                .concat(Utils.getLineSpacings(this))
+                .concat(Utils.getLineSpacings(this))
+                .concat(getString(R.string.project_github_comment,
+                        getString(R.string.app_github_repo_url)));
+    }
+
+    private String prepareCreditsDialogText() {
+        return Utils.getLineSpacings(this)
+                .concat(getString(R.string.credits_text,
+                        getString(R.string.app_github_credits_url)));
+    }
+
 }

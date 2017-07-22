@@ -24,6 +24,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidistan.urdufontcomparator.BuildConfig;
+import com.androidistan.urdufontcomparator.MainApplication;
+import com.androidistan.urdufontcomparator.R;
+import com.androidistan.urdufontcomparator.adapter.ContentAdapter;
+import com.androidistan.urdufontcomparator.dagger.MainMvpModule;
+import com.androidistan.urdufontcomparator.models.UrduFont;
+import com.androidistan.urdufontcomparator.mvp.MainMvp;
+import com.androidistan.urdufontcomparator.utils.Utils;
 import com.hsalf.smilerating.SmileRating;
 import com.yarolegovich.lovelydialog.LovelyCustomDialog;
 
@@ -39,14 +47,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
 import me.relex.circleindicator.CircleIndicator;
-import com.androidistan.urdufontcomparator.BuildConfig;
-import com.androidistan.urdufontcomparator.MainApplication;
-import com.androidistan.urdufontcomparator.R;
-import com.androidistan.urdufontcomparator.adapter.ContentAdapter;
-import com.androidistan.urdufontcomparator.dagger.MainMvpModule;
-import com.androidistan.urdufontcomparator.models.UrduFont;
-import com.androidistan.urdufontcomparator.mvp.MainMvp;
-import com.androidistan.urdufontcomparator.utils.Utils;
 import stfalcon.universalpickerdialog.UniversalPickerDialog;
 
 
@@ -221,8 +221,9 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
     }
 
     @Override
-    public void showFontDetailsDialog(UrduFont font, String content, double rating, int ratingCount) {
-        showFontDetailsDialog(getActivity(), font.getName(), content, rating, ratingCount);
+    public void showFontDetailsDialog(UrduFont font, double rating, int ratingCount) {
+        showFontDetailsDialog(getActivity(), font.getName(),
+                getFontInfoDialogText(font, getActivity()), rating, ratingCount);
     }
 
 
@@ -416,5 +417,18 @@ public class MainFragment extends BaseFragment implements MainMvp.View,
         removeSharedPref(R.string.font_size);
         presenter.dispose();
         super.onDestroy();
+    }
+
+
+    private String getFontInfoDialogText(final UrduFont font, Context context) {
+        return getString(R.string.dialog_font_provider_label,
+                font.getProvider() != null ? font.getProvider() : R.string.not_available)
+                .concat(Utils.getLineSpacings(context))
+                .concat(getString(R.string.dialog_font_website_label,
+                        font.getWebsite() != null ? font.getWebsite() : R.string.not_available))
+                .concat(Utils.getLineSpacings(context))
+                .concat(getString(R.string.dialog_font_filename_label, font.getFilename()))
+                .concat(Utils.getLineSpacings(context))
+                .concat(getString(R.string.dialog_font_size_label, font.getFilesize()));
     }
 }

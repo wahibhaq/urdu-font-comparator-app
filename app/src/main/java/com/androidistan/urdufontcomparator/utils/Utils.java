@@ -119,7 +119,7 @@ public class Utils {
      * @return true if the internet connection currently in use is functional,
      * otherwise false
      */
-    public static boolean isOnline(Context context) {
+    public static boolean isOnline(final Context context) {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(
                 Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -135,4 +135,13 @@ public class Utils {
     public static boolean isNullOrEmpty(String message) {
         return message == null || message.isEmpty();
     }
+
+    public static String getLineSpacingsWithDash(final Context context) {
+        return context.getString(R.string.line_spacing_with_dash);
+    }
+
+    public static String getLineSpacings(final Context context) {
+        return context.getString(R.string.line_spacing);
+    }
+
 }
