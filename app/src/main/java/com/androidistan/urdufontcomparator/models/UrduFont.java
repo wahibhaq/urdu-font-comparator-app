@@ -1,13 +1,11 @@
 package com.androidistan.urdufontcomparator.models;
 
-import android.support.annotation.Keep;
 import android.support.annotation.Nullable;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.SerializedName;
 
 @IgnoreExtraProperties
-@Keep //this was added to avoid proguard stripping some methods which cause error in Release
 public class UrduFont {
 
     @SerializedName("name")

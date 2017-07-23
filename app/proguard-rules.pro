@@ -20,8 +20,8 @@
 -keepattributes Signature
 
 # This rule will properly ProGuard all the model classes in
-# the package com.yourcompany.models. Modify to fit the structure
+# the package com.androidistan.urdufontcomparator.models. Modify to fit the structure
 # of your app.
--keepclassmembers class projects.hobby.urdufontcomparator.models.** {
+-keepclassmembers class com.androidistan.urdufontcomparator.models.** {
   *;
 }
