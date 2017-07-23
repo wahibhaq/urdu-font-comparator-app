@@ -16,8 +16,11 @@ import android.text.util.Linkify;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+
 import java.util.List;
+
 import com.androidistan.urdufontcomparator.R;
 
 /**
@@ -26,7 +29,7 @@ import com.androidistan.urdufontcomparator.R;
 public class Utils {
 
     public static void showDialogWithUrlsWithTitle(Context context, @StringRes int title,
-            String content) {
+                                                   String content) {
         createAndShowDialog(context, context.getString(title), content, true);
     }
 
@@ -35,7 +38,7 @@ public class Utils {
     }
 
     private static void createAndShowDialog(Context context, String title, String content,
-            boolean showOkButton) {
+                                            boolean showOkButton) {
         final SpannableString s = new SpannableString(content);
         createAndShowDialog(context, title, s, showOkButton);
     }
@@ -64,7 +67,7 @@ public class Utils {
             tvMessage.setLinkTextColor(ContextCompat.getColor(context, R.color.blue));
         }
 
-        if(showOkButton) {
+        if (showOkButton) {
             Button btnOk = (Button) dialog.findViewById(R.id.ld_btn_confirm);
             if (btnOk != null) {
                 btnOk.setText(R.string.button_ok);
@@ -115,7 +118,6 @@ public class Utils {
     }
 
     /**
-     *
      * @return true if the internet connection currently in use is functional,
      * otherwise false
      */

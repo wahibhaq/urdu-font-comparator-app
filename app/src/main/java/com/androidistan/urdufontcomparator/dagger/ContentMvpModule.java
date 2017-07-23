@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+
 import com.androidistan.urdufontcomparator.models.UrduTextSource;
 import com.androidistan.urdufontcomparator.mvp.ContentMvp;
 import com.androidistan.urdufontcomparator.mvp.ContentPresenter;

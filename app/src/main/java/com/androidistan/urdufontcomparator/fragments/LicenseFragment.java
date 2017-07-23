@@ -8,7 +8,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+
 import butterknife.BindView;
+
 import com.androidistan.urdufontcomparator.R;
 
 public class LicenseFragment extends BaseFragment {
@@ -23,7 +25,7 @@ public class LicenseFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_licenses, container, false);
     }
 

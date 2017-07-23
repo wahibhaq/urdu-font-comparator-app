@@ -5,7 +5,6 @@ import android.support.annotation.StringRes;
 
 import com.androidistan.urdufontcomparator.R;
 import com.androidistan.urdufontcomparator.models.UrduFont;
-import com.androidistan.urdufontcomparator.models.UrduTextSource;
 import com.androidistan.urdufontcomparator.tracking.TrackingManager;
 import com.androidistan.urdufontcomparator.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,8 +24,6 @@ public class MainPresenter implements MainMvp.Presenter {
 
     private final MainMvp.View view;
 
-    private final UrduTextSource urduTextSource;
-
     private final DatabaseReference databaseReference;
 
     private final TrackingManager tracker;
@@ -36,11 +33,9 @@ public class MainPresenter implements MainMvp.Presenter {
     private ValueEventListener valueEventListener;
 
     public MainPresenter(MainMvp.View view,
-                         UrduTextSource urduTextSource,
                          DatabaseReference databaseReference,
                          TrackingManager trackingManager) {
         this.view = view;
-        this.urduTextSource = urduTextSource;
         this.databaseReference = databaseReference;
         this.tracker = trackingManager;
         fontsFromFirebase = new ArrayList<>();
@@ -113,7 +108,7 @@ public class MainPresenter implements MainMvp.Presenter {
 
     @Override
     public void handleRatingUpdateAction(int fontIndex, UrduFont font) {
-        if(font == null) {
+        if (font == null) {
             handleError(R.string.error_message_unknown_font);
         } else {
             tracker.submitFontRating(font.getName(), font.getLastRatingValue());

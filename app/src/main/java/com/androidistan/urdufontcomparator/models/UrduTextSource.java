@@ -9,7 +9,7 @@ import javax.inject.Inject;
 
 /**
  * Acts as a Model for Content as for now it serves for Sample Text
- *
+ * <p>
  * I know it could have been done in a better way but going with an easy solution for now.
  */
 public class UrduTextSource {

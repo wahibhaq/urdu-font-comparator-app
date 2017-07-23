@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import com.androidistan.urdufontcomparator.MainApplication;
 import com.androidistan.urdufontcomparator.R;
 import com.androidistan.urdufontcomparator.fragments.LicenseFragment;
@@ -123,7 +124,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 shareIntent.setType(getString(R.string.intent_type));
                 shareIntent.putExtra(Intent.EXTRA_TEXT,
                         String.format(getString(R.string.share_app_url_message),
-                        getString(R.string.app_name_expanded), getString(R.string.app_url)));
+                                getString(R.string.app_name_expanded), getString(R.string.app_url)));
                 if (Utils.isIntentSafe(this, shareIntent)) {
                     tracker.shareAppWithFriend();
                     startActivity(Intent.createChooser(shareIntent,
@@ -145,7 +146,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private String prepareAboutUsDialogText() {
-        return  Utils.getLineSpacings(this)
+        return Utils.getLineSpacings(this)
                 .concat(getString(R.string.project_description))
                 .concat(Utils.getLineSpacingsWithDash(this))
                 .concat(Utils.getLineSpacings(this))

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
 import com.androidistan.urdufontcomparator.BuildConfig;
 import com.androidistan.urdufontcomparator.R;
 
@@ -27,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         mUnbinder = ButterKnife.bind(this);
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {

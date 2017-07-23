@@ -1,6 +1,7 @@
 package com.androidistan.urdufontcomparator.mvp;
 
 import android.graphics.Typeface;
+
 import com.androidistan.urdufontcomparator.models.UrduTextSource;
 import com.androidistan.urdufontcomparator.tracking.TrackingManager;
 import com.androidistan.urdufontcomparator.utils.CustomFontManager;

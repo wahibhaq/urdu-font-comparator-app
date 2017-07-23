@@ -9,13 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.BindView;
-import javax.inject.Inject;
+
 import com.androidistan.urdufontcomparator.MainApplication;
 import com.androidistan.urdufontcomparator.R;
 import com.androidistan.urdufontcomparator.dagger.ContentMvpModule;
 import com.androidistan.urdufontcomparator.models.UrduFont;
 import com.androidistan.urdufontcomparator.mvp.ContentMvp;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
 
 
 public class ContentFragment extends BaseFragment implements ContentMvp.View,
@@ -23,13 +26,12 @@ public class ContentFragment extends BaseFragment implements ContentMvp.View,
 
     private final static int DEFAULT_FONT_SIZE = 20; //min font size
 
-    @BindView(R.id.text_body)
-    protected TextView contentBody;
-
     private static final String ARG_FONT_NAME = "font_name";
 
     private static final String ARG_FONT_FILE = "font_file";
 
+    @BindView(R.id.text_body)
+    protected TextView contentBody;
 
     @Inject
     protected ContentMvp.Presenter presenter;

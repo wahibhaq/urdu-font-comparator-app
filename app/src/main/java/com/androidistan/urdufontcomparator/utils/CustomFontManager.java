@@ -5,13 +5,14 @@ import android.graphics.Typeface;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import timber.log.Timber;
 
 /**
- *  Manager responsible to handle validation of font assets and efficient access of Fonts.
- *
- *  It is a bit improved version of FontManager
- *  found here http://stackoverflow.com/a/29134056/1016544
+ * Manager responsible to handle validation of font assets and efficient access of Fonts.
+ * <p>
+ * It is a bit improved version of FontManager
+ * found here http://stackoverflow.com/a/29134056/1016544
  */
 public class CustomFontManager {
 
@@ -28,7 +29,7 @@ public class CustomFontManager {
         Typeface font = null;
 
         // if font filename is emptry null? Better just return null to make problem more explicit.
-        if(asset == null || asset.isEmpty()) {
+        if (asset == null || asset.isEmpty()) {
             return font;
         }
 

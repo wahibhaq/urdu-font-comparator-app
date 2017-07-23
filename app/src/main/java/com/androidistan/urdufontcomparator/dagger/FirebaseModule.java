@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+
 import com.androidistan.urdufontcomparator.BuildConfig;
 import com.androidistan.urdufontcomparator.R;
 import com.androidistan.urdufontcomparator.tracking.ActiveTrackingManager;

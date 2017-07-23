@@ -1,13 +1,14 @@
 package com.androidistan.urdufontcomparator.dagger;
 
-import com.google.firebase.database.DatabaseReference;
-import dagger.Module;
-import dagger.Provides;
-import javax.inject.Singleton;
-import com.androidistan.urdufontcomparator.models.UrduTextSource;
 import com.androidistan.urdufontcomparator.mvp.MainMvp;
 import com.androidistan.urdufontcomparator.mvp.MainPresenter;
 import com.androidistan.urdufontcomparator.tracking.TrackingManager;
+import com.google.firebase.database.DatabaseReference;
+
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 
 @Module
 public class MainMvpModule {
@@ -20,9 +21,8 @@ public class MainMvpModule {
 
     @Singleton
     @Provides
-    MainMvp.Presenter provideMainMvpPresenter(UrduTextSource urduTextSource,
-                                              DatabaseReference databaseReference,
+    MainMvp.Presenter provideMainMvpPresenter(DatabaseReference databaseReference,
                                               TrackingManager trackingManager) {
-        return new MainPresenter(view, urduTextSource, databaseReference, trackingManager);
+        return new MainPresenter(view, databaseReference, trackingManager);
     }
 }

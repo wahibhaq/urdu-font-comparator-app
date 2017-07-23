@@ -11,7 +11,7 @@ import com.androidistan.urdufontcomparator.models.UrduFont;
 
 public class ContentAdapter extends FragmentPagerAdapter {
 
-    private List<UrduFont> fonts;
+    private final List<UrduFont> fonts;
 
     public ContentAdapter(FragmentManager fm, List<UrduFont> fonts) {
         super(fm);
