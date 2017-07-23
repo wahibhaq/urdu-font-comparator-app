@@ -10,12 +10,6 @@ gen
 *.ap_
 .apt_generated/
 
-#Eclipse
-.project
-.classpath
-.settings
-.checkstyle
-
 #IntelliJ IDEA
 .idea
 *.iml
