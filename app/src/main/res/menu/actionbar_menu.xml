@@ -7,18 +7,19 @@
         android:visible="true">
 
         <item
-            android:id="@+id/action_licenses"
-            android:title="@string/menu_licenses"
-            app:showAsAction="never" />
-
-        <item
             android:id="@+id/action_about_us"
             android:title="@string/menu_about_us"
             app:showAsAction="never" />
 
         <item
-            android:id="@+id/action_credits"
-            android:title="@string/menu_credits"
+            android:id="@+id/action_share"
+            android:title="@string/menu_share_with_a_friend"
+            android:actionProviderClass="android.widget.ShareActionProvider"
+            app:showAsAction="never"/>
+
+        <item
+            android:id="@+id/action_rate_app"
+            android:title="@string/menu_rate_app"
             app:showAsAction="never" />
 
         <item
@@ -37,10 +38,17 @@
             </menu>
 
         </item>
+
         <item
-            android:id="@+id/action_share"
-            android:title="@string/menu_share_with_a_friend"
-            android:actionProviderClass="android.widget.ShareActionProvider"
-            app:showAsAction="never"/>
+            android:id="@+id/action_licenses"
+            android:title="@string/menu_licenses"
+            app:showAsAction="never" />
+
+
+        <item
+            android:id="@+id/action_credits"
+            android:title="@string/menu_credits"
+            app:showAsAction="never" />
+
     </group>
 </menu>

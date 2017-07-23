@@ -12,17 +12,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import javax.inject.Inject;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 import com.androidistan.urdufontcomparator.MainApplication;
 import com.androidistan.urdufontcomparator.R;
 import com.androidistan.urdufontcomparator.fragments.LicenseFragment;
 import com.androidistan.urdufontcomparator.models.UrduTextSource;
 import com.androidistan.urdufontcomparator.tracking.TrackingManager;
 import com.androidistan.urdufontcomparator.utils.Utils;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -71,24 +71,43 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_licenses:
-                tracker.openLicenses();
-                Fragment fragment = LicenseFragment.newInstance();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content, fragment)
-                        .addToBackStack(null)
-                        .commit();
-                return true;
 
             case R.id.action_about_us:
                 tracker.openAboutUs();
                 Utils.showDialogWithUrlsWithTitle(this, R.string.menu_about_us, prepareAboutUsDialogText());
                 return true;
 
-            case R.id.action_credits:
-                tracker.openCredits();
-                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_credits, prepareCreditsDialogText());
+            case R.id.action_share:
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType(getString(R.string.intent_type));
+                shareIntent.putExtra(Intent.EXTRA_TEXT,
+                        String.format(getString(R.string.share_app_url_message),
+                                getString(R.string.app_name_expanded), getString(R.string.app_url)));
+                if (Utils.isIntentSafe(this, shareIntent)) {
+                    tracker.shareAppWithFriend();
+                    startActivity(Intent.createChooser(shareIntent,
+                            getString(R.string.menu_share_with_a_friend)));
+                } else {
+                    tracker.errorShown();
+                    Toast.makeText(this, R.string.sharing_client_not_found,
+                            Toast.LENGTH_SHORT).show();
+                }
+
                 return true;
+
+            case R.id.action_rate_app:
+                final String appPackageName = getPackageName();
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=" + appPackageName)));
+                } catch (android.content.ActivityNotFoundException anfe) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id="
+                                    + appPackageName)));
+                }
+
+                return true;
+
             case R.id.action_email:
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO,
                         Uri.fromParts("mailto", getString(R.string.brand_email), null));
@@ -119,22 +138,18 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }
                 return true;
 
-            case R.id.action_share:
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType(getString(R.string.intent_type));
-                shareIntent.putExtra(Intent.EXTRA_TEXT,
-                        String.format(getString(R.string.share_app_url_message),
-                                getString(R.string.app_name_expanded), getString(R.string.app_url)));
-                if (Utils.isIntentSafe(this, shareIntent)) {
-                    tracker.shareAppWithFriend();
-                    startActivity(Intent.createChooser(shareIntent,
-                            getString(R.string.menu_share_with_a_friend)));
-                } else {
-                    tracker.errorShown();
-                    Toast.makeText(this, R.string.sharing_client_not_found,
-                            Toast.LENGTH_SHORT).show();
-                }
+            case R.id.action_licenses:
+                tracker.openLicenses();
+                Fragment fragment = LicenseFragment.newInstance();
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content, fragment)
+                        .addToBackStack(null)
+                        .commit();
+                return true;
 
+            case R.id.action_credits:
+                tracker.openCredits();
+                Utils.showDialogWithUrlsWithTitle(this, R.string.menu_credits, prepareCreditsDialogText());
                 return true;
 
             default:

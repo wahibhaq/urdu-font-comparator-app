@@ -76,12 +76,13 @@
     <string name="menu_about_us">About Us</string>
     <string name="menu_licenses">Licenses</string>
     <string name="menu_credits">Credits</string>
-    <string name="menu_contact">Contact Us</string>
+    <string name="menu_contact">Send Feedback</string>
     <string name="menu_contact_via_email">Email</string>
     <string name="menu_contact_via_tweet">Tweet</string>
     <string name="menu_contact_email_subject">My Feedback</string>
     <string name="menu_share_with_a_friend">Share with a friend</string>
     <string name="share_app_url_message">Checkout \"%1$s\" app %2$s</string>
+    <string name="menu_rate_app">Rate this app</string>
 
     <!-- Font Info Dialog -->
     <string name="button_got_it">GOT IT</string>
