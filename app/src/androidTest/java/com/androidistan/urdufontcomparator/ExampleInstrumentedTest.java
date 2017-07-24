@@ -7,6 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 /**
@@ -19,6 +20,6 @@ import static org.junit.Assert.*;
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("projects.hobby.urdufontcomparator", appContext.getPackageName());
+        assertEquals("com.androidistan.urdufontcomparator", appContext.getPackageName());
     }
 }
