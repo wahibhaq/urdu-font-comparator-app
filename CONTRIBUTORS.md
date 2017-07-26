@@ -6,7 +6,8 @@
 
 ### Graphics Designing 
 
-  * [Talha Ahmad Khan](https://twitter.com/TalhaAhmad93) 
+  * [Talha Ahmad Khan](https://twitter.com/TalhaAhmad93)
+  * [Kamil Khan Marwat](https://twitter.com/MarwatKamil) 
 
 ### Content
 
