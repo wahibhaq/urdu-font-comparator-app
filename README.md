@@ -1,7 +1,7 @@
 # Urdu Font Comparator 
 
 
-This project is about an Android application (available on [Google Play](https://play.google.com/store/apps/details?id=com.androidistan.urdufontcomparator)) which allows users to explore various Urdu Fonts, eventually helping them in choosing the right one. This project is additionally intended to make users appreciate why [Nasta'liq](https://en.wikipedia.org/wiki/Nasta%CA%BFl%C4%ABq_script) script should be a natural choice for Urdu content on mobile devices.
+This project is about an Android application (available on [Google Play](https://play.google.com/store/apps/details?id=com.androidistan.urdufontcomparator)) which allows users to explore various Urdu Fonts, eventually helping them in choosing the right one. This project is additionally intended to make users appreciate why [Nasta'liq](https://en.wikipedia.org/wiki/Nasta%CA%BFl%C4%ABq_script) script should be a natural choice for Urdu content on web and mobile devices.
 
 <br>
 
@@ -109,6 +109,8 @@ Nastaa'liq is one of the most complex scripts to design. Nasta'liq is written on
 ![Nasta'liq script representation](https://i.imgur.com/Ds8m2xD.png)
 
 It's complexity also makes it one of the most difficult scripts to render using a computer font. Its right-to-left direction, vertical nature, and context-specific shaping provide a challenge to any font rendering engine and make it much more difficult to render than the flat (Naskh) Arabic script that it is based on. As a result, font developers have long struggled to produce a font with the correct shaping but at the same time avoid overlapping of dots and diacritics.
+
+If you are curious to read and know more about the history and technicalities of the Urdu Typography then do explore this beautifully illustrated [Design Student's Guide to Urdu Type](https://issuu.com/shumylehaider/docs/a_design_student_s_guide_to_urdu_ty) from [Shumyle](https://www.behance.net/shumyle72).
 
 
 ## Status of Urdu on Smartphones
