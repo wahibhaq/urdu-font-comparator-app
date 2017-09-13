@@ -125,6 +125,8 @@ Nasta'liq became part of Windows 8 with introduction of [Urdu Typesetting](http:
 
 [Mudassir Azeemi](https://twitter.com/maxeemi) is another enthusiast with a similar [mission](https://medium.com/@mmudassir/the-revival-of-the-urdu-script-734eeeffef5d), who also wrote a [letter to Tim Cook](https://medium.com/@mmudassir/an-open-letter-to-tim-cook-and-jonathan-ive-be38cf88d8ee) back in 2014 to request for Nasta'liq support in iOS. He was quite excited to inform us that Apple finally included Nasta'liq support in [iOS 11](https://www.apple.com/ios/ios-11-preview/) beta and we all hope to see the update being released. 
 
+Update (12.09.2017): Apple has officially adopted Nasta'liq on iOS devices and it is a Big News! Mudassir already [shared](https://medium.com/@mmudassir/thank-you-شکریہ-مہربانی-tim-cook-for-nastaleeq-2c5e36efef6e) his excitement :)
+
 ##### Android
 
 Android started offering Urdu from [Marshmallow (Oct, 2015)](https://www.android.com/intl/en_in/versions/marshmallow-6-0/features/#marshmallow-features-1-body) and to my knowledge (at the time of writing this) it still does not support Nasta'liq natively for Urdu language.
