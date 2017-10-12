@@ -1,7 +1,7 @@
 # Urdu Font Comparator 
 
 
-This project is about an Android application (available on [Google Play](https://play.google.com/store/apps/details?id=com.androidistan.urdufontcomparator)) which allows users to explore various Urdu Fonts, eventually helping them in choosing the right one. This project is additionally intended to make users appreciate why [Nasta'liq](https://en.wikipedia.org/wiki/Nasta%CA%BFl%C4%ABq_script) script should be a natural choice for Urdu content on web and mobile devices.
+This project is about an Android application (available on [Google Play](https://play.google.com/store/apps/details?id=com.androidistan.urdufontcomparator)) which allows users to explore various Urdu Fonts, eventually helping them in choosing the right one. This project is additionally intended to make users appreciate why [Nasta'liq](https://en.wikipedia.org/wiki/Nasta%CA%BFl%C4%ABq_script) script should be a natural choice for Urdu content on web and mobile devices. I also wrote a [blog post](http://wahibhaq.com/blog/introducing-urdu-font-comparator-app/) describing how I ended up working on this project.
 
 <br>
 
