@@ -196,6 +196,10 @@ BYKEA is an all in one app for transportation, delivery and payment services. It
 
 CricName is a Cricket-oriented Android App in Urdu which keeps users up to date with standout coverage of the game. It has certain missing elements like RTL mirroring and not using one of the Nasta'liq font.
 
+##### [Nastaleeq Chrome Extension](https://chrome.google.com/webstore/detail/nastaleeq/oddbjmjgpaofommagnbfednbdifaakfb?hl=en)
+
+A bit unrelated but I recently found out about this Chrome extension and felt need to mention it here. It does solve the problem as far as browsing and reading Urdu content on Chrome is concerned. Cherry on the top, it also uses "Mehr Nastaleeq" Font.
+
 
 <br> <br>
 
